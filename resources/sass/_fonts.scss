@@ -1,0 +1,76 @@
+@import 'variables';
+
+
+body{
+    font-family: $font-family-body;
+    color: $black; 
+}
+
+p{
+    font-family: $font-family-body; 
+    font-size: 16px;
+    font-weight: $fw-r;
+    letter-spacing: 0.5px;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    font-family: $font-family-headings; 
+}
+
+h1{
+    font-size: 98px;
+    font-weight: $fw-l;
+    letter-spacing: -1.5px;
+}
+h2{
+    font-size: 61px;
+    font-weight: $fw-l;
+    letter-spacing: -0.5px;
+}
+h3{
+    font-size: 49px;
+    font-weight: $fw-r;
+    letter-spacing: 0px;
+}
+h4{
+    font-size: 35px;
+    font-weight: $fw-r;
+    letter-spacing: 0.25px;
+}
+h5{
+    font-size: 24px;
+    font-weight: $fw-r;
+    letter-spacing: 0px;
+}
+h6{
+    font-size: 20px;
+    font-weight: $fw-md;
+    letter-spacing: 0.15px;
+}
+
+.subtitle-1 {
+    font-family: $font-family-headings; 
+    font-size: 16px;
+    font-weight: $fw-r;
+    letter-spacing: 0.15px; 
+}
+.subtitle-2 {
+    font-family: $font-family-headings; 
+    font-size: 14px;
+    font-weight: $fw-md;
+    letter-spacing: 0.1px; 
+}
+
+.caption {
+    font-family: $font-family-body; 
+    font-size: 12px;
+    font-weight: $fw-r;
+    letter-spacing: 0.4px; 
+}
+.overline {
+    font-family: $font-family-body; 
+    font-size: 10px;
+    font-weight: $fw-r;
+    letter-spacing: 1.5px; 
+    text-transform: uppercase;
+}

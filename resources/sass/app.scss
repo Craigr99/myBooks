@@ -1,8 +1,65 @@
 // Fonts
-@import url('https://fonts.googleapis.com/css?family=Nunito');
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300;400&family=Rubik:wght@300;400;500&display=swap');
 
 // Variables
 @import 'variables';
 
 // Bootstrap
 @import '~bootstrap/scss/bootstrap';
+
+// Import partial scss files
+@import 'fonts';
+
+.red{
+    background-color: red;
+}
+.blue{
+    background-color: blue;
+}
+
+
+//Buttons
+.my-btn {
+    box-shadow: $shadow;
+    font-size: 14px;
+    font-weight: $fw-r;
+    letter-spacing: 0.5px;
+    border-radius: $radius;
+    padding: 10px 40px;
+
+    &-primary {
+        background-color: $purple-regular;
+        color: $white;
+
+        &:hover {
+            background-color: $purple-light;
+            color: $white;
+        }
+    }
+
+    &-outline {
+        background-color: transparent;
+        color: $black;
+
+        &:hover {
+            background-color: $black;
+            color: $white;
+        }
+    }
+}
+
+
+.login-left-container{
+    background-color: $purple-regular;
+    color: $white;
+    border-top-left-radius:$radius ;
+    border-bottom-left-radius:$radius ;
+}
+
+
+.rounded{
+    border-radius: $radius !important;
+}
+.vh-80 {
+    min-height: 80vh !important;
+}
