@@ -10984,6 +10984,14 @@ h6 {
   text-transform: uppercase;
 }
 
+.text-white {
+  color: #ffffff;
+}
+
+.text-purple {
+  color: #6C63FF;
+}
+
 .red {
   background-color: red;
 }
@@ -11021,8 +11029,20 @@ h6 {
   color: #ffffff;
 }
 
+input {
+  border-radius: 20px !important;
+}
+
+input:focus {
+  border-color: #7F96FF !important;
+  box-shadow: 0 0 0 0.2rem rgba(108, 99, 255, 0.25) !important;
+}
+
 .login-left-container {
   background-color: #6C63FF;
+  background-size: 60%;
+  background-position: center center;
+  background-repeat: no-repeat;
   color: #ffffff;
   border-top-left-radius: 20px;
   border-bottom-left-radius: 20px;

@@ -1,22 +1,21 @@
 // Fonts
-@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300;400&family=Rubik:wght@300;400;500&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Roboto:wght@300;400&family=Rubik:wght@300;400;500&display=swap");
 
 // Variables
-@import 'variables';
+@import "variables";
 
 // Bootstrap
-@import '~bootstrap/scss/bootstrap';
+@import "~bootstrap/scss/bootstrap";
 
 // Import partial scss files
-@import 'fonts';
+@import "fonts";
 
-.red{
+.red {
     background-color: red;
 }
-.blue{
+.blue {
     background-color: blue;
 }
-
 
 //Buttons
 .my-btn {
@@ -48,16 +47,26 @@
     }
 }
 
+input {
+    border-radius: $radius !important;
 
-.login-left-container{
-    background-color: $purple-regular;
-    color: $white;
-    border-top-left-radius:$radius ;
-    border-bottom-left-radius:$radius ;
+    &:focus {
+        border-color: $purple-light !important;
+        box-shadow: 0 0 0 0.2rem rgba(108, 99, 255, 0.25) !important;
+    }
 }
 
+.login-left-container {
+    background-color: $purple-regular;
+    background-size: 60%;
+    background-position: center center;
+    background-repeat: no-repeat;
+    color: $white;
+    border-top-left-radius: $radius;
+    border-bottom-left-radius: $radius;
+}
 
-.rounded{
+.rounded {
     border-radius: $radius !important;
 }
 .vh-80 {

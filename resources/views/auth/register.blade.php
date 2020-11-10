@@ -2,7 +2,97 @@
 
 @section('content')
     <div class="container">
-        <div class="row justify-content-center">
+        <div class="row">
+            <div class="col-md-12 d-flex flex-column justify-content-center vh-100">
+                <div class="card rounded">
+                    <div class="row vh-80">
+                        <div class="col-sm-6 col-md-6 p-5 d-none d-md-flex login-left-container flex-column"
+                            style="background-image: url({{ asset('img/login_svg.svg') }})">
+                            <h4>
+                                <a class="text-white" href="{{ route('welcome') }}">myBooks</a>
+                            </h4>
+                        </div>
+
+                        <div class="col-md-6 px-md-4">
+                            <div class="d-flex align-items-center justify-content-center h-100 px-4">
+                                <form action="{{ route('register') }}" method="POST">
+                                    @csrf
+                                    <h4 class="text-purple">Create a myBooks <br> account</h4>
+                                    <div class="row form-group">
+                                        <div class="col col-sm-6">
+                                            <input id="name" type="text"
+                                                class="form-control @error('name') is-invalid @enderror" name="name"
+                                                value="{{ old('name') }}" required autofocus placeholder="Full name">
+
+                                            @error('name')
+                                                <span class="invalid-feedback" role="alert">
+                                                    <strong>{{ $message }}</strong>
+                                                </span>
+                                            @enderror
+                                        </div>
+                                    </div>
+
+                                    <div class="row form-group">
+                                        <div class="col-12 col-sm-6">
+                                            <input id="email" type="email"
+                                                class="form-control @error('email') is-invalid @enderror" name="email"
+                                                value="{{ old('email') }}" required autofocus placeholder="Email">
+
+                                            @error('email')
+                                                <span class="invalid-feedback" role="alert">
+                                                    <strong>{{ $message }}</strong>
+                                                </span>
+                                            @enderror
+                                        </div>
+                                        <div class="col-12 col-sm-6 mt-3 mt-sm-0">
+                                            <input id="username" type="text"
+                                                class="form-control @error('username') is-invalid @enderror" name="username"
+                                                value="{{ old('username') }}" required autofocus placeholder="Username">
+
+                                            @error('username')
+                                                <span class="invalid-feedback" role="alert">
+                                                    <strong>{{ $message }}</strong>
+                                                </span>
+                                            @enderror
+                                        </div>
+                                    </div>
+
+                                    <div class="row form-group">
+                                        <div class="col-12 col-sm-6">
+                                            <input id="password" type="password"
+                                                class="form-control @error('password') is-invalid @enderror" name="password"
+                                                required autocomplete="new-password" placeholder="Password">
+
+                                            @error('password')
+                                                <span class="invalid-feedback" role="alert">
+                                                    <strong>{{ $message }}</strong>
+                                                </span>
+                                            @enderror
+                                        </div>
+                                        <div class="col-12 col-sm-6 mt-3 mt-sm-0">
+                                            <input id="password-confirm" type="password" class="form-control"
+                                                name="password_confirmation" required autocomplete="new-password"
+                                                placeholder="Confirm password">
+                                        </div>
+                                    </div>
+                                    <button type="submit" class="btn  my-btn my-btn-primary mt-3">Register</button>
+                                    <div class="text-center mt-4">
+                                        Already have an account?
+                                        <a href="{{ route('login') }}" class="text-purple">
+                                            Login
+                                        </a>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+
+        {{-- <div class="row justify-content-center">
             <div class="col-md-8">
                 <div class="card">
                     <div class="card-header">{{ __('Register') }}</div>
@@ -19,9 +109,9 @@
                                         name="name" value="{{ old('name') }}" required autocomplete="name" autofocus>
 
                                     @error('name')
-                                        <span class="invalid-feedback" role="alert">
-                                            <strong>{{ $message }}</strong>
-                                        </span>
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
                                     @enderror
                                 </div>
                             </div>
@@ -35,9 +125,9 @@
                                         name="email" value="{{ old('email') }}" required autocomplete="email">
 
                                     @error('email')
-                                        <span class="invalid-feedback" role="alert">
-                                            <strong>{{ $message }}</strong>
-                                        </span>
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
                                     @enderror
                                 </div>
                             </div>
@@ -51,9 +141,9 @@
                                         value="{{ old('username') }}" required>
 
                                     @error('username')
-                                        <span class="invalid-feedback" role="alert">
-                                            <strong>{{ $message }}</strong>
-                                        </span>
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
                                     @enderror
                                 </div>
                             </div>
@@ -68,9 +158,9 @@
                                         required autocomplete="new-password">
 
                                     @error('password')
-                                        <span class="invalid-feedback" role="alert">
-                                            <strong>{{ $message }}</strong>
-                                        </span>
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
                                     @enderror
                                 </div>
                             </div>
@@ -96,6 +186,6 @@
                     </div>
                 </div>
             </div>
-        </div>
+        </div> --}}
     </div>
 @endsection
