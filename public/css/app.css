@@ -11056,3 +11056,32 @@ input:focus {
   min-height: 80vh !important;
 }
 
+.hero {
+  min-height: 100vh;
+  position: relative;
+  background: linear-gradient(180deg, rgba(233, 236, 239, 0) 0%, #f8f9fa 100%);
+}
+
+.hero_img {
+  position: absolute;
+  right: -4%;
+  top: 10%;
+  display: block;
+  height: 80%;
+  width: 90%;
+  background-position: center right !important;
+  background-repeat: no-repeat !important;
+}
+
+.hero_left {
+  min-height: 60vh;
+  display: flex;
+  align-items: center;
+}
+
+.hero_left .line {
+  background-color: #bfbfbf;
+  width: 100px;
+  height: 2px;
+}
+
