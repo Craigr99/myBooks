@@ -28,7 +28,7 @@
 
     <main>
         <div class="container">
-            <div class="row">
+            <div class="row spacer-bottom-lg">
                 <div class="col d-md-flex align-items-center ">
                     <img src="{{ asset('img/bookshelves.svg') }}" height="400px" width="450px" alt="">
                     <div class="ml-md-5 p-md-5">
@@ -38,7 +38,7 @@
                     </div>
                 </div>
             </div>
-            <div class="row mt-5">
+            <div class="row spacer-bottom-lg">
                 <div class="col d-md-flex flex-row-reverse align-items-center ">
                     <img src="{{ asset('img/bookshelves.svg') }}" height="400px" width="450px" alt="">
                     <div class="pr-5">

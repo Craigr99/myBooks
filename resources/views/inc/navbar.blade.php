@@ -33,18 +33,37 @@
                     <li class="nav-item dropdown">
                         <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button"
                             data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
-                            <img src="{{ asset('storage/images/' . Auth::user()->image) }}" class="rounded-circle mr-1"
-                                height="30px" width="30px" />
+                            {{-- Check if user has image --}}
+                            @if (Auth::user()->image !== 'default.png')
+                                <img src="{{ asset('storage/images/' . Auth::user()->image) }}" class="rounded-circle mr-1"
+                                    height="30px" width="30px" />
+                            @else
+                                <img src="{{ asset('img/default.png') }}" class="rounded-circle mr-1" height="30px"
+                                    width="30px" />
+                            @endif
                             {{ Auth::user()->name }}
                             <span class="caret"></span>
                         </a>
 
                         <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
-                            <a class="dropdown-item" href="{{ route('admin.home') }}">
+                            <a class="dropdown-item" href="{{ route('user.home') }}">
                                 Dashboard
                             </a>
-                            <a class="dropdown-item" href="{{ route('logout') }}" onclick="event.preventDefault();
-                                     document.getElementById('logout-form').submit();">
+                            @if (Auth::user()->hasRole('admin'))
+
+                                <a class="dropdown-item" href="{{ route('admin.home') }}">
+                                    Dashboard
+                                </a>
+                                <a class="dropdown-item" href="{{ route('admin.home') }}">
+                                    Dashboard
+                                </a>
+                                <a class="dropdown-item" href="{{ route('admin.home') }}">
+                                    Dashboard
+                                </a>
+                            @endif
+                            <a class="dropdown-item" href="{{ route('logout') }}"
+                                onclick="event.preventDefault();
+                                                                                                                                                                                                                 document.getElementById('logout-form').submit();">
                                 {{ __('Logout') }}
                             </a>
 

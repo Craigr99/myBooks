@@ -4,9 +4,9 @@
     <div class="container">
         <div class="row">
             <div class="col-md-12 d-flex flex-column justify-content-center vh-100">
-                <div class="card rounded">
+                <div class="card rounded shadow">
                     <div class="row vh-80">
-                        <div class="col-sm-6 col-md-6 p-5 d-none d-md-flex login-left-container flex-column"
+                        <div class="col-sm-6 col-md-6 p-5 d-none d-md-flex login-left-container shadow flex-column"
                             style="background-image: url({{ asset('img/login_svg.svg') }})">
                             <h4>
                                 <a class="text-white" href="{{ route('welcome') }}">myBooks</a>
@@ -23,7 +23,8 @@
                                 <form action="{{ route('login') }}" method="POST">
                                     @csrf
                                     <h4 class="text-purple">Log in</h4>
-                                    <p class="mt-3 mb-4">Don’t have an account? <a href="{{ route('register') }}">Create one
+                                    <p class="my-4">Don’t have an account? <a href="{{ route('register') }}"
+                                            class="text-purple">Create one
                                             now</a></p>
                                     <input id="username" type="text"
                                         class="form-control @error('username') is-invalid @enderror" name="username"
@@ -45,20 +46,20 @@
                                         </span>
                                     @enderror
 
-                                    <div class="d-flex align-items-center mt-3 mb-3">
+                                    <div class="d-flex align-items-center mt-4 mb-3">
                                         <button type="submit" class="btn my-btn my-btn-primary mr-3">Login</button>
                                         <div class="form-check">
                                             <input class="form-check-input" type="checkbox" name="remember" id="remember"
                                                 {{ old('remember') ? 'checked' : '' }}>
 
-                                            <label class="form-check-label" for="remember">
+                                            <label class="form-check-label text-sm" for="remember">
                                                 Remember password
                                             </label>
                                         </div>
                                     </div>
                                     <div class="text-center">
                                         @if (Route::has('password.request'))
-                                            <a href="{{ route('password.request') }}">
+                                            <a href="{{ route('password.request') }}" class="text-purple">
                                                 Forgot your password?
                                             </a>
                                         @endif

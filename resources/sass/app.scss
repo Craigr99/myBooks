@@ -9,53 +9,18 @@
 
 // Import partial scss files
 @import "fonts";
+@import "utilities";
 
-.red {
-    background-color: red;
-}
-.blue {
-    background-color: blue;
-}
 
-//Buttons
-.my-btn {
-    box-shadow: $shadow;
-    font-size: 14px;
-    font-weight: $fw-r;
-    letter-spacing: 0.5px;
-    border-radius: $radius;
-    padding: 10px 40px;
-
-    &-primary {
-        background-color: $purple-regular;
-        color: $white;
-
-        &:hover {
-            background-color: $purple-light;
-            color: $white;
-        }
-    }
-
-    &-outline {
-        background-color: transparent;
-        color: $black;
-
-        &:hover {
-            background-color: $black;
-            color: $white;
-        }
-    }
+body {
+    background-color: $white;
 }
 
-input {
-    border-radius: $radius !important;
-
-    &:focus {
-        border-color: $purple-light !important;
-        box-shadow: 0 0 0 0.2rem rgba(108, 99, 255, 0.25) !important;
-    }
+li {
+    list-style: none;
 }
 
+// Login page
 .login-left-container {
     background-color: $purple-regular;
     background-size: 60%;
@@ -66,21 +31,16 @@ input {
     border-bottom-left-radius: $radius;
 }
 
-.rounded {
-    border-radius: $radius !important;
-}
-.vh-80 {
-    min-height: 80vh !important;
-}
 
+
+
+// Landing page
 .hero {
     min-height: 100vh;
     position: relative;
-    background: linear-gradient(
-        180deg,
-        rgba(233, 236, 239, 0) 0%,
-        #f8f9fa 100%
-    );
+    background: linear-gradient(180deg,
+            rgba(233, 236, 239, 0) 0%,
+            #f8f9fa 100%);
 
     &_img {
         position: absolute;
@@ -92,6 +52,7 @@ input {
         background-position: center right !important;
         background-repeat: no-repeat !important;
     }
+
     &_left {
         min-height: 60vh;
         display: flex;
@@ -103,4 +64,56 @@ input {
             height: 2px;
         }
     }
+}
+
+
+//Admin home
+.list-group {
+    .list-item {
+        a {
+            padding: 10px 0;
+            padding-left: 22px;
+            text-align: left;
+            display: flex;
+            align-items: center;
+            background-color: transparent;
+            box-shadow: none;
+            font-size: 14px;
+
+            span {
+                font-size: 12px;
+                color: $gray-3;
+            }
+        }
+
+        &.active {
+            a {
+                background-color: $gray-6;
+                font-weight: bolder;
+
+                span {
+                    color: $purple-regular;
+                }
+            }
+        }
+
+        &:hover {
+            a {
+                background-color: $gray-6;
+                transition: all 0.5s ease-out;
+
+                span {
+                    color: $black;
+                    transition: all 0.5s ease-out;
+
+                }
+            }
+        }
+    }
+}
+
+.footer {
+    background-color: #2F2E41;
+    color: $white;
+    padding: 100px;
 }

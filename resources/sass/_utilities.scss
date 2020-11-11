@@ -1,0 +1,86 @@
+@import "variables";
+
+
+
+.red {
+    background-color: coral;
+}
+
+.blue {
+    background-color: lightblue;
+}
+
+.rounded {
+    border-radius: $radius !important;
+}
+
+.vh-80 {
+    min-height: 80vh !important;
+}
+
+.shadow {
+    box-shadow: $shadow;
+}
+
+.spacer-bottom-lg {
+    margin-bottom: $spacer-lg;
+}
+
+
+//Fonts 
+.text-sm {
+    font-size: 12px;
+}
+
+
+
+
+
+//Buttons
+.my-btn {
+    box-shadow: $shadow;
+    font-size: 14px;
+    font-weight: $fw-r;
+    letter-spacing: 0.5px;
+    border-radius: $radius;
+    padding: 10px 40px;
+
+    &-primary {
+        background-color: $purple-regular;
+        color: $white;
+
+        &:hover {
+            background-color: $purple-light;
+            color: $white;
+            transition: all 0.5s ease-out;
+        }
+    }
+
+    &-outline {
+        background-color: transparent;
+        color: $black;
+
+        &:hover {
+            background-color: $black;
+            color: $white;
+            transition: all 0.5s ease-out;
+
+        }
+    }
+}
+
+
+// Input
+input {
+    border-radius: $radius !important;
+
+
+    &:focus {
+        border-color: $purple-light !important;
+        box-shadow: 0 0 0 0.2rem rgba(108, 99, 255, 0.25) !important;
+    }
+}
+
+::placeholder {
+    color: $gray-4 !important;
+}

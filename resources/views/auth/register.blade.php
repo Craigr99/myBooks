@@ -4,9 +4,9 @@
     <div class="container">
         <div class="row">
             <div class="col-md-12 d-flex flex-column justify-content-center vh-100">
-                <div class="card rounded">
+                <div class="card rounded shadow">
                     <div class="row vh-80">
-                        <div class="col-sm-6 col-md-6 p-5 d-none d-md-flex login-left-container flex-column"
+                        <div class="col-sm-6 col-md-6 p-5 d-none d-md-flex login-left-container shadow flex-column"
                             style="background-image: url({{ asset('img/login_svg.svg') }})">
                             <h4>
                                 <a class="text-white" href="{{ route('welcome') }}">myBooks</a>
@@ -17,7 +17,7 @@
                             <div class="d-flex align-items-center justify-content-center h-100 px-4">
                                 <form action="{{ route('register') }}" method="POST">
                                     @csrf
-                                    <h4 class="text-purple">Create a myBooks <br> account</h4>
+                                    <h4 class="text-purple mb-4">Create a myBooks <br> account</h4>
                                     <div class="row form-group">
                                         <div class="col col-sm-6">
                                             <input id="name" type="text"

@@ -10993,11 +10993,31 @@ h6 {
 }
 
 .red {
-  background-color: red;
+  background-color: coral;
 }
 
 .blue {
-  background-color: blue;
+  background-color: lightblue;
+}
+
+.rounded {
+  border-radius: 20px !important;
+}
+
+.vh-80 {
+  min-height: 80vh !important;
+}
+
+.shadow {
+  box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.25);
+}
+
+.spacer-bottom-lg {
+  margin-bottom: 18rem;
+}
+
+.text-sm {
+  font-size: 12px;
 }
 
 .my-btn {
@@ -11017,6 +11037,7 @@ h6 {
 .my-btn-primary:hover {
   background-color: #7F96FF;
   color: #ffffff;
+  transition: all 0.5s ease-out;
 }
 
 .my-btn-outline {
@@ -11027,6 +11048,7 @@ h6 {
 .my-btn-outline:hover {
   background-color: #0C120C;
   color: #ffffff;
+  transition: all 0.5s ease-out;
 }
 
 input {
@@ -11038,6 +11060,26 @@ input:focus {
   box-shadow: 0 0 0 0.2rem rgba(108, 99, 255, 0.25) !important;
 }
 
+::-moz-placeholder {
+  color: #BDBDBD !important;
+}
+
+:-ms-input-placeholder {
+  color: #BDBDBD !important;
+}
+
+::placeholder {
+  color: #BDBDBD !important;
+}
+
+body {
+  background-color: #ffffff;
+}
+
+li {
+  list-style: none;
+}
+
 .login-left-container {
   background-color: #6C63FF;
   background-size: 60%;
@@ -11046,14 +11088,6 @@ input:focus {
   color: #ffffff;
   border-top-left-radius: 20px;
   border-bottom-left-radius: 20px;
-}
-
-.rounded {
-  border-radius: 20px !important;
-}
-
-.vh-80 {
-  min-height: 80vh !important;
 }
 
 .hero {
@@ -11083,5 +11117,46 @@ input:focus {
   background-color: #bfbfbf;
   width: 100px;
   height: 2px;
+}
+
+.list-group .list-item a {
+  padding: 10px 0;
+  padding-left: 22px;
+  text-align: left;
+  display: flex;
+  align-items: center;
+  background-color: transparent;
+  box-shadow: none;
+  font-size: 14px;
+}
+
+.list-group .list-item a span {
+  font-size: 12px;
+  color: #828282;
+}
+
+.list-group .list-item.active a {
+  background-color: #F2F2F2;
+  font-weight: bolder;
+}
+
+.list-group .list-item.active a span {
+  color: #6C63FF;
+}
+
+.list-group .list-item:hover a {
+  background-color: #F2F2F2;
+  transition: all 0.5s ease-out;
+}
+
+.list-group .list-item:hover a span {
+  color: #0C120C;
+  transition: all 0.5s ease-out;
+}
+
+.footer {
+  background-color: #2F2E41;
+  color: #ffffff;
+  padding: 100px;
 }
 
