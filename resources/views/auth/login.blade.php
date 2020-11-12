@@ -37,7 +37,7 @@
                                     @enderror
 
                                     <input id="password" type="password"
-                                        class="form-control mt-2 @error('password') is-invalid @enderror" name="password"
+                                        class="form-control mt-3 @error('password') is-invalid @enderror" name="password"
                                         required autocomplete="current-password" placeholder="Password">
 
                                     @error('password')

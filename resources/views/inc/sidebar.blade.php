@@ -26,7 +26,7 @@
             <ul class="nav-list list-group mt-5 px-3">
                 <p class="overline ml-3">TABLES</p>
 
-                <li class="list-item my-2 {{ Request::is('admin/books') ? 'active' : '' }}">
+                <li class="list-item my-2 {{ Request::is(['admin/books', 'admin/books/create']) ? 'active' : '' }}">
                     <a href="{{ route('admin.books.index') }}" class="btn my-btn btn-block"><span
                             class="fas fa-home mr-4"></span>Books</a>
                 </li>
