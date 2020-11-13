@@ -24,6 +24,7 @@
                                         <th scope="col">Description</th>
                                         <th scope="col">Publish date</th>
                                         <th scope="col">Publisher</th>
+                                        <th scope="col">Categories</th>
                                         <th scope="col">Actions</th>
                                     </tr>
                                 </thead>
@@ -34,6 +35,11 @@
                                             <td>{{ Str::limit($book->description, 30) }}</td>
                                             <td>{{ $book->publish_date }}</td>
                                             <td>{{ $book->publisher->name }}</td>
+                                            <td>
+                                                @foreach ($book->categories as $category)
+                                                    <span class="d-block"> {{ $category->name }} </span>
+                                                @endforeach
+                                            </td>
                                             <td class="d-flex justify-content-lg-between">
                                                 <a href="{{ route('admin.books.show', $book->id) }}">View</a>
                                                 <a href="#">Edit</a>
