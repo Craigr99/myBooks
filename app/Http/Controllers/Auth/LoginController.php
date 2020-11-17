@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
 use App\Providers\RouteServiceProvider;
+use Auth;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
 
 class LoginController extends Controller
@@ -38,9 +39,15 @@ class LoginController extends Controller
         $this->middleware('guest')->except('logout');
     }
 
-    // Used for logging in with username instead of email
-    public function username()
+    public function logout()
     {
-        return 'username';
+        Auth::logout();
+        return redirect('/login');
     }
+
+    // Used for logging in with username instead of email
+    // public function username()
+    // {
+    //     return 'username';
+    // }
 }

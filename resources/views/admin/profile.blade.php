@@ -4,9 +4,9 @@
     <div class="container-fluid">
         <div class="row mt-5">
             @include('inc.sidebar')
-            <div class="col-sm-8 col-lg-9 col-xl-10">
-                <main class="">
-                    <h3 class="text-center">Edit Profile</h3>
+            <div class="col-sm-8 col-lg-5 offset-lg-2">
+                <main class="card card-body shadow rounded">
+                    <h4 class="my-4">Edit Profile</h4>
                     <form action="{{ route('admin.profile.update') }}" method="post" enctype="multipart/form-data">
                         @csrf @method('PUT')
                         <div class="form-group">
@@ -52,7 +52,7 @@
                                 </span>
                             @endif
                         </div>
-                        <button type="submit" class="btn btn-primary mt-3">Update</button>
+                        <button type="submit" class="btn my-btn my-btn-primary mt-3">Update</button>
                     </form>
                 </main>
             </div>

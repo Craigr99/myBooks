@@ -1,6 +1,6 @@
 <nav class="navbar navbar-expand-md navbar-light bg-white py-4">
     <div class="container">
-        <a class="navbar-brand" href="{{ url('/') }}">
+        <a class="navbar-brand" href="{{ Auth::user() ? url('/home') : url('/') }}">
             {{ config('app.name', 'myBooks') }}
         </a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
@@ -35,11 +35,11 @@
                             data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
                             {{-- Check if user has image --}}
                             @if (Auth::user()->image !== 'default.png')
-                                <img src="{{ asset('storage/images/' . Auth::user()->image) }}" class="rounded-circle mr-1"
-                                    height="30px" width="30px" />
+                                <img src="{{ asset('storage/images/' . Auth::user()->image) }}"
+                                    class="rounded-circle mr-1 image-fill" height="30px" width="30px" />
                             @else
-                                <img src="{{ asset('img/default.png') }}" class="rounded-circle mr-1" height="30px"
-                                    width="30px" />
+                                <img src="{{ asset('img/default.png') }}" class="rounded-circle mr-1 image-fill"
+                                    height="30px" width="30px" />
                             @endif
                             {{ Auth::user()->name }}
                             <span class="caret"></span>
@@ -63,7 +63,7 @@
                             @endif
                             <a class="dropdown-item" href="{{ route('logout') }}"
                                 onclick="event.preventDefault();
-                                                                                                                                                                                                                 document.getElementById('logout-form').submit();">
+                                                                                                                                                                                                                                                                             document.getElementById('logout-form').submit();">
                                 {{ __('Logout') }}
                             </a>
 

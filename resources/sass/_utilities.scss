@@ -10,8 +10,17 @@
     background-color: lightblue;
 }
 
+.purple-bg {
+    background-color: $purple-regular;
+}
+
 .rounded {
     border-radius: $radius !important;
+
+    &-top {
+        border-top-left-radius: $radius !important;
+        border-top-right-radius: $radius !important;
+    }
 }
 
 .vh-80 {
@@ -24,6 +33,10 @@
 
 .spacer-bottom-lg {
     margin-bottom: $spacer-lg;
+}
+
+.image-fill {
+    object-fit: cover;
 }
 
 

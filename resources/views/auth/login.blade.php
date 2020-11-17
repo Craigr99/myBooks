@@ -18,7 +18,7 @@
                             </div>
                         </div>
 
-                        <div class="col-md-6 px-md-5 px-lg-0">
+                        <div class="col-md-6 px-5 px-lg-0">
                             <div class="d-flex align-items-center justify-content-center h-100 ">
                                 <form action="{{ route('login') }}" method="POST">
                                     @csrf
@@ -26,11 +26,10 @@
                                     <p class="my-4">Don’t have an account? <a href="{{ route('register') }}"
                                             class="text-purple">Create one
                                             now</a></p>
-                                    <input id="username" type="text"
-                                        class="form-control @error('username') is-invalid @enderror" name="username"
-                                        value="{{ old('username') }}" required autofocus placeholder="Username">
+                                    <input id="email" type="email" class="form-control @error('email') is-invalid @enderror"
+                                        name="email" value="{{ old('email') }}" required autofocus placeholder="Email">
 
-                                    @error('username')
+                                    @error('email')
                                         <span class="invalid-feedback" role="alert">
                                             <strong>{{ $message }}</strong>
                                         </span>

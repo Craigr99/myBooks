@@ -11000,8 +11000,17 @@ h6 {
   background-color: lightblue;
 }
 
+.purple-bg {
+  background-color: #6C63FF;
+}
+
 .rounded {
   border-radius: 20px !important;
+}
+
+.rounded-top {
+  border-top-left-radius: 20px !important;
+  border-top-right-radius: 20px !important;
 }
 
 .vh-80 {
@@ -11014,6 +11023,11 @@ h6 {
 
 .spacer-bottom-lg {
   margin-bottom: 18rem;
+}
+
+.image-fill {
+  -o-object-fit: cover;
+     object-fit: cover;
 }
 
 .text-sm {

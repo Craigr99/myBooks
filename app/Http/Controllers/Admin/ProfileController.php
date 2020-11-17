@@ -20,7 +20,7 @@ class ProfileController extends Controller
             'name' => 'required|string|min:3|max:191',
             'email' => 'required|email|min:3|max:191',
             'password' => 'nullable|string|min:5|max:191',
-            'image' => 'nullable|image|max:1999',
+            'image' => 'nullable|image',
         ];
 
         $request->validate($rules);

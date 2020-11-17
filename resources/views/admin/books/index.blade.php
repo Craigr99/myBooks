@@ -6,7 +6,7 @@
     <div class="container-fluid">
         <div class="row mt-5 ">
             @include('inc.sidebar')
-            <div class="col-sm-8 col-lg-9 col-xl-10">
+            <div class="col-sm-8 col-lg-9 col-xl-8">
                 <main>
                     <div class="d-flex align-items-center">
                         <h4 class="mr-3"> Books</h4>
@@ -18,9 +18,10 @@
                     @else
                         <div class="table-responsive mt-5">
                             <table class="table">
-                                <thead class="thead-dark">
+                                <thead class="purple-bg text-white">
                                     <tr>
                                         <th scope="col">Title</th>
+                                        <th scope="col">Author(s)</th>
                                         <th scope="col">Description</th>
                                         <th scope="col">Publish date</th>
                                         <th scope="col">Publisher</th>
@@ -32,8 +33,15 @@
                                     @foreach ($books as $book)
                                         <tr>
                                             <td>{{ $book->title }}</td>
+                                            <td>
+                                                @foreach ($book->authors as $author)
+                                                    <span class="d-block"> {{ $author->f_name }} {{ $author->l_name }}
+                                                    </span>
+                                                @endforeach
+                                            </td>
+
                                             <td>{{ Str::limit($book->description, 30) }}</td>
-                                            <td>{{ $book->publish_date }}</td>
+                                            <td>{{ date('d-m-Y', strtotime($book->publish_date)) }}</td>
                                             <td>{{ $book->publisher->name }}</td>
                                             <td>
                                                 @foreach ($book->categories as $category)
@@ -42,7 +50,7 @@
                                             </td>
                                             <td class="d-flex justify-content-lg-between">
                                                 <a href="{{ route('admin.books.show', $book->id) }}">View</a>
-                                                <a href="#">Edit</a>
+                                                <a href="{{ route('admin.books.edit', $book->id) }}">Edit</a>
                                                 <form method="POST" action="{{ route('admin.books.destroy', $book->id) }}">
                                                     <input type="hidden" value="DELETE" name="_method">
                                                     @csrf
@@ -59,6 +67,7 @@
                     @endif
                 </main>
             </div>
+            <div class="d-none d-xl-block col-xl-2 red"> .</div>
         </div>
     </div>
 @endsection
