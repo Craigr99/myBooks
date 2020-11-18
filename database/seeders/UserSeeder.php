@@ -22,7 +22,8 @@ class UserSeeder extends Seeder
 
         // Admin user
         $admin = new User();
-        $admin->name = 'Craig';
+        $admin->f_name = 'Craig';
+        $admin->l_name = 'Redmond';
         $admin->email = 'admin@example.com';
         $admin->username = 'craigr1';
         $admin->password = Hash::make('secret');
@@ -31,7 +32,8 @@ class UserSeeder extends Seeder
 
         // Regular user
         $user = new User();
-        $user->name = 'John Jones';
+        $user->f_name = 'John';
+        $user->l_name = 'Jones';
         $user->email = 'user@example.com';
         $user->username = 'username1';
         $user->password = Hash::make('secret');

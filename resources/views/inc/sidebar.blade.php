@@ -1,4 +1,4 @@
-    <div class="col-sm-4 col-lg-3 col-xl-2">
+    <div class="col-sm-4 col-lg-3 col-xl-2 d-none d-md-block">
         <nav class="vh-80">
             <div class="text-center mb-5">
                 @if (Auth::user()->image !== 'default.png')

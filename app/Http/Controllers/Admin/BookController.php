@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Models\Author;
 use App\Models\Book;
 use App\Models\Category;
 use App\Models\Publisher;
@@ -21,13 +22,16 @@ class BookController extends Controller
 
     public function create()
     {
-        //GET all Publishers & Categories for form
         $publishers = Publisher::all();
         $categories = Category::all();
+        $books = Book::all();
+        $authors = Author::all();
 
         return view('admin.books.create', [
             'publishers' => $publishers,
             'categories' => $categories,
+            'books' => $books,
+            'authors' => $authors,
         ]);
     }
 
@@ -35,6 +39,7 @@ class BookController extends Controller
     {
         $request->validate([
             'title' => 'required|max:191',
+            'authors' => 'required',
             'description' => 'required|max:500',
             'publish_date' => 'required|string',
             'page_count' => 'required|min:1',
@@ -50,18 +55,21 @@ class BookController extends Controller
         $book->publish_date = $request->input('publish_date');
         $book->page_count = $request->input('page_count');
         $book->isbn = $request->input('isbn');
-        $book->image = $request->input('image');
         $book->publisher_id = $request->input('publisher_id');
-        $book->save();
+
+        // TODO: get image upload to work
 
         // $image = $request->image;
         // $ext = $image->getClientOriginalExtension();
         // $filename = uniqid() . '.' . $ext;
         // $image->storeAs('public/images', $filename);
-        // Storage::delete("public/images/{$user->image}");
-        // $user->image = $filename;
+        // Storage::delete("public/images/{$book->image}");
+        // $book->image = $filename;
+
+        $book->save();
 
         $book->categories()->attach($request->input('categories'));
+        $book->authors()->attach($request->input('authors'));
 
         return redirect()->route('admin.books.index');
     }

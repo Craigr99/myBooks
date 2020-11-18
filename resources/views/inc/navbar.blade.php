@@ -1,6 +1,6 @@
 <nav class="navbar navbar-expand-md navbar-light bg-white py-4">
     <div class="container">
-        <a class="navbar-brand" href="{{ Auth::user() ? url('/home') : url('/') }}">
+        <a class="navbar-brand" href="{{ Auth::user() ? url('/homepage') : url('/') }}">
             {{ config('app.name', 'myBooks') }}
         </a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
@@ -41,7 +41,7 @@
                                 <img src="{{ asset('img/default.png') }}" class="rounded-circle mr-1 image-fill"
                                     height="30px" width="30px" />
                             @endif
-                            {{ Auth::user()->name }}
+                            {{ Auth::user()->f_name }}
                             <span class="caret"></span>
                         </a>
 
@@ -51,19 +51,19 @@
                             </a>
                             @if (Auth::user()->hasRole('admin'))
 
-                                <a class="dropdown-item" href="{{ route('admin.home') }}">
-                                    Dashboard
+                                <a class="dropdown-item d-md-none" href="{{ route('admin.home') }}">
+                                    Profile
                                 </a>
-                                <a class="dropdown-item" href="{{ route('admin.home') }}">
-                                    Dashboard
+                                <a class="dropdown-item d-md-none" href="{{ route('admin.home') }}">
+                                    Books
                                 </a>
-                                <a class="dropdown-item" href="{{ route('admin.home') }}">
-                                    Dashboard
+                                <a class="dropdown-item d-md-none" href="{{ route('admin.home') }}">
+                                    Categories
                                 </a>
                             @endif
                             <a class="dropdown-item" href="{{ route('logout') }}"
                                 onclick="event.preventDefault();
-                                                                                                                                                                                                                                                                             document.getElementById('logout-form').submit();">
+                                                                                                                                                                                                                                                                                                 document.getElementById('logout-form').submit();">
                                 {{ __('Logout') }}
                             </a>
 

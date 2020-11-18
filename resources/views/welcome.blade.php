@@ -28,7 +28,7 @@
 
     <main>
         <div class="container">
-            <div class="row spacer-bottom-lg">
+            <div class="row mt-5 spacer-bottom-lg">
                 <div class="col d-md-flex align-items-center ">
                     <img src="{{ asset('img/bookshelves.svg') }}" height="400px" width="450px" alt="">
                     <div class="ml-md-5 p-md-5">
@@ -40,7 +40,7 @@
             </div>
             <div class="row spacer-bottom-lg">
                 <div class="col d-md-flex flex-row-reverse align-items-center ">
-                    <img src="{{ asset('img/bookshelves.svg') }}" height="400px" width="450px" alt="">
+                    <img src="{{ asset('img/book_reading.svg') }}" height="400px" width="450px" alt="">
                     <div class="pr-5">
                         <h5>This is a feature </h5>
                         <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam venenatis odio vel sollicitudin

@@ -10953,6 +10953,7 @@ h6 {
   font-size: 20px;
   font-weight: 500;
   letter-spacing: 0.15px;
+  margin: 0;
 }
 
 .subtitle-1 {
@@ -11002,6 +11003,10 @@ h6 {
 
 .purple-bg {
   background-color: #6C63FF;
+}
+
+.bg-gray-6 {
+  background-color: #F2F2F2;
 }
 
 .rounded {
@@ -11065,6 +11070,19 @@ h6 {
   transition: all 0.5s ease-out;
 }
 
+.input-delete {
+  border: none;
+  background-color: transparent;
+  margin: 0;
+  padding: 0;
+  color: #3490dc;
+}
+
+.input-delete:hover {
+  color: #1d68a7;
+  text-decoration: underline;
+}
+
 input {
   border-radius: 20px !important;
 }
@@ -11088,6 +11106,11 @@ input:focus {
 
 body {
   background-color: #ffffff;
+}
+
+ul {
+  margin: 0;
+  padding: 0;
 }
 
 li {

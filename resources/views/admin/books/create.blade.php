@@ -24,6 +24,23 @@
                                 @endif
                             </div>
                             <div class="form-group">
+                                <label for="author">Authors</label>
+                                <select multiple name="authors[]" id="author"
+                                    class="form-control {{ $errors->has('authors') ? 'is-invalid' : '' }}">
+                                    @foreach ($authors as $author)
+                                        <option value="{{ $author->id }}"
+                                            {{ in_array($author->id, old('authors') ?: []) ? 'selected' : '' }}>
+                                            {{ $author->f_name }} {{ $author->l_name }}
+                                        </option>
+                                    @endforeach
+                                </select>
+                                @if ($errors->has('categories'))
+                                    <span class="invalid-feedback">
+                                        {{ $errors->first('categories') }}
+                                    </span>
+                                @endif
+                            </div>
+                            <div class="form-group">
                                 <textarea name="description"
                                     class="form-control {{ $errors->has('description') ? 'is-invalid' : '' }}" cols="30"
                                     rows="10" placeholder="Description">{{ old('description') }}</textarea>
@@ -65,21 +82,27 @@
                                 @endif
                             </div>
                             <div class="form-group">
-                                <input name="image" type="text"
-                                    class="form-control {{ $errors->has('image') ? 'is-invalid' : '' }}"
-                                    value="{{ old('image') }}" placeholder="Image">
-                                @if ($errors->has('image'))
-                                    <span class="invalid-feedback">
-                                        {{ $errors->first('image') }}
-                                    </span>
-                                @endif
+                                <div class="custom-file">
+                                    <input type="file" name="image"
+                                        class="custom-file-input {{ $errors->has('image') ? 'is-invalid' : '' }}"
+                                        id="image">
+                                    <label class="custom-file-label" for="image">Book Cover</label>
+                                    @if ($errors->has('image'))
+                                        <span class="invalid-feedback">
+                                            {{ $errors->first('image') }}
+                                        </span>
+                                    @endif
+                                </div>
                             </div>
                             <div class="form-group">
+                                <label for="publisher">Publisher</label>
                                 <select name="publisher_id"
-                                    class="form-control {{ $errors->has('publisher_id') ? 'is-invalid' : '' }}"
-                                    value="{{ old('publisher_id') }}">
+                                    class="form-control {{ $errors->has('publisher_id') ? 'is-invalid' : '' }}">
                                     @foreach ($publishers as $publisher)
-                                        <option value="{{ $publisher->id }}">{{ $publisher->name }}</option>
+                                        <option value="{{ $publisher->id }}"
+                                            {{ old('publisher_id') == $publisher->id ? 'selected' : '' }}>
+                                            {{ $publisher->name }}
+                                        </option>
                                     @endforeach
                                 </select>
                                 @if ($errors->has('publisher_id'))
@@ -89,13 +112,14 @@
                                 @endif
                             </div>
                             <div class="form-group">
-                                <select multiple name="categories[]"
+                                <label for="category">Categories</label>
+                                <select multiple name="categories[]" id="category"
                                     class="form-control {{ $errors->has('categories') ? 'is-invalid' : '' }}">
                                     @foreach ($categories as $category)
-                                        <option value="{{ $category->id }}">
+                                        <option value="{{ $category->id }}"
+                                            {{ in_array($category->id, old('categories') ?: []) ? 'selected' : '' }}>
                                             {{ $category->name }}
                                         </option>
-
                                     @endforeach
                                 </select>
                                 @if ($errors->has('categories'))

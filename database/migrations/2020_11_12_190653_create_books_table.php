@@ -17,7 +17,7 @@ class CreateBooksTable extends Migration
             $table->id();
             $table->string('title');
             $table->longText('description');
-            $table->string('image');
+            $table->string('image', 255)->default('image.png');
             $table->string('isbn')->unique();
             $table->string('publish_date');
             $table->integer('page_count')->unsigned();

@@ -35,4 +35,9 @@ class HomeController extends Controller
 
         return redirect()->route($home);
     }
+
+    public function homepage()
+    {
+        return view('home');
+    }
 }

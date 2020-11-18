@@ -6,7 +6,7 @@
     <div class="container-fluid">
         <div class="row mt-5 ">
             @include('inc.sidebar')
-            <div class="col-sm-8 col-lg-9 col-xl-8">
+            <div class="col-sm col-md-8 col-lg-9 col-xl-8">
                 <main>
                     <div class="d-flex align-items-center">
                         <h4 class="mr-3"> Books</h4>
@@ -17,7 +17,7 @@
                         <h4>No Books found!</h4>
                     @else
                         <div class="table-responsive mt-5">
-                            <table class="table">
+                            <table class="table table-hover">
                                 <thead class="purple-bg text-white">
                                     <tr>
                                         <th scope="col">Title</th>
@@ -54,7 +54,7 @@
                                                 <form method="POST" action="{{ route('admin.books.destroy', $book->id) }}">
                                                     <input type="hidden" value="DELETE" name="_method">
                                                     @csrf
-                                                    <input type="submit" value="Delete">
+                                                    <input class="input-delete" type="submit" value="Delete">
                                                 </form>
                                             </td>
                                         </tr>

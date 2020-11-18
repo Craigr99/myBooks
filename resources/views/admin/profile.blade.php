@@ -10,13 +10,24 @@
                     <form action="{{ route('admin.profile.update') }}" method="post" enctype="multipart/form-data">
                         @csrf @method('PUT')
                         <div class="form-group">
-                            <label for="name">Name</label>
-                            <input type="text" name="name" id="name"
-                                class="form-control {{ $errors->has('name') ? 'is-invalid' : '' }}"
-                                value="{{ old('name') ?: Auth::user()->name }}" placeholder="Enter Name">
-                            @if ($errors->has('name'))
+                            <label for="f_name">First Name</label>
+                            <input type="text" name="f_name" id="f_name"
+                                class="form-control {{ $errors->has('f_name') ? 'is-invalid' : '' }}"
+                                value="{{ old('f_name') ?: Auth::user()->f_name }}" placeholder="First Name">
+                            @if ($errors->has('f_name'))
                                 <span class="invalid-feedback">
-                                    {{ $errors->first('name') }}
+                                    {{ $errors->first('f_name') }}
+                                </span>
+                            @endif
+                        </div>
+                        <div class="form-group">
+                            <label for="l_name">Surname</label>
+                            <input type="text" name="l_name" id="l_name"
+                                class="form-control {{ $errors->has('l_name') ? 'is-invalid' : '' }}"
+                                value="{{ old('l_name') ?: Auth::user()->l_name }}" placeholder="Surname">
+                            @if ($errors->has('l_name'))
+                                <span class="invalid-feedback">
+                                    {{ $errors->first('l_name') }}
                                 </span>
                             @endif
                         </div>

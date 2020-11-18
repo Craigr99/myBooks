@@ -7,7 +7,7 @@
                 <div class="card rounded shadow">
                     <div class="row vh-80">
                         <div class="col-sm-6 col-md-6 p-5 d-none d-md-flex login-left-container shadow flex-column"
-                            style="background-image: url({{ asset('img/login_svg.svg') }})">
+                            style="background-image: url({{ asset('img/reading_time.svg') }})">
                             <h4>
                                 <a class="text-white" href="{{ route('welcome') }}">myBooks</a>
                             </h4>
@@ -20,11 +20,22 @@
                                     <h4 class="text-purple mb-4">Create a myBooks <br> account</h4>
                                     <div class="row form-group">
                                         <div class="col col-sm-6">
-                                            <input id="name" type="text"
-                                                class="form-control @error('name') is-invalid @enderror" name="name"
-                                                value="{{ old('name') }}" required autofocus placeholder="Full name">
+                                            <input id="f_name" type="text"
+                                                class="form-control @error('f_name') is-invalid @enderror" name="f_name"
+                                                value="{{ old('f_name') }}" required autofocus placeholder="First Name">
 
-                                            @error('name')
+                                            @error('f_name')
+                                                <span class="invalid-feedback" role="alert">
+                                                    <strong>{{ $message }}</strong>
+                                                </span>
+                                            @enderror
+                                        </div>
+                                        <div class="col col-sm-6">
+                                            <input id="l_name" type="text"
+                                                class="form-control @error('l_name') is-invalid @enderror" name="l_name"
+                                                value="{{ old('l_name') }}" required autofocus placeholder="Surname">
+
+                                            @error('l_name')
                                                 <span class="invalid-feedback" role="alert">
                                                     <strong>{{ $message }}</strong>
                                                 </span>

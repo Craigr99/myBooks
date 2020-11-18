@@ -17,7 +17,8 @@ class ProfileController extends Controller
     public function update(Request $request)
     {
         $rules = [
-            'name' => 'required|string|min:3|max:191',
+            'f_name' => 'required|string|min:3|max:191',
+            'l_name' => 'required|string|min:3|max:191',
             'email' => 'required|email|min:3|max:191',
             'password' => 'nullable|string|min:5|max:191',
             'image' => 'nullable|image',
@@ -26,7 +27,8 @@ class ProfileController extends Controller
         $request->validate($rules);
 
         $user = Auth::user();
-        $user->name = $request->name;
+        $user->f_name = $request->f_name;
+        $user->l_name = $request->l_name;
         $user->email = $request->email;
 
         if ($request->hasFile('image')) {

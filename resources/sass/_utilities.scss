@@ -14,6 +14,10 @@
     background-color: $purple-regular;
 }
 
+.bg-gray-6 {
+    background-color: $gray-6;
+}
+
 .rounded {
     border-radius: $radius !important;
 
@@ -79,6 +83,19 @@
             transition: all 0.5s ease-out;
 
         }
+    }
+}
+
+.input-delete {
+    border: none;
+    background-color: transparent;
+    margin: 0;
+    padding: 0;
+    color: #3490dc;
+
+    &:hover {
+        color: #1d68a7;
+        text-decoration: underline;
     }
 }
 

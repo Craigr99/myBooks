@@ -14,6 +14,7 @@
                         </div>
 
                         <div class="card-body">
+                            <img src="{{ $book->image }}" alt="">
                             <table class="table table-hover">
                                 <tbody>
                                     <tr>
@@ -56,12 +57,12 @@
                             </table>
 
                             <a href="{{ route('admin.books.index') }}" class="btn btn-link">Back</a>
-                            <a href="{{ route('admin.books.edit', $book->id) }}" class="btn btn-warning">Edit</a>
+                            <a href="{{ route('admin.books.edit', $book->id) }}" class="btn my-btn my-btn-outline">Edit</a>
                             <form style="display: inline-block" method="POST"
                                 action="{{ route('admin.books.destroy', $book->id) }}">
                                 <input type="hidden" value="DELETE" name="_method">
                                 <input type="hidden" value="{{ csrf_token() }}" name="_token">
-                                <button type="submit" class="form-control btn btn-danger">Delete</button>
+                                <button type="submit" class="btn my-btn btn-danger">Delete</button>
 
                             </form>
                         </div>
