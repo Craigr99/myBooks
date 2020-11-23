@@ -14,8 +14,8 @@
                         </div>
 
                         <div class="card-body">
-                            <img src="{{ $book->image }}" alt="">
-                            <table class="table table-hover">
+                            <img src="{{ asset('storage/images/' . $book->image) }}" alt="Book cover">
+                            <table class="mt-3 table table-hover">
                                 <tbody>
                                     <tr>
                                         <img src="{{ $book->image }}" alt="">

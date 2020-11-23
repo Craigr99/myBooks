@@ -6,7 +6,7 @@
     <div class="container-fluid">
         <div class="row mt-5 ">
             @include('inc.sidebar')
-            <div class="col-sm-8 col-lg-9 col-xl-6 offset-xl-2">
+            <div class="col-sm-8 col-lg-9 col-xl-6 offset-xl-1">
                 <main class="d-flex flex-column">
                     <div class="card rounded shadow p-5">
                         <h4>Edit book</h4>
@@ -68,14 +68,17 @@
                                 @endif
                             </div>
                             <div class="form-group">
-                                <input name="image" type="text"
-                                    class="form-control {{ $errors->has('image') ? 'is-invalid' : '' }}"
-                                    value="{{ old('image') }}" placeholder="Image">
-                                @if ($errors->has('image'))
-                                    <span class="invalid-feedback">
-                                        {{ $errors->first('image') }}
-                                    </span>
-                                @endif
+                                <div class="custom-file">
+                                    <input type="file" name="image"
+                                        class="custom-file-input {{ $errors->has('image') ? 'is-invalid' : '' }}"
+                                        id="image">
+                                    <label class="custom-file-label" for="image">{{ $book->image }}</label>
+                                    @if ($errors->has('image'))
+                                        <span class="invalid-feedback">
+                                            {{ $errors->first('image') }}
+                                        </span>
+                                    @endif
+                                </div>
                             </div>
                             <div class="form-group">
                                 <select name="publisher_id"

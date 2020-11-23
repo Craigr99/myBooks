@@ -8,6 +8,7 @@ use App\Models\Book;
 use App\Models\Category;
 use App\Models\Publisher;
 use Illuminate\Http\Request;
+use Storage;
 
 class BookController extends Controller
 {
@@ -44,7 +45,7 @@ class BookController extends Controller
             'publish_date' => 'required|string',
             'page_count' => 'required|min:1',
             'isbn' => 'required|alpha_num|size:13|unique:books,isbn',
-            'image' => 'required|string|max:1999',
+            'image' => 'required|max:1999',
             'publisher_id' => 'required|integer',
             'categories' => 'required',
         ]);
@@ -57,14 +58,12 @@ class BookController extends Controller
         $book->isbn = $request->input('isbn');
         $book->publisher_id = $request->input('publisher_id');
 
-        // TODO: get image upload to work
-
-        // $image = $request->image;
-        // $ext = $image->getClientOriginalExtension();
-        // $filename = uniqid() . '.' . $ext;
-        // $image->storeAs('public/images', $filename);
-        // Storage::delete("public/images/{$book->image}");
-        // $book->image = $filename;
+        $image = $request->image;
+        $ext = $image->getClientOriginalExtension();
+        $filename = uniqid() . '.' . $ext;
+        $image->storeAs('public/images', $filename);
+        Storage::delete("public/images/{$book->image}");
+        $book->image = $filename;
 
         $book->save();
 

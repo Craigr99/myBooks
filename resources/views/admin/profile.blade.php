@@ -4,7 +4,7 @@
     <div class="container-fluid">
         <div class="row mt-5">
             @include('inc.sidebar')
-            <div class="col-sm-8 col-lg-5 offset-lg-2">
+            <div class="col-sm-8 col-lg-6 offset-lg-1">
                 <main class="card card-body shadow rounded">
                     <h4 class="my-4">Edit Profile</h4>
                     <form action="{{ route('admin.profile.update') }}" method="post" enctype="multipart/form-data">

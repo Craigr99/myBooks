@@ -10,7 +10,8 @@
                 <main class="d-flex flex-column">
                     <div class="card rounded shadow p-5">
                         <h4>Add a new book</h4>
-                        <form action="{{ route('admin.books.store') }}" method="POST" class="mt-5">
+                        <form action="{{ route('admin.books.store') }}" method="POST" class="mt-5"
+                            enctype="multipart/form-data">
                             @csrf
                             <div class="form-group">
                                 <input name="title" type="text"
