@@ -10985,14 +10985,6 @@ h6 {
   text-transform: uppercase;
 }
 
-.text-white {
-  color: #ffffff;
-}
-
-.text-purple {
-  color: #6C63FF;
-}
-
 .red {
   background-color: coral;
 }
@@ -11039,6 +11031,26 @@ h6 {
   font-size: 12px;
 }
 
+.text-white {
+  color: #ffffff;
+}
+
+.text-purple {
+  color: #6C63FF;
+}
+
+.text-gray-1 {
+  color: #333333;
+}
+
+.text-gray-2 {
+  color: #4F4F4F;
+}
+
+.text-gray-3 {
+  color: #828282;
+}
+
 .my-btn {
   box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.25);
   font-size: 14px;
@@ -11055,6 +11067,18 @@ h6 {
 
 .my-btn-primary:hover {
   background-color: #7F96FF;
+  color: #ffffff;
+  transition: all 0.5s ease-out;
+}
+
+.my-btn-secondary {
+  background-color: #ffffff;
+  color: #0C120C;
+  padding: 10px 30px;
+}
+
+.my-btn-secondary:hover {
+  background-color: #0C120C;
   color: #ffffff;
   transition: all 0.5s ease-out;
 }

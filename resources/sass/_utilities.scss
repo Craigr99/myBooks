@@ -49,6 +49,26 @@
     font-size: 12px;
 }
 
+.text-white {
+    color: $white;
+}
+
+.text-purple {
+    color: $purple-regular;
+}
+
+.text-gray-1 {
+    color: $gray-1;
+}
+
+.text-gray-2 {
+    color: $gray-2;
+}
+
+.text-gray-3 {
+    color: $gray-3;
+}
+
 
 
 
@@ -68,6 +88,18 @@
 
         &:hover {
             background-color: $purple-light;
+            color: $white;
+            transition: all 0.5s ease-out;
+        }
+    }
+
+    &-secondary {
+        background-color: $white;
+        color: $black;
+        padding: 10px 30px;
+
+        &:hover {
+            background-color: $black;
             color: $white;
             transition: all 0.5s ease-out;
         }
