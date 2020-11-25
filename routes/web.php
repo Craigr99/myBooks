@@ -1,6 +1,6 @@
 <?php
 
-use App\Http\Controllers\User\BookController as UserBookController;
+use App\Http\Controllers\BookController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
@@ -14,6 +14,10 @@ Route::get('logout', [App\Http\Controllers\Auth\LoginController::class, 'logout'
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 Route::get('/homepage', [App\Http\Controllers\HomeController::class, 'homepage'])->name('homepage');
 
+Route::post('/books', [BookController::class, 'index'])->name('books.index');
+Route::get('/books/show/{id}/{name}', [BookController::class, 'show'])->name('books.show');
+
+// Admin routes
 Route::get('/admin/home', [App\Http\Controllers\Admin\HomeController::class, 'index'])->name('admin.home');
 Route::get('/admin/profile', [App\Http\Controllers\Admin\ProfileController::class, 'index'])->name('admin.profile');
 Route::put('/admin', [App\Http\Controllers\Admin\ProfileController::class, 'update'])->name('admin.profile.update');
@@ -26,6 +30,10 @@ Route::get('/admin/books/{id}/edit', [App\Http\Controllers\Admin\BookController:
 Route::put('/admin/books/{id}', [App\Http\Controllers\Admin\BookController::class, 'update'])->name('admin.books.update');
 Route::delete('/admin/books/{id}', [App\Http\Controllers\Admin\BookController::class, 'destroy'])->name('admin.books.destroy');
 
+// User routes
 Route::get('/user/home', [App\Http\Controllers\User\HomeController::class, 'index'])->name('user.home');
-Route::post('/user/books', [UserBookController::class, 'index'])->name('books.index');
-Route::get('/user/books/show/{id}/{name}', [UserBookController::class, 'show'])->name('books.show');
+Route::get('/user/profile', [App\Http\Controllers\User\ProfileController::class, 'index'])->name('user.profile');
+Route::put('/user', [App\Http\Controllers\User\ProfileController::class, 'update'])->name('user.profile.update');
+
+Route::get('/user/books', [App\Http\Controllers\User\BookController::class, 'index'])->name('user.books.index');
+Route::post('/user/books/{id}', [App\Http\Controllers\User\BookController::class, 'store'])->name('user.books.store');

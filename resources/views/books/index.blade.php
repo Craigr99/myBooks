@@ -16,10 +16,20 @@
 
                                 </div>
                                 <div class="card-footer">
-                                    <p><b>Authors</b> {{ implode('  ', $item['volumeInfo']['authors']) }}
+                                    <p><b>Authors</b>
+                                        @if (isset($item['volumeInfo']['authors']))
+                                            {{ implode('  ', $item['volumeInfo']['authors']) }}
+                                        @else
+                                            Not found
+                                        @endif
+
                                     </p>
                                     <p><b>Published</b>
-                                        {{ $item['volumeInfo']['publishedDate'] }}
+                                        @if (isset($item['volumeInfo']['publishedDate']))
+                                            {{ $item['volumeInfo']['publishedDate'] }}
+                                        @else
+                                            Not found
+                                        @endif
                                     </p>
                                 </div>
                             </div>

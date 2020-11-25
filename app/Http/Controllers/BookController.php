@@ -1,20 +1,41 @@
 <?php
 
-namespace App\Http\Controllers\User;
+namespace App\Http\Controllers;
 
 use App\Http\Controllers\Controller;
+use Http;
 use Illuminate\Http\Request;
 
 class BookController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
+
     /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        //
+        $response = Http::get('https://www.googleapis.com/books/v1/volumes', [
+            'q' => $request->input('title'),
+            'maxResults' => 10,
+        ]);
+
+        if (isset($response->json()['items'])) {
+
+            return view('books.index', [
+                'data' => $response->json()['items'],
+            ]);
+
+        } else {
+            return view('books.index', [
+                'data' => null,
+            ]);
+        }
     }
 
     /**
@@ -33,10 +54,9 @@ class BookController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store($id)
+    public function store(Request $request)
     {
-        dd($id);
-
+        //
     }
 
     /**
@@ -45,9 +65,16 @@ class BookController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show($id, $name)
     {
-        //
+        $response = Http::get('https://www.googleapis.com/books/v1/volumes', [
+            'volumeId' => $id,
+            'q' => $name,
+        ]);
+
+        return view('books.show', [
+            'item' => $response->json()['items'][0],
+        ]);
     }
 
     /**

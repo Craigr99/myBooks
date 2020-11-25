@@ -25,6 +25,10 @@ li {
     list-style: none;
 }
 
+.card {
+    border: none !important;
+}
+
 // Login page
 .login-left-container {
     background-color: $purple-regular;
@@ -114,6 +118,19 @@ li {
                 }
             }
         }
+    }
+}
+
+
+//Book show
+.card {
+    .header {
+        background-color: $purple-light;
+        color: $white;
+        padding: 20px 0 20px 20px;
+        border-top-left-radius: $radius;
+        border-bottom-right-radius: $radius;
+        width: 80%;
     }
 }
 

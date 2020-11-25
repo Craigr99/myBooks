@@ -10997,6 +10997,10 @@ h6 {
   background-color: #6C63FF;
 }
 
+.purple-light-bg {
+  background-color: #7F96FF;
+}
+
 .bg-gray-6 {
   background-color: #F2F2F2;
 }
@@ -11018,6 +11022,10 @@ h6 {
   box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.25);
 }
 
+.spacer-top-lg {
+  margin-top: 18rem;
+}
+
 .spacer-bottom-lg {
   margin-bottom: 18rem;
 }
@@ -11031,12 +11039,24 @@ h6 {
   font-size: 12px;
 }
 
+.font-light {
+  font-weight: 300;
+}
+
+.font-medium {
+  font-weight: 500;
+}
+
 .text-white {
   color: #ffffff;
 }
 
 .text-purple {
   color: #6C63FF;
+}
+
+.text-purple-light {
+  color: #7F96FF;
 }
 
 .text-gray-1 {
@@ -11049,6 +11069,10 @@ h6 {
 
 .text-gray-3 {
   color: #828282;
+}
+
+.text-gray-4 {
+  color: #BDBDBD;
 }
 
 .my-btn {
@@ -11067,6 +11091,17 @@ h6 {
 
 .my-btn-primary:hover {
   background-color: #7F96FF;
+  color: #ffffff;
+  transition: all 0.5s ease-out;
+}
+
+.my-btn-light {
+  background-color: #7F96FF;
+  color: #ffffff;
+}
+
+.my-btn-light:hover {
+  background-color: #6C63FF;
   color: #ffffff;
   transition: all 0.5s ease-out;
 }
@@ -11141,6 +11176,10 @@ li {
   list-style: none;
 }
 
+.card {
+  border: none !important;
+}
+
 .login-left-container {
   background-color: #6C63FF;
   background-size: 60%;
@@ -11213,6 +11252,15 @@ li {
 .list-group .list-item:hover a span {
   color: #0C120C;
   transition: all 0.5s ease-out;
+}
+
+.card .header {
+  background-color: #7F96FF;
+  color: #ffffff;
+  padding: 20px 0 20px 20px;
+  border-top-left-radius: 20px;
+  border-bottom-right-radius: 20px;
+  width: 80%;
 }
 
 .footer {

@@ -14,6 +14,10 @@
     background-color: $purple-regular;
 }
 
+.purple-light-bg {
+    background-color: $purple-light;
+}
+
 .bg-gray-6 {
     background-color: $gray-6;
 }
@@ -35,6 +39,10 @@
     box-shadow: $shadow;
 }
 
+.spacer-top-lg {
+    margin-top: $spacer-lg;
+}
+
 .spacer-bottom-lg {
     margin-bottom: $spacer-lg;
 }
@@ -49,12 +57,24 @@
     font-size: 12px;
 }
 
+.font-light {
+    font-weight: $fw-l;
+}
+
+.font-medium {
+    font-weight: $fw-md;
+}
+
 .text-white {
     color: $white;
 }
 
 .text-purple {
     color: $purple-regular;
+}
+
+.text-purple-light {
+    color: $purple-light;
 }
 
 .text-gray-1 {
@@ -67,6 +87,10 @@
 
 .text-gray-3 {
     color: $gray-3;
+}
+
+.text-gray-4 {
+    color: $gray-4;
 }
 
 
@@ -88,6 +112,17 @@
 
         &:hover {
             background-color: $purple-light;
+            color: $white;
+            transition: all 0.5s ease-out;
+        }
+    }
+
+    &-light {
+        background-color: $purple-light;
+        color: $white;
+
+        &:hover {
+            background-color: $purple-regular;
             color: $white;
             transition: all 0.5s ease-out;
         }

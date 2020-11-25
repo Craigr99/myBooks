@@ -5,7 +5,7 @@
 
     <div class="container-fluid">
         <div class="row mt-5">
-            @include('inc.sidebar')
+            @include('inc.admin.sidebar')
             <div class="col-sm-8 col-lg-9 col-xl-5 offset-xl-2">
                 <main>
                     <div class="card rounded shadow">

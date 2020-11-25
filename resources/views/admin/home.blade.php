@@ -5,7 +5,7 @@
 
     <div class="container-fluid">
         <div class="row mt-5">
-            @include('inc.sidebar')
+            @include('inc.admin.sidebar')
             <div class="col-sm-8 col-lg-9 col-xl-10">
                 <main class="text-center text-lg-left">
                     <h3>Welcome back <span>{{ Auth::user()->f_name }}</span></h3>

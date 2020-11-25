@@ -5,7 +5,7 @@
 
     <div class="container-fluid">
         <div class="row mt-5 ">
-            @include('inc.sidebar')
+            @include('inc.admin.sidebar')
             <div class="col-sm col-md-8 col-lg-9 col-xl-8">
                 <main>
                     <div class="d-flex align-items-center">
@@ -67,7 +67,6 @@
                     @endif
                 </main>
             </div>
-            <div class="d-none d-xl-block col-xl-2 red"> .</div>
         </div>
     </div>
 @endsection
