@@ -25,14 +25,15 @@
             </ul>
 
             <ul class="nav-list list-group mt-5 px-3">
-                <p class="overline ml-3">TABLES</p>
+                <p class="text-sm text-gray-4 ml-3">TABLES</p>
 
                 <li class="list-item my-2 {{ Request::is(['admin/books', 'admin/books/create']) ? 'active' : '' }}">
                     <a href="{{ route('admin.books.index') }}" class="btn my-btn btn-block"><span
                             class="fas fa-book mr-4"></span>Books</a>
                 </li>
-                <li class="list-item my-2">
-                    <a href="#" class="btn my-btn btn-block"><span class="fas fa-users mr-4"></span>Users</a>
+                <li class="list-item my-2 {{ Request::is(['admin/users']) ? 'active' : '' }}">
+                    <a href="{{ route('admin.users.index') }}" class="btn my-btn btn-block"><span
+                            class="fas fa-users mr-4"></span>Users</a>
                 </li>
                 <li class="list-item my-2">
                     <a href="#" class="btn my-btn btn-block"><span class="fas fa-list mr-4"></span>Categories</a>

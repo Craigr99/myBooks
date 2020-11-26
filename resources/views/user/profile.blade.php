@@ -3,11 +3,11 @@
     @include('inc.navbar')
     <div class="container-fluid">
         <div class="row mt-5">
-            @include('inc.admin.sidebar')
+            @include('inc.user.sidebar')
             <div class="col-sm col-lg-6 offset-lg-1">
                 <main class="card card-body shadow rounded">
                     <h4 class="my-4">Edit Profile</h4>
-                    <form action="{{ route('admin.profile.update') }}" method="post" enctype="multipart/form-data">
+                    <form action="{{ route('user.profile.update') }}" method="post" enctype="multipart/form-data">
                         @csrf @method('PUT')
                         <div class="form-group">
                             <label for="f_name">First Name</label>

@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers\Admin;
+namespace App\Http\Controllers\User;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
@@ -13,13 +13,13 @@ class ProfileController extends Controller
     public function __construct()
     {
         $this->middleware('auth');
-        $this->middleware('role:admin');
+        $this->middleware('role:user');
     }
-
     public function index()
     {
-        return view('admin.profile');
+        return view('user.profile');
     }
+
     public function update(Request $request)
     {
         $rules = [
@@ -52,6 +52,6 @@ class ProfileController extends Controller
 
         $user->save();
 
-        return redirect()->route('admin.profile')->with('status', 'Your profile has been updated');
+        return redirect()->route('user.profile')->with('status', 'Your profile has been updated');
     }
 }

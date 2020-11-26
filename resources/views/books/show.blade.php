@@ -62,23 +62,53 @@
                     <div class="card-body">
                         <ul class="d-flex justify-content-between mb-3">
                             <li><b>Publisher:</b></li>
-                            <li>{{ $item['volumeInfo']['publisher'] }}</li>
+                            <li>
+                                @if (isset($item['volumeInfo']['publisher']))
+                                    {{ $item['volumeInfo']['publisher'] }}
+                                @else
+                                    Not found
+                                @endif
+                            </li>
                         </ul>
                         <ul class="d-flex justify-content-between mb-3">
                             <li><b>Publish date:</b></li>
-                            <li>{{ $item['volumeInfo']['publishedDate'] }}</li>
+                            <li>
+                                @if (isset($item['volumeInfo']['publishedDate']))
+                                    {{ $item['volumeInfo']['publishedDate'] }}
+                                @else
+                                    Not found
+                                @endif
+                            </li>
                         </ul>
                         <ul class="d-flex justify-content-between mb-3">
                             <li><b>Page Count:</b></li>
-                            <li>{{ $item['volumeInfo']['pageCount'] }}</li>
+                            <li>
+                                @if (isset($item['volumeInfo']['pageCount']))
+                                    {{ $item['volumeInfo']['pageCount'] }}
+                                @else
+                                    Not found
+                                @endif
+                            </li>
                         </ul>
                         <ul class="d-flex justify-content-between mb-3">
                             <li><b>Average Rating:</b></li>
-                            <li>{{ $item['volumeInfo']['averageRating'] }}</li>
+                            <li>
+                                @if (isset($item['volumeInfo']['averageRating']))
+                                    {{ $item['volumeInfo']['averageRating'] }}
+                                @else
+                                    Not found
+                                @endif
+                            </li>
                         </ul>
                         <ul class="d-flex justify-content-between mb-3">
                             <li><b>Rating Count:</b></li>
-                            <li>{{ $item['volumeInfo']['ratingsCount'] }}</li>
+                            <li>
+                                @if (isset($item['volumeInfo']['ratingsCount']))
+                                    {{ $item['volumeInfo']['ratingsCount'] }}
+                                @else
+                                    Not found
+                                @endif
+                            </li>
                         </ul>
                         <ul class="d-flex justify-content-between mb-3">
                             <li><b>Preview link:</b></li>

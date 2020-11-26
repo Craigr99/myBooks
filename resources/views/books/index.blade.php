@@ -9,9 +9,11 @@
                 @foreach ($data as $item)
                     <div class="col-3">
                         <a href="{{ route('books.show', [$item['id'], $item['volumeInfo']['title']]) }}">
-                            <div class="card mb-4" style="min-height: 500px">
+                            <div class="card shadow rounded mb-4" style="min-height: 500px">
                                 <div class="card-body">
-                                    <img src="{{ $item['volumeInfo']['imageLinks']['thumbnail'] }}" class="mb-4">
+                                    @if (isset($item['volumeInfo']['imageLinks']['thumbnail']))
+                                        <img src="{{ $item['volumeInfo']['imageLinks']['thumbnail'] }}" class="mb-4 ">
+                                    @endif
                                     <h6> {{ $item['volumeInfo']['title'] }}</h6>
 
                                 </div>

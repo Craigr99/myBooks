@@ -4,7 +4,7 @@
             {{ config('app.name', 'myBooks') }}
         </a>
         {{-- Search bar --}}
-        <form action="{{ route('books.index') }}" method="POST" class="form-inline my-2 my-lg-0">
+        <form action="{{ route('books.index') }}" method="POST" class="form-inline my-2 my-lg-0 d-none d-sm-block">
             @csrf
             <input name="title" class="form-control mr-sm-2" type="search" placeholder="Search books"
                 aria-label="Search books">
@@ -56,21 +56,25 @@
                             <a class="dropdown-item" href="{{ route('user.home') }}">
                                 Dashboard
                             </a>
+                            <a class="dropdown-item d-md-none" href="{{ route('user.profile') }}">
+                                Profile
+                            </a>
                             @if (Auth::user()->hasRole('admin'))
-
-                                <a class="dropdown-item d-md-none" href="{{ route('admin.home') }}">
-                                    Profile
-                                </a>
-                                <a class="dropdown-item d-md-none" href="{{ route('admin.home') }}">
+                                <a class="dropdown-item d-md-none" href="{{ route('admin.books.index') }}">
                                     Books
                                 </a>
-                                <a class="dropdown-item d-md-none" href="{{ route('admin.home') }}">
-                                    Categories
+                                <a class="dropdown-item d-md-none" href="{{ route('admin.users.index') }}">
+                                    Users
+                                </a>
+                            @endif
+                            @if (Auth::user()->hasRole('user'))
+                                <a class="dropdown-item d-md-none" href="#">
+                                    Blogs
                                 </a>
                             @endif
                             <a class="dropdown-item" href="{{ route('logout') }}"
                                 onclick="event.preventDefault();
-                                                                                                                                                                                                                                                                                                                                                                                 document.getElementById('logout-form').submit();">
+                                                                                                                                                                                                                                                                                                                                                                                                                                                             document.getElementById('logout-form').submit();">
                                 {{ __('Logout') }}
                             </a>
 
@@ -81,6 +85,15 @@
                     </li>
                 @endguest
             </ul>
+            {{-- Search bar --}}
+            <form action="{{ route('books.index') }}" method="POST" class="form-inline my-2 my-lg-0 d-sm-none">
+                @csrf
+                <div class="d-flex align-items-center w-100">
+                    <input name="title" class="form-control" type="search" placeholder="Search books"
+                        aria-label="Search books">
+                    <button class="btn btn-outline-success rounded my-2 my-sm-0" type="submit">Search</button>
+                </div>
+            </form>
         </div>
     </div>
 </nav>

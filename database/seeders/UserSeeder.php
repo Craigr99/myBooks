@@ -39,5 +39,10 @@ class UserSeeder extends Seeder
         $user->password = Hash::make('secret');
         $user->save();
         $user->roles()->attach($role_user);
+
+        for ($i = 1; $i <= 10; $i++) {
+            $user = User::factory()->create();
+            $user->roles()->attach($role_user);
+        }
     }
 }
