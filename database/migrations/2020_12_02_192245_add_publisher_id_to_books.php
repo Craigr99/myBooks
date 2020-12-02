@@ -14,7 +14,7 @@ class AddPublisherIdToBooks extends Migration
     public function up()
     {
         Schema::table('books', function (Blueprint $table) {
-            $table->unsignedBigInteger('publisher_id');
+            $table->unsignedBigInteger('publisher_id')->nullable();
             $table->foreign('publisher_id')
                 ->references('id')
                 ->on('publishers')

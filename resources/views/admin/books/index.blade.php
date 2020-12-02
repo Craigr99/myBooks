@@ -20,6 +20,7 @@
                             <table class="table table-hover">
                                 <thead class="purple-bg text-white">
                                     <tr>
+                                        <th scope="col">ID</th>
                                         <th scope="col">Title</th>
                                         <th scope="col">Author(s)</th>
                                         <th scope="col">Description</th>
@@ -32,11 +33,11 @@
                                 <tbody>
                                     @foreach ($books as $book)
                                         <tr>
+                                            <td>{{ $book->id }}</td>
                                             <td>{{ $book->title }}</td>
                                             <td>
                                                 @foreach ($book->authors as $author)
-                                                    <span class="d-block"> {{ $author->f_name }} {{ $author->l_name }}
-                                                    </span>
+                                                    <span class="d-block"> {{ $author->name }}</span>
                                                 @endforeach
                                             </td>
 

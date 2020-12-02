@@ -8,10 +8,17 @@
             <div class="col-2">
                 <img class="rounded" src="{{ $item['volumeInfo']['imageLinks']['thumbnail'] }}" width="160px"
                     alt="Book cover image">
-                <form action="{{ route('user.books.store', $item['id']) }}" method="POST">
-                    @csrf
-                    <button class="btn my-btn my-btn-light mt-4 mb-4 w-100" type="submit">Add to list</button>
-                </form>
+                @if (Auth::user()->hasRole('admin'))
+                    <form action="{{ route('admin.books.add', $item['volumeInfo']['title']) }}" method="POST">
+                        @csrf
+                        <button class="btn my-btn my-btn-light mt-4 mb-4 w-100" type="submit">Save to database</button>
+                    </form>
+                @else
+                    <form action="{{ route('user.books.store', $item['id']) }}" method="POST">
+                        @csrf
+                        <button class="btn my-btn my-btn-light mt-4 mb-4 w-100" type="submit">Add to list</button>
+                    </form>
+                @endif
                 <a class="btn my-btn my-btn-secondary w-100" href="#">Write a review</a>
             </div>
             <div class="col-7">
@@ -19,7 +26,7 @@
                     <div class="w-75">
                         @if (isset($item['volumeInfo']['categories']))
                             @foreach ($item['volumeInfo']['categories'] as $category)
-                                <p class="subtitle-2 text-purple-light">
+                                <p class="subtitle-2 text-purple-light" name="category">
                                     {{ $category }}
                                 </p>
                             @endforeach
@@ -47,7 +54,9 @@
                     @endif
                 </h6>
 
-                <p class="mt-5">{{ Str::limit($item['volumeInfo']['description'], 500) }}</p>
+                @if (isset($item['volumeInfo']['description']))
+                    <p class="mt-5">{{ Str::limit($item['volumeInfo']['description'], 500) }}</p>
+                @endif
 
                 <div class="reviews spacer-top-lg red">
                     <h4>Book reviews</h4>

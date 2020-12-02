@@ -14,7 +14,6 @@
                         </div>
 
                         <div class="card-body">
-                            <img src="{{ asset('storage/images/' . $book->image) }}" alt="Book cover">
                             <table class="mt-3 table table-hover">
                                 <tbody>
                                     <tr>
@@ -28,8 +27,7 @@
                                         <td>Author(s)</td>
                                         <td>
                                             @foreach ($book->authors as $author)
-                                                <span class="d-block"> {{ $author->f_name }} {{ $author->l_name }}
-                                                </span>
+                                                <span class="d-block"> {{ $author->name }}</span>
                                             @endforeach
                                         </td>
                                     </tr>

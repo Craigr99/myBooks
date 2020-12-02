@@ -9,6 +9,14 @@
             <div class="col-sm-8 col-lg-9 col-xl-6 offset-xl-1">
                 <main class="d-flex flex-column">
                     <div class="card rounded shadow p-5">
+                        {{-- Search bar --}}
+                        <form action="{{ route('books.index') }}" method="POST"
+                            class="form-inline my-2 my-lg-0 d-none d-sm-block">
+                            @csrf
+                            <input name="title" class="form-control mr-sm-2" type="search" placeholder="Search books"
+                                aria-label="Search books">
+                            <button class="btn btn-outline-success rounded my-2 my-sm-0" type="submit">Search</button>
+                        </form>
                         <h4>Add a new book</h4>
                         <form action="{{ route('admin.books.store') }}" method="POST" class="mt-5"
                             enctype="multipart/form-data">

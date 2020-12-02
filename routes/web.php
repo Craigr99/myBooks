@@ -25,6 +25,7 @@ Route::put('/admin', [App\Http\Controllers\Admin\ProfileController::class, 'upda
 Route::get('/admin/books', [App\Http\Controllers\Admin\BookController::class, 'index'])->name('admin.books.index');
 Route::get('/admin/books/create', [App\Http\Controllers\Admin\BookController::class, 'create'])->name('admin.books.create');
 Route::post('/admin/books', [App\Http\Controllers\Admin\BookController::class, 'store'])->name('admin.books.store');
+Route::post('/admin/books/{title}', [App\Http\Controllers\Admin\BookController::class, 'add'])->name('admin.books.add');
 Route::get('/admin/books/{id}', [App\Http\Controllers\Admin\BookController::class, 'show'])->name('admin.books.show');
 Route::get('/admin/books/{id}/edit', [App\Http\Controllers\Admin\BookController::class, 'edit'])->name('admin.books.edit');
 Route::put('/admin/books/{id}', [App\Http\Controllers\Admin\BookController::class, 'update'])->name('admin.books.update');
