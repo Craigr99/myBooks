@@ -14,8 +14,9 @@ Route::get('logout', [App\Http\Controllers\Auth\LoginController::class, 'logout'
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 Route::get('/homepage', [App\Http\Controllers\HomeController::class, 'homepage'])->name('homepage');
 
-Route::post('/books', [BookController::class, 'index'])->name('books.index');
-Route::get('/books/show/{id}/{name}', [BookController::class, 'show'])->name('books.show');
+// Routes from api
+Route::post('/admin/books/search', [BookController::class, 'index'])->name('admin.books.search.index');
+Route::get('/books/show/{id}/{name}', [BookController::class, 'show'])->name('books.search.show');
 
 // Admin routes
 Route::get('/admin/home', [App\Http\Controllers\Admin\HomeController::class, 'index'])->name('admin.home');

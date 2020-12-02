@@ -42,6 +42,11 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
     ];
 
+    public function books()
+    {
+        return $this->belongsToMany('App\Models\Book', 'user_book')->withPivot('user_id', 'book_id', 'status');
+    }
+
     public function roles()
     {
         return $this->belongsToMany('App\Models\Role', 'user_role');

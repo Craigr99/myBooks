@@ -12,6 +12,7 @@
                         <h4>Edit book</h4>
                         <form action="{{ route('admin.books.update', $book->id) }}" method="POST" class="mt-5">
                             @csrf
+                            @method('PUT')
                             <input type="hidden" name="_method" value="PUT">
 
                             <div class="form-group">

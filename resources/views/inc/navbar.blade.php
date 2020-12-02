@@ -3,13 +3,17 @@
         <a class="navbar-brand" href="{{ Auth::user() ? url('/homepage') : url('/') }}">
             {{ config('app.name', 'myBooks') }}
         </a>
-        {{-- Search bar --}}
-        <form action="{{ route('books.index') }}" method="POST" class="form-inline my-2 my-lg-0 d-none d-sm-block">
-            @csrf
-            <input name="title" class="form-control mr-sm-2" type="search" placeholder="Search books"
-                aria-label="Search books">
-            <button class="btn btn-outline-success rounded my-2 my-sm-0" type="submit">Search</button>
-        </form>
+        @if (Auth::user()->hasRole('admin'))
+            {{-- Search bar --}}
+            <form action="{{ route('admin.books.search.index') }}" method="POST"
+                class="form-inline my-2 my-lg-0 d-none d-sm-block">
+                @csrf
+                <input name="title" class="form-control mr-sm-2" type="search" placeholder="Search books"
+                    aria-label="Search books">
+                <button class="btn btn-outline-success rounded my-2 my-sm-0" type="submit">Search</button>
+            </form>
+        @endif
+
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
             aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
             <span class="navbar-toggler-icon"></span>
@@ -74,7 +78,7 @@
                             @endif
                             <a class="dropdown-item" href="{{ route('logout') }}"
                                 onclick="event.preventDefault();
-                                                                                                                                                                                                                                                                                                                                                                                                                                                             document.getElementById('logout-form').submit();">
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                 document.getElementById('logout-form').submit();">
                                 {{ __('Logout') }}
                             </a>
 
@@ -85,15 +89,18 @@
                     </li>
                 @endguest
             </ul>
-            {{-- Search bar --}}
-            <form action="{{ route('books.index') }}" method="POST" class="form-inline my-2 my-lg-0 d-sm-none">
-                @csrf
-                <div class="d-flex align-items-center w-100">
-                    <input name="title" class="form-control" type="search" placeholder="Search books"
-                        aria-label="Search books">
-                    <button class="btn btn-outline-success rounded my-2 my-sm-0" type="submit">Search</button>
-                </div>
-            </form>
+            @if (Auth::user()->hasRole('admin'))
+                {{-- Search bar --}}
+                <form action="{{ route('admin.books.search.index') }}" method="POST"
+                    class="form-inline my-2 my-lg-0 d-sm-none">
+                    @csrf
+                    <div class="d-flex align-items-center w-100">
+                        <input name="title" class="form-control" type="search" placeholder="Search books"
+                            aria-label="Search books">
+                        <button class="btn btn-outline-success rounded my-2 my-sm-0" type="submit">Search</button>
+                    </div>
+                </form>
+            @endif
         </div>
     </div>
 </nav>

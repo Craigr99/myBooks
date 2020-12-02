@@ -9,6 +9,11 @@ class Book extends Model
 {
     use HasFactory;
 
+    public function users()
+    {
+        return $this->belongsToMany('App\Models\User', 'user_book')->withPivot('user_id', 'book_id', 'status');
+    }
+
     public function authors()
     {
         return $this->belongsToMany('App\Models\Author', 'author_book');

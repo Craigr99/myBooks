@@ -8,7 +8,7 @@
             @if (isset($data))
                 @foreach ($data as $item)
                     <div class="col-3">
-                        <a href="{{ route('books.show', [$item['id'], $item['volumeInfo']['title']]) }}">
+                        <a href="{{ route('books.search.show', [$item['id'], $item['volumeInfo']['title']]) }}">
                             <div class="card shadow rounded mb-4" style="min-height: 500px">
                                 <div class="card-body">
                                     @if (isset($item['volumeInfo']['imageLinks']['thumbnail']))

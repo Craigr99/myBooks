@@ -86,15 +86,16 @@ class BookController extends Controller
     //
     public function add($title)
     {
+        // Get the book from response
         $response = Http::get('https://www.googleapis.com/books/v1/volumes', [
             'q' => $title,
         ]);
 
+        // Set variables
         // dd($response->json()['items'][0]);
         $book = $response->json()['items'][0]['volumeInfo'];
         $title = $book['title'];
         $publish_date = $book['publishedDate'];
-
         isset($book['description']) ? $description = $book['description'] : $description = 'Not found';
         $publisher = $book['publisher'];
         $image = $book['imageLinks']['thumbnail'];
@@ -102,11 +103,13 @@ class BookController extends Controller
         $authors = $book['authors'];
         $categories = $book['categories'];
 
+        // Insert new or update Publisher in publishers table
         DB::table('publishers')->updateOrInsert([
             'name' => $publisher,
         ]);
         $publisher = Publisher::where('name', $publisher)->first();
 
+        // Insert new or update Book in books table
         DB::table('books')->updateOrInsert([
             'title' => $title,
             'description' => $description,
@@ -116,6 +119,7 @@ class BookController extends Controller
             'publisher_id' => $publisher->id,
         ]);
 
+        // Insert new category if it does not exist, and insert book category row in DB
         foreach ($categories as $category) {
             DB::table('categories')->updateOrInsert([
                 'name' => $category,
@@ -129,6 +133,8 @@ class BookController extends Controller
                 'category_id' => $category->id,
             ]);
         }
+
+        // Insert new authors if they do not exist, and insert author_book rows in DB
 
         foreach ($authors as $author) {
             // print_r($author);
@@ -178,24 +184,41 @@ class BookController extends Controller
         ]);
     }
 
+    //
+    //
+    // TODO: GET UPDATE TO WORK
+    //
+
     public function update(Request $request, $id)
     {
         $request->validate([
             'title' => 'required|max:191',
-            'author' => 'required|max:191',
+            'description' => 'required',
+            'publish_date' => 'required',
+            'page_count' => 'required',
+            'image' => 'nullable',
             'publisher_id' => 'required',
-            'year' => 'required|integer|min:1900',
-            'isbn' => 'required|alpha_num|size:13|unique:books,isbn,' . $id,
-            'price' => 'required|numeric|min:0',
+            'isbn' => 'nullable|alpha_num|size:13|unique:books,isbn,' . $id,
         ]);
 
         $book = Book::findOrFail($id);
+
         $book->title = $request->input('title');
-        $book->author = $request->input('author');
-        $book->publisher_id = $request->input('publisher_id');
-        $book->year = $request->input('year');
+        $book->description = $request->input('description');
+        $book->publish_date = $request->input('publish_date');
+        $book->page_count = $request->input('page_count');
         $book->isbn = $request->input('isbn');
-        $book->price = $request->input('price');
+        $book->publisher_id = $request->input('publisher_id');
+
+        if ($request->hasFile('image')) {
+            $image = $request->image;
+            $ext = $image->getClientOriginalExtension();
+            $filename = uniqid() . '.' . $ext;
+            $image->storeAs('public/images', $filename);
+            Storage::delete("public/images/{$book->image}");
+            $book->image = $filename;
+        }
+
         $book->save();
 
         return redirect()->route('admin.books.index');

@@ -39,7 +39,7 @@
                                     @foreach ($authors as $author)
                                         <option value="{{ $author->id }}"
                                             {{ in_array($author->id, old('authors') ?: []) ? 'selected' : '' }}>
-                                            {{ $author->f_name }} {{ $author->l_name }}
+                                            {{ $author->name }}
                                         </option>
                                     @endforeach
                                 </select>
