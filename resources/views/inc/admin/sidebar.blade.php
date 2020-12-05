@@ -1,5 +1,10 @@
-    <div class="col-sm-4 col-lg-3 col-xl-2 d-none d-md-block">
-        <nav class="vh-80">
+    <div class="col-sm-4 col-lg-3 col-xl-2 d-none d-sm-block bg-white">
+        <div class="text-center py-4">
+            <a href="{{ Auth::user() ? url('/homepage') : url('/') }}">
+                <h4 class="text-gray-1">{{ config('app.name', 'myBooks') }}</h4>
+            </a>
+        </div>
+        <nav class="vh-100 mt-5">
             <div class="text-center mb-5">
                 @if (Auth::user()->image !== 'default.png')
                     <img src="{{ asset('storage/images/' . Auth::user()->image) }}"

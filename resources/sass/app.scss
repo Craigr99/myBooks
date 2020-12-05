@@ -27,6 +27,7 @@ li {
 
 .card {
     border: none !important;
+    box-shadow: 0 0 0 1pt $gray-6 !important;
 }
 
 // Login page
@@ -36,8 +37,8 @@ li {
     background-position: center center;
     background-repeat: no-repeat;
     color: $white;
-    border-top-left-radius: $radius;
-    border-bottom-left-radius: $radius;
+    border-top-left-radius: $radius-lg;
+    border-bottom-left-radius: $radius-lg;
 }
 
 

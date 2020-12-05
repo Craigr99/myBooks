@@ -11005,13 +11005,21 @@ h6 {
   background-color: #F2F2F2;
 }
 
+.bg-gray-7 {
+  background-color: #F8F9FA;
+}
+
 .rounded {
-  border-radius: 20px !important;
+  border-radius: 10px !important;
 }
 
 .rounded-top {
-  border-top-left-radius: 20px !important;
-  border-top-right-radius: 20px !important;
+  border-top-left-radius: 10px !important;
+  border-top-right-radius: 10px !important;
+}
+
+.rounded-lg {
+  border-radius: 20px !important;
 }
 
 .vh-80 {
@@ -11143,7 +11151,7 @@ h6 {
 }
 
 input {
-  border-radius: 20px !important;
+  border-radius: 10px !important;
 }
 
 input:focus {
@@ -11178,6 +11186,7 @@ li {
 
 .card {
   border: none !important;
+  box-shadow: 0 0 0 1pt #F2F2F2 !important;
 }
 
 .login-left-container {
@@ -11258,8 +11267,8 @@ li {
   background-color: #7F96FF;
   color: #ffffff;
   padding: 20px 0 20px 20px;
-  border-top-left-radius: 20px;
-  border-bottom-right-radius: 20px;
+  border-top-left-radius: 10px;
+  border-bottom-right-radius: 10px;
   width: 80%;
 }
 

@@ -22,6 +22,11 @@
     background-color: $gray-6;
 }
 
+.bg-gray-7 {
+    background-color: $gray-7;
+}
+
+
 .rounded {
     border-radius: $radius !important;
 
@@ -29,7 +34,14 @@
         border-top-left-radius: $radius !important;
         border-top-right-radius: $radius !important;
     }
+
+    //rounded-lg
+    &-lg {
+        border-radius: $radius-lg !important;
+    }
 }
+
+
 
 .vh-80 {
     min-height: 80vh !important;
@@ -103,7 +115,7 @@
     font-size: 14px;
     font-weight: $fw-r;
     letter-spacing: 0.5px;
-    border-radius: $radius;
+    border-radius: $radius-lg;
     padding: 10px 40px;
 
     &-primary {

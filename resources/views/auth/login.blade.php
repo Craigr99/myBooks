@@ -4,7 +4,7 @@
     <div class="container">
         <div class="row">
             <div class="col-md-12 d-flex flex-column justify-content-center vh-100">
-                <div class="card rounded shadow">
+                <div class="card rounded-lg shadow">
                     <div class="row vh-80">
                         <div class="col-sm-6 col-md-6 p-5 d-none d-md-flex login-left-container shadow flex-column"
                             style="background-image: url({{ asset('img/login_svg.svg') }})">
