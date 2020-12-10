@@ -1,0 +1,91 @@
+//Buttons
+.my-btn {
+    box-shadow: $shadow;
+    font-size: 14px;
+    font-weight: $fw-r;
+    letter-spacing: 0.5px;
+    border-radius: $radius-lg;
+    padding: 10px 40px;
+
+    &-primary {
+        background-color: $blue-600;
+        color: $white;
+
+        &:hover {
+            background-color: $blue-400;
+            color: $white;
+            transition: all 0.5s ease-out;
+        }
+    }
+
+    &-light {
+        background-color: $blue-400;
+        color: $white;
+
+        &:hover {
+            background-color: $blue-600;
+            color: $white;
+            transition: all 0.5s ease-out;
+        }
+    }
+
+    &-secondary {
+        background-color: $white;
+        color: $black;
+        padding: 10px 30px;
+
+        &:hover {
+            background-color: $black;
+            color: $white;
+            transition: all 0.5s ease-out;
+        }
+    }
+
+    &-outline {
+        background-color: transparent;
+        color: $black;
+
+        &:hover {
+            background-color: $gray-1;
+            color: $white;
+            transition: all 0.5s ease-out;
+
+        }
+    }
+}
+
+
+// Input
+.input-delete {
+    border: none;
+    background-color: transparent;
+    margin: 0;
+    padding: 0;
+    color: #3490dc;
+
+    &:hover {
+        color: #1d68a7;
+        text-decoration: underline;
+    }
+}
+
+
+
+input {
+    border-radius: $radius !important;
+
+
+    &:focus {
+        border-color: $blue-400 !important;
+        box-shadow: 0 0 0 0.2rem rgba(48, 172, 255, 0.25) !important;
+    }
+}
+
+::placeholder {
+    color: $gray-4 !important;
+}
+
+
+a:hover {
+    text-decoration: none;
+}

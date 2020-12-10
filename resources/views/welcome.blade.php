@@ -6,7 +6,7 @@
     <header class="container-fluid hero overflow-hidden">
         <div class="hero_img" style="background: url({{ asset('img/login_svg.svg') }}); background-size:50%">
         </div>
-        <div class=" container">
+        <div class="container">
             <h5 class="py-5">myBooks</h5>
 
             <div class="row hero_left">

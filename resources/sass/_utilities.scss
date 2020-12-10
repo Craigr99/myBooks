@@ -10,6 +10,72 @@
     background-color: lightblue;
 }
 
+
+
+//
+// Colours
+//
+
+//Primaries
+.bg-primary-50 {
+    background-color: $blue-50;
+}
+
+.bg-primary-100 {
+    background-color: $blue-100;
+}
+
+.bg-primary-200 {
+    background-color: $blue-200;
+}
+
+.bg-primary-300 {
+    background-color: $blue-300;
+}
+
+.bg-primary-400 {
+    background-color: $blue-400;
+}
+
+.bg-primary-500 {
+    background-color: $blue-500;
+}
+
+.bg-primary-600 {
+    background-color: $blue-600;
+}
+
+.bg-primary-700 {
+    background-color: $blue-700;
+}
+
+.bg-primary-800 {
+    background-color: $blue-800;
+}
+
+.bg-primary-900 {
+    background-color: $blue-900;
+}
+
+//Accents
+.bg-accent-100 {
+    background-color: $accent-100;
+}
+
+.bg-accent-200 {
+    background-color: $accent-200;
+}
+
+.bg-accent-300 {
+    background-color: $accent-300;
+}
+
+.bg-accent-400 {
+    background-color: $accent-400;
+}
+
+
+
 .purple-bg {
     background-color: $purple-regular;
 }
@@ -27,6 +93,10 @@
 }
 
 
+
+
+
+
 .rounded {
     border-radius: $radius !important;
 
@@ -42,14 +112,14 @@
 }
 
 
+// 
+// Spacing  
+//
 
 .vh-80 {
     min-height: 80vh !important;
 }
 
-.shadow {
-    box-shadow: $shadow;
-}
 
 .spacer-top-lg {
     margin-top: $spacer-lg;
@@ -59,23 +129,81 @@
     margin-bottom: $spacer-lg;
 }
 
+
+
+
+
+
+.shadow {
+    box-shadow: $shadow;
+}
+
 .image-fill {
     object-fit: cover;
 }
 
 
-//Fonts 
-.text-sm {
-    font-size: 12px;
+// 
+// Fonts  
+// 
+
+.text-primary-50 {
+    color: $blue-50;
 }
 
-.font-light {
-    font-weight: $fw-l;
+.text-primary-100 {
+    color: $blue-100;
 }
 
-.font-medium {
-    font-weight: $fw-md;
+.text-primary-200 {
+    color: $blue-200;
 }
+
+.text-primary-300 {
+    color: $blue-300;
+}
+
+.text-primary-400 {
+    color: $blue-400;
+}
+
+.text-primary-500 {
+    color: $blue-500;
+}
+
+.text-primary-600 {
+    color: $blue-600;
+}
+
+.text-primary-700 {
+    color: $blue-700;
+}
+
+.text-primary-800 {
+    color: $blue-800;
+}
+
+.text-primary-900 {
+    color: $blue-900;
+}
+
+.text-accent-100 {
+    color: $accent-100;
+}
+
+.text-accent-200 {
+    color: $accent-200;
+}
+
+.text-accent-300 {
+    color: $accent-300;
+}
+
+.text-accent-400 {
+    color: $accent-400;
+}
+
+
 
 .text-white {
     color: $white;
@@ -103,93 +231,4 @@
 
 .text-gray-4 {
     color: $gray-4;
-}
-
-
-
-
-
-//Buttons
-.my-btn {
-    box-shadow: $shadow;
-    font-size: 14px;
-    font-weight: $fw-r;
-    letter-spacing: 0.5px;
-    border-radius: $radius-lg;
-    padding: 10px 40px;
-
-    &-primary {
-        background-color: $purple-regular;
-        color: $white;
-
-        &:hover {
-            background-color: $purple-light;
-            color: $white;
-            transition: all 0.5s ease-out;
-        }
-    }
-
-    &-light {
-        background-color: $purple-light;
-        color: $white;
-
-        &:hover {
-            background-color: $purple-regular;
-            color: $white;
-            transition: all 0.5s ease-out;
-        }
-    }
-
-    &-secondary {
-        background-color: $white;
-        color: $black;
-        padding: 10px 30px;
-
-        &:hover {
-            background-color: $black;
-            color: $white;
-            transition: all 0.5s ease-out;
-        }
-    }
-
-    &-outline {
-        background-color: transparent;
-        color: $black;
-
-        &:hover {
-            background-color: $black;
-            color: $white;
-            transition: all 0.5s ease-out;
-
-        }
-    }
-}
-
-.input-delete {
-    border: none;
-    background-color: transparent;
-    margin: 0;
-    padding: 0;
-    color: #3490dc;
-
-    &:hover {
-        color: #1d68a7;
-        text-decoration: underline;
-    }
-}
-
-
-// Input
-input {
-    border-radius: $radius !important;
-
-
-    &:focus {
-        border-color: $purple-light !important;
-        box-shadow: 0 0 0 0.2rem rgba(108, 99, 255, 0.25) !important;
-    }
-}
-
-::placeholder {
-    color: $gray-4 !important;
 }

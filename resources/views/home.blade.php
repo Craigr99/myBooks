@@ -5,41 +5,41 @@
         <div class="container d-flex justify-content-between align-items-center">
             <ul class="py-3 d-flex w-75 justify-content-between">
                 <li>
-                    <a href="#" class="text-purple">
+                    <a href="#" class="text-primary-500">
                         <h6>Action</h6>
                     </a>
                 </li>
                 <li>
                 <li>
-                    <a href="#" class="text-purple">
+                    <a href="#" class="text-primary-500">
                         <h6>Action</h6>
                     </a>
                 </li>
                 <li>
                 <li>
-                    <a href="#" class="text-purple">
+                    <a href="#" class="text-primary-500">
                         <h6>Action</h6>
                     </a>
                 </li>
                 <li>
                 <li>
-                    <a href="#" class="text-purple">
+                    <a href="#" class="text-primary-500">
                         <h6>Action</h6>
                     </a>
                 </li>
                 <li>
                 <li>
-                    <a href="#" class="text-purple">
+                    <a href="#" class="text-primary-500">
                         <h6>Action</h6>
                     </a>
                 </li>
                 <li>
             </ul>
             <ul class="d-flex justify-content-between">
-                <li class="mr-5"><a href="#" class="text-purple">
+                <li class="mr-5"><a href="#" class="text-primary-500">
                         <h6>Blog</h6>
                     </a></li>
-                <li><a href="#" class="text-purple">
+                <li><a href="#" class="text-primary-500">
                         <h6>Discussion</h6>
                     </a></li>
             </ul>

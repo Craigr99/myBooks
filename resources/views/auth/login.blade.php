@@ -22,9 +22,9 @@
                             <div class="d-flex align-items-center justify-content-center h-100 ">
                                 <form action="{{ route('login') }}" method="POST">
                                     @csrf
-                                    <h4 class="text-purple">Log in</h4>
+                                    <h4 class="text-primary-500">Log in</h4>
                                     <p class="my-4">Don’t have an account? <a href="{{ route('register') }}"
-                                            class="text-purple">Create one
+                                            class="text-primary-500">Create one
                                             now</a></p>
                                     <input id="email" type="email" class="form-control @error('email') is-invalid @enderror"
                                         name="email" value="{{ old('email') }}" required autofocus placeholder="Email">
@@ -58,7 +58,7 @@
                                     </div>
                                     <div class="text-center">
                                         @if (Route::has('password.request'))
-                                            <a href="{{ route('password.request') }}" class="text-purple">
+                                            <a href="{{ route('password.request') }}" class="text-primary-500">
                                                 Forgot your password?
                                             </a>
                                         @endif

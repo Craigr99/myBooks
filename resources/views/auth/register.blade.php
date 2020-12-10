@@ -17,7 +17,7 @@
                             <div class="d-flex align-items-center justify-content-center h-100 px-4">
                                 <form action="{{ route('register') }}" method="POST">
                                     @csrf
-                                    <h4 class="text-purple mb-4">Create a myBooks <br> account</h4>
+                                    <h4 class="text-primary-500 mb-4">Create a myBooks <br> account</h4>
                                     <div class="row form-group">
                                         <div class="col col-sm-6">
                                             <input id="f_name" type="text"
@@ -89,7 +89,7 @@
                                     <button type="submit" class="btn  my-btn my-btn-primary mt-3">Register</button>
                                     <div class="text-center mt-4">
                                         Already have an account?
-                                        <a href="{{ route('login') }}" class="text-purple">
+                                        <a href="{{ route('login') }}" class="text-primary-500">
                                             Login
                                         </a>
                                     </div>

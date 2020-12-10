@@ -1,13 +1,12 @@
 @extends('layouts.app')
 
 @section('content')
-    @include('inc.navbar')
-
-    <div class="container-fluid">
-        <div class="row mt-5">
+    <div class="container-fluid bg-gray-7">
+        <div class="row">
             @include('inc.user.sidebar')
             <div class="col-sm-8 col-lg-9 col-xl-10">
-                <main class="text-center text-lg-left">
+                @include('inc.navbar')
+                <main class="text-center text-lg-left mt-5 px-3 vh-100">
                     <h3>Welcome back <span>{{ Auth::user()->f_name }}</span></h3>
                 </main>
             </div>

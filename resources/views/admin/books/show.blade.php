@@ -9,7 +9,7 @@
                 <div class="col-sm col-lg-10 offset-lg-1 col-xl-6 offset-xl-3 mt-5">
                     <main>
                         <div class="card rounded shadow">
-                            <div class="p-4 rounded-top purple-bg text-white">
+                            <div class="p-4 rounded-top bg-primary-700 text-white">
                                 <h4> {{ $book->title }}</h4>
                             </div>
 

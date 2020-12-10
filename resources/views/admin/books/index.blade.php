@@ -19,7 +19,7 @@
                         @else
                             <div class="table-responsive mt-3">
                                 <table class="table table-hover">
-                                    <thead class="purple-bg text-white">
+                                    <thead class="bg-primary-700 text-white">
                                         <tr>
                                             <th scope="col">ID</th>
                                             <th scope="col">Title</th>

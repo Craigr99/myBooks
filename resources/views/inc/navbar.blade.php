@@ -1,6 +1,11 @@
 <nav class="navbar navbar-expand-md navbar-light py-4">
-    <a class="navbar-brand d-sm-none">
-    </a>
+    @if (Request::is(['admin/home', 'admin/profile', 'admin/books', 'admin/books/{}', 'admin/users']))
+
+    @else
+        <a href="{{ route('homepage') }}">
+            <h4 class="text-gray-1 mr-5">myBooks</h4>
+        </a>
+    @endif
     @if (Auth::user()->hasRole('admin'))
         {{-- Search bar --}}
         <form action="{{ route('admin.books.search.index') }}" method="POST"
@@ -76,7 +81,7 @@
                         @endif
                         <a class="dropdown-item" href="{{ route('logout') }}"
                             onclick="event.preventDefault();
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                             document.getElementById('logout-form').submit();">
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                         document.getElementById('logout-form').submit();">
                             {{ __('Logout') }}
                         </a>
 

@@ -26,7 +26,7 @@
                     <div class="w-75">
                         @if (isset($item['volumeInfo']['categories']))
                             @foreach ($item['volumeInfo']['categories'] as $category)
-                                <p class="subtitle-2 text-purple-light" name="category">
+                                <p class="subtitle-2 text-primary-500" name="category">
                                     {{ $category }}
                                 </p>
                             @endforeach
@@ -47,7 +47,7 @@
                 <h6>by
                     @if (isset($item['volumeInfo']['authors']))
                         @foreach ($item['volumeInfo']['authors'] as $author)
-                            <span class="text-purple-light">{{ $author }} | </span>
+                            <span class="text-primary-500">{{ $author }} | </span>
                         @endforeach
                     @else
                         Not found

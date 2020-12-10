@@ -10,6 +10,7 @@
 // Import partial scss files
 @import "fonts";
 @import "utilities";
+@import "config";
 
 
 body {
@@ -32,7 +33,7 @@ li {
 
 // Login page
 .login-left-container {
-    background-color: $purple-regular;
+    background-color: $blue-700;
     background-size: 60%;
     background-position: center center;
     background-repeat: no-repeat;
@@ -102,7 +103,7 @@ li {
                 font-weight: bolder;
 
                 span {
-                    color: $purple-regular;
+                    color: $blue-500;
                 }
             }
         }
@@ -126,7 +127,7 @@ li {
 //Book show
 .card {
     .header {
-        background-color: $purple-light;
+        background-color: $blue-400;
         color: $white;
         padding: 20px 0 20px 20px;
         border-top-left-radius: $radius;
