@@ -6,6 +6,7 @@
             @include('inc.admin.sidebar')
 
             <div class="col-sm-8 col-lg-9 col-xl-10">
+                <x-flash-message />
                 @include('inc.navbar')
                 <div class="col mt-5">
                     <main>
@@ -65,7 +66,9 @@
                                         @endforeach
                                     </tbody>
                                 </table>
-
+                                <div class="d-flex justify-content-center">
+                                    {!! $books->links('pagination::bootstrap-4') !!}
+                                </div>
                             </div>
                         @endif
                     </main>

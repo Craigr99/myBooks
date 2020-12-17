@@ -17,7 +17,7 @@ class CreateUserBookTable extends Migration
             $table->id();
             $table->unsignedBigInteger('user_id');
             $table->unsignedBigInteger('book_id');
-            $table->string('status'); //reding, read later, finished etc.
+            $table->string('shelf'); //reading, read later, finished etc.
             $table->timestamps();
 
             $table->foreign('user_id')->references('id')->on('users')->onUpdate('cascade')->onDelete('cascade');

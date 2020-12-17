@@ -22,7 +22,7 @@ class BookController extends Controller
 
     public function index()
     {
-        $books = Book::all();
+        $books = Book::paginate(10);
 
         return view('admin.books.index', [
             'books' => $books,
@@ -78,13 +78,15 @@ class BookController extends Controller
         $book->categories()->attach($request->input('categories'));
         $book->authors()->attach($request->input('authors'));
 
+        $request->session()->flash('success', 'Book added successfully!');
+
         return redirect()->route('admin.books.index');
     }
 
     //
     // Add book to databse from admin searching a book using the API
     //
-    public function add($title)
+    public function add(Request $request, $title)
     {
         // Get the book from response
         $response = Http::get('https://www.googleapis.com/books/v1/volumes', [
@@ -151,13 +153,18 @@ class BookController extends Controller
             ]);
         }
 
+        $request->session()->flash('success', 'Book added successfully!');
+
+        return redirect()->route('admin.books.index');
     }
 
-    public function destroy($id)
+    public function destroy(Request $request, $id)
     {
         $book = Book::findOrFail($id);
 
         $book->delete();
+
+        $request->session()->flash('danger', 'Book removed successfully!');
 
         return redirect()->route('admin.books.index');
     }
@@ -220,6 +227,8 @@ class BookController extends Controller
         }
 
         $book->save();
+
+        $request->session()->flash('info', 'Book updated successfully!');
 
         return redirect()->route('admin.books.index');
     }

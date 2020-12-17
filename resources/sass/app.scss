@@ -26,6 +26,14 @@ li {
     list-style: none;
 }
 
+.flash {
+    position: absolute;
+    left: 50%;
+    z-index: 2;
+    transform: translate(-50%, 0);
+    top: 2%;
+}
+
 .card {
     border: none !important;
     box-shadow: 0 0 0 1pt $gray-6 !important;

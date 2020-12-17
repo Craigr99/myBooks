@@ -1,10 +1,9 @@
 <nav class="navbar navbar-expand-md navbar-light py-4">
-    @if (Request::is(['admin/home', 'admin/profile', 'admin/books', 'admin/books/{}', 'admin/users']))
-
-    @else
+    @if (Request::is(['homepage']))
         <a href="{{ route('homepage') }}">
             <h4 class="text-gray-1 mr-5">myBooks</h4>
         </a>
+    @else
     @endif
     @if (Auth::user()->hasRole('admin'))
         {{-- Search bar --}}
@@ -81,7 +80,7 @@
                         @endif
                         <a class="dropdown-item" href="{{ route('logout') }}"
                             onclick="event.preventDefault();
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                         document.getElementById('logout-form').submit();">
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                         document.getElementById('logout-form').submit();">
                             {{ __('Logout') }}
                         </a>
 
