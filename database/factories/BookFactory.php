@@ -30,7 +30,7 @@ class BookFactory extends Factory
         return [
             'title' => $this->faker->catchPhrase,
             'description' => $this->faker->text($maxNbChars = 200),
-            'image' => 'https://via.placeholder.com/150',
+            'image' => 'https://picsum.photos/200/300',
             'isbn' => $this->faker->unique()->isbn13,
             'publish_date' => $dateFormat,
             'page_count' => $this->faker->numberBetween($min = 80, $max = 1000),

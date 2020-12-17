@@ -38,9 +38,19 @@
         <ul class="nav-list list-group mt-5 px-3">
             <p class="text-sm text-gray-4 ml-3">YOUR BOOKS</p>
 
-            <li class="list-item my-2 {{ Request::is(['user/books']) ? 'active' : '' }}">
-                <a href="{{ route('user.books.index') }}" class="btn my-btn btn-block"><span
-                        class="fas fa-book mr-4"></span>Saved books</a>
+            <li class="list-item my-2 {{ Request::is(['user/books/reading']) ? 'active' : '' }}">
+                <a href="{{ route('user.books.shelf.index', 'reading') }}" class="btn my-btn btn-block"><span
+                        class="fas fa-book-open mr-4"></span>Reading</a>
+            </li>
+
+            <li class="list-item my-2 {{ Request::is(['user/books/later']) ? 'active' : '' }}">
+                <a href="{{ route('user.books.shelf.index', 'later') }}" class="btn my-btn btn-block"><span
+                        class="fas fa-clipboard-list mr-4"></span>Want to read</a>
+            </li>
+
+            <li class="list-item my-2 {{ Request::is(['user/books/finished']) ? 'active' : '' }}">
+                <a href="{{ route('user.books.shelf.index', 'finished') }}" class="btn my-btn btn-block"><span
+                        class="fas fa-check mr-4"></span>Finished reading</a>
             </li>
         </ul>
     </nav>

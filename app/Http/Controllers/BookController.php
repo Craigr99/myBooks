@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Http\Controllers\Controller;
+use App\Models\Book;
+use Auth;
 use Http;
 use Illuminate\Http\Request;
 
@@ -11,7 +13,7 @@ class BookController extends Controller
     public function __construct()
     {
         $this->middleware('auth');
-        $this->middleware('role:admin, user');
+        $this->middleware('role:admin,user');
     }
 
     /**
@@ -66,16 +68,23 @@ class BookController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id, $name)
+    public function show($id = null, $name = null)
     {
-        $response = Http::get('https://www.googleapis.com/books/v1/volumes', [
-            'volumeId' => $id,
-            'q' => $name,
-        ]);
+        if (Auth::user()->hasRole('admin')) {
+            $response = Http::get('https://www.googleapis.com/books/v1/volumes', [
+                'volumeId' => $id,
+                'q' => $name,
+            ]);
 
-        return view('books.show', [
-            'item' => $response->json()['items'][0],
-        ]);
+            return view('books.show', [
+                'item' => $response->json()['items'][0],
+            ]);
+        } else {
+            $book = Book::findOrFail($id);
+            return view('user.books.show', [
+                'book' => $book,
+            ]);
+        }
     }
 
     /**

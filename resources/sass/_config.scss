@@ -4,7 +4,7 @@
     font-size: 14px;
     font-weight: $fw-r;
     letter-spacing: 0.5px;
-    border-radius: $radius-lg;
+    border-radius: $radius-lg !important;
     padding: 10px 40px;
 
     &-primary {
@@ -43,13 +43,29 @@
 
     &-outline {
         background-color: transparent;
-        color: $black;
+        border: 1px solid $blue-400;
+        color: $blue-400;
 
         &:hover {
-            background-color: $gray-1;
+            background-color: $blue-400;
             color: $white;
             transition: all 0.5s ease-out;
 
+        }
+    }
+
+    &-danger {
+        background-color: rgb(248, 47, 47);
+        color: $white;
+
+        &:hover {
+            background-color: rgb(226, 47, 47);
+            transition: all 0.5s ease-out;
+            color: $white;
+        }
+
+        &:focus {
+            border-color: transparent !important;
         }
     }
 }

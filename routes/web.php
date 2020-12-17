@@ -16,7 +16,7 @@ Route::get('/homepage', [App\Http\Controllers\HomeController::class, 'homepage']
 
 // Routes from api
 Route::post('/admin/books/search', [BookController::class, 'index'])->name('admin.books.search.index');
-Route::get('/books/show/{id}/{name}', [BookController::class, 'show'])->name('books.search.show');
+Route::get('/books/show/{id}/{name?}', [BookController::class, 'show'])->name('books.search.show');
 
 // Admin routes
 Route::get('/admin/home', [App\Http\Controllers\Admin\HomeController::class, 'index'])->name('admin.home');
@@ -39,5 +39,5 @@ Route::get('/user/home', [App\Http\Controllers\User\HomeController::class, 'inde
 Route::get('/user/profile', [App\Http\Controllers\User\ProfileController::class, 'index'])->name('user.profile');
 Route::put('/user', [App\Http\Controllers\User\ProfileController::class, 'update'])->name('user.profile.update');
 
-Route::get('/user/books', [App\Http\Controllers\User\BookController::class, 'index'])->name('user.books.index');
+Route::get('/user/books/{name}', [App\Http\Controllers\User\BookController::class, 'index'])->name('user.books.shelf.index');
 Route::post('/user/books/{id}', [App\Http\Controllers\User\BookController::class, 'store'])->name('user.books.store');

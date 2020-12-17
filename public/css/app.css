@@ -11200,7 +11200,7 @@ h6 {
   font-size: 14px;
   font-weight: 400;
   letter-spacing: 0.5px;
-  border-radius: 20px;
+  border-radius: 20px !important;
   padding: 10px 40px;
 }
 
@@ -11240,13 +11240,29 @@ h6 {
 
 .my-btn-outline {
   background-color: transparent;
-  color: #0C120C;
+  border: 1px solid #64B5F6;
+  color: #64B5F6;
 }
 
 .my-btn-outline:hover {
-  background-color: #333333;
+  background-color: #64B5F6;
   color: #ffffff;
   transition: all 0.5s ease-out;
+}
+
+.my-btn-danger {
+  background-color: #f82f2f;
+  color: #ffffff;
+}
+
+.my-btn-danger:hover {
+  background-color: #e22f2f;
+  transition: all 0.5s ease-out;
+  color: #ffffff;
+}
+
+.my-btn-danger:focus {
+  border-color: transparent !important;
 }
 
 .input-delete {

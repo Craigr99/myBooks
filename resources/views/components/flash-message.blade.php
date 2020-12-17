@@ -5,6 +5,7 @@
                 <div class="flash-message">
                     {{-- <div class="alert alert-primary" role="alert">
                         A simple primary alert—check it out!
+                        <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
                     </div> --}}
                     @foreach (['danger', 'warning', 'success', 'info'] as $key)
                         @if (Session::has($key))

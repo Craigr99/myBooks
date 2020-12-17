@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Book;
 use Auth;
 use Illuminate\Http\Request;
 
@@ -38,6 +39,10 @@ class HomeController extends Controller
 
     public function homepage()
     {
-        return view('home');
+        $books = Book::all();
+
+        return view('home', [
+            'books' => $books,
+        ]);
     }
 }

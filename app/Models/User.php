@@ -44,7 +44,25 @@ class User extends Authenticatable
 
     public function books()
     {
-        return $this->belongsToMany('App\Models\Book', 'user_book')->withPivot('user_id', 'book_id', 'status');
+        return $this->belongsToMany('App\Models\Book', 'user_book')->withPivot('user_id', 'book_id', 'shelf');
+    }
+
+    //return all books from the reading shelf for this user
+    public function reading()
+    {
+        return $this->belongsToMany('App\Models\Book', 'user_book')->wherePivot('shelf', 'Reading');
+    }
+
+    //return all books from the read later shelf for this user
+    public function readLater()
+    {
+        return $this->belongsToMany('App\Models\Book', 'user_book')->wherePivot('shelf', 'Read Later');
+    }
+
+    //return all books from the finished reading shelf for this user
+    public function finishedReading()
+    {
+        return $this->belongsToMany('App\Models\Book', 'user_book')->wherePivot('shelf', 'Finished Reading');
     }
 
     public function roles()

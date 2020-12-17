@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\User;
 
 use App\Http\Controllers\Controller;
+use Auth;
 use Illuminate\Http\Request;
 
 class BookController extends Controller
@@ -17,9 +18,9 @@ class BookController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index($name)
     {
-        return view('user.books.index');
+        return view("user.books.shelf." . $name);
     }
 
     /**
@@ -38,9 +39,26 @@ class BookController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store($id)
+    public function store(Request $request, $id)
     {
-        dd($id);
+        $user = Auth::user();
+
+        if ($request->input('later')) {
+            $user->readLater()->attach($id, ['shelf' => 'Read Later']);
+            $request->session()->flash('success', 'Book successfully added to your shelf!');
+
+            return redirect()->route('user.books.shelf.index', 'later');
+        } else if ($request->input('reading')) {
+            $user->reading()->attach($id, ['shelf' => 'Reading']);
+            $request->session()->flash('success', 'Book successfully added to your shelf!');
+
+            return redirect()->route('user.books.shelf.index', 'reading');
+        } else {
+            $user->finishedReading()->attach($id, ['shelf' => 'Finished Reading']);
+            $request->session()->flash('success', 'Book successfully added to your shelf!');
+
+            return redirect()->route('user.books.shelf.index', 'finished');
+        }
 
     }
 

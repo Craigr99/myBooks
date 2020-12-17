@@ -4,8 +4,8 @@
     <div class="container-fluid bg-gray-7">
         <div class="row">
             @include('inc.user.sidebar')
-
             <div class="col">
+                <x-flash-message />
                 @include('inc.navbar')
                 <div class="col col-xl-8 offset-xl-2 mt-5">
                     <main class="card card-body rounded">

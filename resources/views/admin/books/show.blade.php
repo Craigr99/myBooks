@@ -17,7 +17,7 @@
                                 <table class="mt-3 table table-hover">
                                     <tbody>
                                         <tr>
-                                            <img src="{{ $book->image }}" alt="">
+                                            <img src="{{ $book->image }}" class="rounded" alt="">
                                         </tr>
                                         <tr>
                                             <td>Title</td>

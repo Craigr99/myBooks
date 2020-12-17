@@ -11,7 +11,7 @@
                 <div class="col mt-5">
                     <main>
                         <div class="d-flex align-items-center">
-                            <h4 class="mr-3"> Books</h4>
+                            <h4 class="mr-3">Books</h4>
                             <a class="btn-link" href="{{ route('admin.books.create') }}">+ Add</a>
                         </div>
 
@@ -54,18 +54,14 @@
                                                 <td class="d-flex justify-content-lg-between">
                                                     <a href="{{ route('admin.books.show', $book->id) }}">View</a>
                                                     <a href="{{ route('admin.books.edit', $book->id) }}">Edit</a>
-                                                    <form method="POST"
-                                                        action="{{ route('admin.books.destroy', $book->id) }}">
-                                                        <input type="hidden" value="DELETE" name="_method">
-                                                        @csrf
-                                                        <input class="input-delete" type="submit" value="Delete">
-                                                    </form>
+                                                    <a href="#" data-toggle="modal" data-target="#delete-modal">Delete</a>
                                                 </td>
                                             </tr>
-
+                                            <x-flash-modal :id="$book->id" />
                                         @endforeach
                                     </tbody>
                                 </table>
+
                                 <div class="d-flex justify-content-center">
                                     {!! $books->links('pagination::bootstrap-4') !!}
                                 </div>
