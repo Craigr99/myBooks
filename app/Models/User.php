@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use App\Models\Book;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
@@ -63,6 +64,26 @@ class User extends Authenticatable
     public function finishedReading()
     {
         return $this->belongsToMany('App\Models\Book', 'user_book')->wherePivot('shelf', 'Finished Reading');
+    }
+
+    public function usersBooks()
+    {
+        return $this->belongsToMany(
+            Book::class,
+            'user_book',
+            'user_id',
+            'book_id'
+        );
+    }
+
+    public function hasBook(Book $book)
+    {
+        return $this->usersBooks()->where('book_id', $book->id)->exists();
+    }
+
+    public function removeBook(Book $book)
+    {
+        return $this->usersBooks()->detach($book);
     }
 
     public function roles()

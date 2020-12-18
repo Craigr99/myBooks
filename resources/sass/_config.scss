@@ -5,7 +5,8 @@
     font-weight: $fw-r;
     letter-spacing: 0.5px;
     border-radius: $radius-lg !important;
-    padding: 10px 40px;
+    padding: 10px 0;
+    text-align: center;
 
     &-primary {
         background-color: $blue-600;
@@ -32,7 +33,7 @@
     &-secondary {
         background-color: $white;
         color: $black;
-        padding: 10px 30px;
+        // padding: 10px 30px;
 
         &:hover {
             background-color: $black;

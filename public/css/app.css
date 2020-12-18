@@ -11201,7 +11201,8 @@ h6 {
   font-weight: 400;
   letter-spacing: 0.5px;
   border-radius: 20px !important;
-  padding: 10px 40px;
+  padding: 10px 0;
+  text-align: center;
 }
 
 .my-btn-primary {
@@ -11229,7 +11230,6 @@ h6 {
 .my-btn-secondary {
   background-color: #ffffff;
   color: #0C120C;
-  padding: 10px 30px;
 }
 
 .my-btn-secondary:hover {

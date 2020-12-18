@@ -13,16 +13,18 @@
                         <div class="row mt-4">
                             @forelse(Auth::user()->reading as $book)
                                 <div class="col-4">
-                                    <div class="card shadow rounded mb-4" style="min-height: 500px">
-                                        <div class="card-body">
-                                            <img src="{{ $book->image }}" class="mb-4 ">
-                                            <h6> {{ $book->title }}</h6>
-                                            <p> {{ $book->description }}</p>
-                                            <h6> {{ $book->publish_date }}</h6>
-                                            <h6> {{ $book->page_count }}</h6>
-                                            <h6> {{ $book->publisher->name }}</h6>
+                                    <a href="{{ route('books.search.show', $book->id) }}">
+                                        <div class="card shadow rounded mb-4" style="min-height: 500px">
+                                            <div class="card-body">
+                                                <img src="{{ $book->image }}" class="mb-4 ">
+                                                <h6> {{ $book->title }}</h6>
+                                                <p> {{ $book->description }}</p>
+                                                <h6> {{ $book->publish_date }}</h6>
+                                                <h6> {{ $book->page_count }}</h6>
+                                                <h6> {{ $book->publisher->name }}</h6>
+                                            </div>
                                         </div>
-                                    </div>
+                                    </a>
                                 </div>
                             @empty
                                 <h5 class="ml-3 text-primary-400">No books found in this shelf</h5>

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\User;
 
 use App\Http\Controllers\Controller;
+use App\Models\Book;
 use Auth;
 use Illuminate\Http\Request;
 
@@ -41,23 +42,33 @@ class BookController extends Controller
      */
     public function store(Request $request, $id)
     {
+        $book = Book::findOrFail($id);
         $user = Auth::user();
 
-        if ($request->input('later')) {
-            $user->readLater()->attach($id, ['shelf' => 'Read Later']);
-            $request->session()->flash('success', 'Book successfully added to your shelf!');
-
-            return redirect()->route('user.books.shelf.index', 'later');
-        } else if ($request->input('reading')) {
-            $user->reading()->attach($id, ['shelf' => 'Reading']);
-            $request->session()->flash('success', 'Book successfully added to your shelf!');
-
+        //Check if user has book in shelf
+        if ($user->hasBook($book)) {
+            // Remove the book
+            $user->removeBook($book);
+            $request->session()->flash('danger', 'Book successfully removed from your shelf!');
             return redirect()->route('user.books.shelf.index', 'reading');
         } else {
-            $user->finishedReading()->attach($id, ['shelf' => 'Finished Reading']);
-            $request->session()->flash('success', 'Book successfully added to your shelf!');
+            // Check what list they selected and save the book
+            if ($request->input('later')) {
+                $user->readLater()->attach($id, ['shelf' => 'Read Later']);
+                $request->session()->flash('success', 'Book successfully added to your shelf!');
 
-            return redirect()->route('user.books.shelf.index', 'finished');
+                return redirect()->route('user.books.shelf.index', 'later');
+            } else if ($request->input('reading')) {
+                $user->reading()->attach($id, ['shelf' => 'Reading']);
+                $request->session()->flash('success', 'Book successfully added to your shelf!');
+
+                return redirect()->route('user.books.shelf.index', 'reading');
+            } else {
+                $user->finishedReading()->attach($id, ['shelf' => 'Finished Reading']);
+                $request->session()->flash('success', 'Book successfully added to your shelf!');
+
+                return redirect()->route('user.books.shelf.index', 'finished');
+            }
         }
 
     }
