@@ -11201,7 +11201,7 @@ h6 {
   font-weight: 400;
   letter-spacing: 0.5px;
   border-radius: 20px !important;
-  padding: 10px 0;
+  padding: 10px 16px;
   text-align: center;
 }
 
@@ -11326,7 +11326,11 @@ li {
 
 .card {
   border: none !important;
-  box-shadow: 0 0 0 1pt #F2F2F2 !important;
+  box-shadow: 0 0 0 1pt #E9ECEF !important;
+}
+
+.sidebar {
+  margin-top: 146px;
 }
 
 .login-left-container {

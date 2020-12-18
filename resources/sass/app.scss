@@ -36,8 +36,15 @@ li {
 
 .card {
     border: none !important;
-    box-shadow: 0 0 0 1pt $gray-6 !important;
+    box-shadow: 0 0 0 1pt $gray-5 !important;
 }
+
+
+// Sidebar
+.sidebar {
+    margin-top: 146px;
+}
+
 
 // Login page
 .login-left-container {

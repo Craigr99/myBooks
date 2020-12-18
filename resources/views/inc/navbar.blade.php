@@ -56,10 +56,10 @@
 
                     <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
                         <a class="dropdown-item" href="{{ route('user.home') }}">
-                            Dashboard
+                            <span class="fas fa-home mr-4 d-sm-none"></span> Dashboard
                         </a>
                         <a class="dropdown-item d-md-none" href="{{ route('user.profile') }}">
-                            Profile
+                            <span class="fas fa-user mr-4"></span> Profile
                         </a>
                         @if (Auth::user()->hasRole('admin'))
                             <a class="dropdown-item d-md-none" href="{{ route('admin.books.index') }}">
@@ -71,12 +71,25 @@
                         @endif
                         @if (Auth::user()->hasRole('user'))
                             <a class="dropdown-item d-md-none" href="#">
-                                Blogs
+                                <span class="fas fa-pen-alt mr-4"></span> Blogs
+                            </a>
+                            <a class="dropdown-item d-md-none" href="#">
+                                <span class="fas fa-pen-alt mr-4"></span> Reviews
+                            </a>
+                            <a class="dropdown-item d-md-none" href="#">
+                                <span class="fas fa-book-open mr-4"></span> Reading
+                            </a>
+                            <a class="dropdown-item d-md-none" href="#">
+                                <span class="fas fa-clipboard-list mr-4"></span> Want to read
+                            </a>
+                            <a class="dropdown-item d-md-none" href="#">
+                                <span class="fas fa-check mr-4"></span> Finished reading
                             </a>
                         @endif
-                        <a class="dropdown-item" href="{{ route('logout') }}"
+
+                        <a class="dropdown-item bg-gray-7" href="{{ route('logout') }}"
                             onclick="event.preventDefault();
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                         document.getElementById('logout-form').submit();">
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                     document.getElementById('logout-form').submit();">
                             {{ __('Logout') }}
                         </a>
 
