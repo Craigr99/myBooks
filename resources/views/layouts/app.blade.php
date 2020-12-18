@@ -27,6 +27,12 @@
     <div id="app">
         <main>
             @yield('content')
+            @if (Request::is(['login', 'register']))
+
+            @else
+                @include('inc.footer')
+            @endif
+
         </main>
     </div>
 </body>

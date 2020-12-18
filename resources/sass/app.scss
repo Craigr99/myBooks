@@ -152,7 +152,10 @@ li {
 }
 
 .footer {
-    background-color: #2F2E41;
+    background-color: #474657;
     color: $white;
-    padding: 100px;
+
+    &-outer {
+        background-color: #2F2E41;
+    }
 }

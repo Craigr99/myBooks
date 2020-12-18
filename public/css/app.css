@@ -11201,7 +11201,7 @@ h6 {
   font-weight: 400;
   letter-spacing: 0.5px;
   border-radius: 20px !important;
-  padding: 10px 16px;
+  padding: 10px 40px;
   text-align: center;
 }
 
@@ -11265,6 +11265,10 @@ h6 {
   border-color: transparent !important;
 }
 
+.my-btn-small {
+  padding: 10px !important;
+}
+
 .input-delete {
   border: none;
   background-color: transparent;
@@ -11280,6 +11284,10 @@ h6 {
 
 input {
   border-radius: 10px !important;
+}
+
+input[type=submit] {
+  border-radius: 0 !important;
 }
 
 input:focus {
@@ -11417,8 +11425,11 @@ li {
 }
 
 .footer {
-  background-color: #2F2E41;
+  background-color: #474657;
   color: #ffffff;
-  padding: 100px;
+}
+
+.footer-outer {
+  background-color: #2F2E41;
 }
 

@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
-    <div class="container-fluid  h-100 vh-100">
+    <div class="container-fluid">
         <div class="row">
             @include('inc.user.sidebar')
             <div class="col bg-gray-7">

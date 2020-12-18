@@ -1,37 +1,50 @@
 @extends('layouts.app')
 
 @section('content')
-    <div class="container-fluid bg-gray-7">
+    <div class="container-fluid">
         <div class="row">
             @include('inc.user.sidebar')
-            <div class="col">
+            <div class="col bg-gray-7">
                 <x-flash-message />
                 @include('inc.navbar')
-                <div class="col-sm-8 col-lg-9 col-xl-10 mt-5">
-                    <main class="text-center text-lg-left">
-                        <h4>Finished Reading</h4>
-                        <div class="row mt-4">
-                            @forelse(Auth::user()->finishedReading as $book)
-                                <div class="col-4">
-                                    <a href="{{ route('books.search.show', $book->id) }}">
-                                        <div class="card shadow rounded mb-4" style="min-height: 500px">
-                                            <div class="card-body">
-                                                <img src="{{ $book->image }}" class="mb-4 ">
-                                                <h6> {{ $book->title }}</h6>
-                                                <p> {{ $book->description }}</p>
-                                                <h6> {{ $book->publish_date }}</h6>
-                                                <h6> {{ $book->page_count }}</h6>
-                                                <h6> {{ $book->publisher->name }}</h6>
+                <div class="col-12 mt-5">
+                    <div class="card rounded p-5">
+                        <main class="text-center">
+                            <h4>Finished Reading</h4>
+                            <div class="row mt-5">
+                                @forelse(Auth::user()->finishedReading as $book)
+                                    <div class="col-12 col-lg-6 col-xl-4">
+                                        <a href="{{ route('books.search.show', $book->id) }}">
+                                            <div class="card shadow rounded mb-4">
+                                                <div class="card-body text-center">
+                                                    <img src="{{ $book->image }}" class="mb-4 image-fill">
+                                                    <h6 class="text-primary-700"> {{ $book->title }}</h6>
+                                                    <h6 class="my-4 text-gray-1"> {{ $book->authors[0]->name }}</h6>
+                                                    <hr class="w-75">
+                                                    <div class="d-flex flex-column px-5 mt-4">
+                                                        <form action="{{ route('user.books.store', $book->id) }}" method="POST">
+                                                            @csrf
+                                                            <button class="btn my-btn my-btn-primary w-100"><i
+                                                                    class="fas fa-minus-circle"></i> <span class="mx-2">Remove
+                                                                    book</span></button>
+                                                        </form>
+                                                        <button class="btn my-btn my-btn-secondary mt-3"><i
+                                                                class="fas fa-pen"></i> <span class="mx-2">Write a
+                                                                review</span></button>
+                                                    </div>
+                                                </div>
                                             </div>
-                                        </div>
-                                    </a>
-                                </div>
-                            @empty
-                                <h5 class="ml-3 text-primary-400">No books found in this shelf</h5>
-                            @endforelse
-                        </div>
+                                        </a>
+                                    </div>
+                                @empty
+                                    <div class="text-center w-100">
+                                        <h5 class="text-primary-400">No books found in this shelf</h5>
+                                    </div>
+                                @endforelse
+                            </div>
 
-                    </main>
+                        </main>
+                    </div>
                 </div>
             </div>
         </div>

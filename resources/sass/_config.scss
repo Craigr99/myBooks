@@ -5,7 +5,7 @@
     font-weight: $fw-r;
     letter-spacing: 0.5px;
     border-radius: $radius-lg !important;
-    padding: 10px 16px;
+    padding: 10px 40px;
     text-align: center;
 
 
@@ -69,6 +69,11 @@
         &:focus {
             border-color: transparent !important;
         }
+
+    }
+
+    &-small {
+        padding: 10px !important;
     }
 }
 
@@ -92,11 +97,15 @@
 input {
     border-radius: $radius !important;
 
+    &[type=submit] {
+        border-radius: 0 !important;
+    }
 
     &:focus {
         border-color: $blue-400 !important;
         box-shadow: 0 0 0 0.2rem rgba(48, 172, 255, 0.25) !important;
     }
+
 }
 
 ::placeholder {

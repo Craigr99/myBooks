@@ -50,8 +50,4 @@
             </div>
         </div>
     </main>
-
-
-    @include('inc.footer')
-
 @endsection
