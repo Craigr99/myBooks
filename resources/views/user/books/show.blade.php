@@ -42,7 +42,7 @@
                     @endif
                 @endif
                 <a class="btn my-btn my-btn-secondary my-btn-small mt-3 w-100" href="#"><i class="fas fa-pen"></i> <span
-                        class="mx-2">Write a review</span></a>
+                        class="mx-2"><i class="fas fa-pen"></i>Write a review</span></a>
             </div>
             <div class="col col-sm-8 col-lg-5 col-xl-7 mb-5 mb-md-0">
                 <div class="d-flex justify-content-between">

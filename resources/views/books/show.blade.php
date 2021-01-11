@@ -1,9 +1,9 @@
 @extends('layouts.app')
 
 @section('content')
-    @include('inc.navbar')
     {{-- {{ dd($item) }} --}}
     <div class="container">
+        @include('inc.navbar')
         <div class="row mt-5">
             <div class="col-2">
                 <img class="rounded" src="{{ $item['volumeInfo']['imageLinks']['thumbnail'] }}" width="160px"
@@ -11,7 +11,9 @@
                 @if (Auth::user()->hasRole('admin'))
                     <form action="{{ route('admin.books.add', $item['volumeInfo']['title']) }}" method="POST">
                         @csrf
-                        <button class="btn my-btn my-btn-light mt-4 mb-4 w-100" type="submit">Save to database</button>
+                        <button class="btn my-btn my-btn-small my-btn-primary mt-4 mb-4 w-100" type="submit"><i
+                                class="fas fa-bookmark"></i> Save to
+                            database</button>
                     </form>
                 @else
                     <form action="{{ route('user.books.store', $item['id']) }}" method="POST">
@@ -19,7 +21,8 @@
                         <button class="btn my-btn my-btn-light mt-4 mb-4 w-100" type="submit">Add to list</button>
                     </form>
                 @endif
-                <a class="btn my-btn my-btn-secondary w-100" href="#">Write a review</a>
+                <a class="btn my-btn my-btn-small my-btn-secondary w-100" href="#"><i class="fas fa-pen"></i> Write a
+                    review</a>
             </div>
             <div class="col-7">
                 <div class="d-flex justify-content-between">

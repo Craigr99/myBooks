@@ -70,17 +70,18 @@ class BookController extends Controller
      */
     public function show($id = null, $name = null)
     {
+        $book = Book::findOrFail($id);
+
         if (Auth::user()->hasRole('admin')) {
             $response = Http::get('https://www.googleapis.com/books/v1/volumes', [
                 'volumeId' => $id,
-                'q' => $name,
+                'q' => $book->title,
             ]);
 
             return view('books.show', [
                 'item' => $response->json()['items'][0],
             ]);
         } else {
-            $book = Book::findOrFail($id);
             return view('user.books.show', [
                 'book' => $book,
             ]);
