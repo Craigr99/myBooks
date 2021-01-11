@@ -16,7 +16,7 @@
                     <form method="POST" action="{{ route('admin.books.destroy', $id) }}">
                         <input type="hidden" value="DELETE" name="_method">
                         @csrf
-                        <input class="btn my-btn my-btn-danger" type="submit" value="Delete">
+                        <button class="btn my-btn my-btn my-btn-danger rounded" type="submit">Delete</button>
                     </form>
                     <button type="button" class="btn my-btn my-btn-outline" data-dismiss="modal">Cancel</button>
                 </div>

@@ -17,6 +17,7 @@ Route::get('/homepage', [App\Http\Controllers\HomeController::class, 'homepage']
 // Routes from api
 Route::post('/admin/books/search', [BookController::class, 'index'])->name('admin.books.search.index');
 Route::get('/books/show/{id}/{name?}', [BookController::class, 'show'])->name('books.search.show');
+Route::delete('/books/{name}', [BookController::class, 'destroy'])->name('books.destroy');
 
 // Admin routes
 Route::get('/admin/home', [App\Http\Controllers\Admin\HomeController::class, 'index'])->name('admin.home');
@@ -30,7 +31,7 @@ Route::post('/admin/books/{title}', [App\Http\Controllers\Admin\BookController::
 Route::get('/admin/books/{id}', [App\Http\Controllers\Admin\BookController::class, 'show'])->name('admin.books.show');
 Route::get('/admin/books/{id}/edit', [App\Http\Controllers\Admin\BookController::class, 'edit'])->name('admin.books.edit');
 Route::put('/admin/books/{id}', [App\Http\Controllers\Admin\BookController::class, 'update'])->name('admin.books.update');
-Route::delete('/admin/books/{id}', [App\Http\Controllers\Admin\BookController::class, 'destroy'])->name('admin.books.destroy');
+Route::delete('/admin/books/{id}/{name?}', [App\Http\Controllers\Admin\BookController::class, 'destroy'])->name('admin.books.destroy');
 
 Route::get('/admin/users', [App\Http\Controllers\Admin\UserController::class, 'index'])->name('admin.users.index');
 

@@ -9,19 +9,27 @@
                 <img class="rounded" src="{{ $item['volumeInfo']['imageLinks']['thumbnail'] }}" width="160px"
                     alt="Book cover image">
                 @if (Auth::user()->hasRole('admin'))
-                    <form action="{{ route('admin.books.add', $item['volumeInfo']['title']) }}" method="POST">
-                        @csrf
-                        <button class="btn my-btn my-btn-small my-btn-primary mt-4 mb-4 w-100" type="submit"><i
-                                class="fas fa-bookmark"></i> Save to
-                            database</button>
-                    </form>
+                    @if (App\Models\Book::where('title', '=', $item['volumeInfo']['title'])->exists())
+                        <form action="{{ route('books.destroy', $item['volumeInfo']['title']) }}" method="POST">
+                            <input type="hidden" value="DELETE" name="_method">
+                            @csrf
+                            <button class="btn my-btn my-btn-small my-btn-primary mt-4 mb-4 w-100" type="submit"><i
+                                    class="fas fa-bookmark"></i> Remove book</button>
+                        </form>
+                    @else
+                        <form action="{{ route('admin.books.add', $item['volumeInfo']['title']) }}" method="POST">
+                            @csrf
+                            <button class="btn my-btn my-btn-small my-btn-primary mt-4 mb-4 w-100" type="submit"><i
+                                    class="fas fa-bookmark mr-2"></i> Save book</button>
+                        </form>
+                    @endif
                 @else
                     <form action="{{ route('user.books.store', $item['id']) }}" method="POST">
                         @csrf
                         <button class="btn my-btn my-btn-light mt-4 mb-4 w-100" type="submit">Add to list</button>
                     </form>
                 @endif
-                <a class="btn my-btn my-btn-small my-btn-secondary w-100" href="#"><i class="fas fa-pen"></i> Write a
+                <a class="btn my-btn my-btn-small my-btn-secondary w-100" href="#"><i class="fas fa-pen mr-2"></i> Write a
                     review</a>
             </div>
             <div class="col-7">

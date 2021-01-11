@@ -7,17 +7,31 @@
             <div class="col col-sm-4 col-lg-3 col-xl-2 text-center text-sm-left mb-5 mb-sm-0">
                 <img class="rounded" src="{{ $book->image }}" width="160px" alt="Book cover image">
                 @if (Auth::user()->hasRole('admin'))
-                    <form action="{{ route('admin.books.add', $book['volumeInfo']['title']) }}" method="POST">
-                        @csrf
-                        <button class="btn my-btn my-btn-primary mt-4 mb-4 w-100" type="submit">Save to database</button>
-                    </form>
+                    @if (App\Models\Book::where('title', $book->title))
+                        <form action="{{ route('admin.books.destroy', $book->id) }}" method="POST">
+                            @csrf
+                            <input type="hidden" value="DELETE" name="_method">
+
+                            <button class="btn my-btn my-btn-small my-btn-primary mt-4 mb-4 w-100" type="submit"><i
+                                    class="fas fa-minus-circle mr-2"></i> Remove
+                                book</button>
+                        </form>
+
+                    @else
+                        <form action="{{ route('admin.books.add', $book->title) }}" method="POST">
+                            @csrf
+                            <button class="btn my-btn my-btn-small my-btn-primary mt-4 mb-4 w-100" type="submit"><i
+                                    class="fas fa-bookmark"></i> Save to
+                                database</button>
+                        </form>
+                    @endif
                 @else
 
                     @if (Auth::user()->hasBook($book))
                         <form action="{{ route('user.books.store', $book->id) }}" method="POST">
                             @csrf
                             <button class="btn my-btn my-btn-primary mt-4 w-100" name="remove" type="submit"><i
-                                    class="fas fa-minus-circle"></i> <span class="mx-2">Remove book</span></button>
+                                    class="fas fa-minus-circle mr-2"></i>Remove book</button>
                         </form>
                     @else
                         <div class="btn-group" role="group" style="display: flex">
@@ -40,9 +54,11 @@
                             </div>
                         </div>
                     @endif
+
                 @endif
-                <a class="btn my-btn my-btn-secondary my-btn-small mt-3 w-100" href="#"><i class="fas fa-pen"></i> <span
-                        class="mx-2"><i class="fas fa-pen"></i>Write a review</span></a>
+                <a class="btn my-btn my-btn-secondary my-btn-small mt-3 w-100" href="#"><i class="fas fa-pen mr-2"></i>Write
+                    a
+                    review</a>
             </div>
             <div class="col col-sm-8 col-lg-5 col-xl-7 mb-5 mb-md-0">
                 <div class="d-flex justify-content-between">
