@@ -29,7 +29,7 @@
                                     </thead>
                                     <tbody>
                                         @foreach ($users as $user)
-                                            <tr>
+                                            <tr class="table-light">
                                                 <td>{{ $user->id }}</td>
                                                 <td>{{ $user->f_name }}</td>
                                                 <td>{{ $user->l_name }}</td>

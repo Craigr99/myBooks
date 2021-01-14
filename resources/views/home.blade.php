@@ -64,19 +64,21 @@
         </a>
     </div>
     <div class="container">
-        <h1>Home page</h1>
         <div class="row">
             @foreach ($books as $book)
-                <div class="col-4">
-                    <a href="{{ route('books.search.show', $book->id) }}">
-                        <div class="card shadow rounded mb-4" style="min-height: 500px">
+                <div class="col-4 d-flex">
+                    <a class="d-flex text-black w-100" href="{{ route('books.search.show', $book->id) }}">
+                        <div class="card shadow rounded mb-4 flex-1">
                             <div class="card-body">
-                                <img src="{{ $book->image }}" class="mb-4 ">
-                                <h6> {{ $book->title }}</h6>
-                                <p> {{ $book->description }}</p>
-                                <h6> {{ $book->publish_date }}</h6>
-                                <h6> {{ $book->page_count }}</h6>
-                                <h6> {{ $book->publisher->name }}</h6>
+                                <div class="text-center">
+                                    <img src="{{ $book->image }}" class="mb-3 rounded" height="300px">
+                                </div>
+                                <p class="text-gray-3 mb-2">4.5</p>
+                                <h5 class="font-medium text-primary-500 mb-2"> {{ $book->title }}</h5>
+                                <h6 class="font-light mb-3"> {{ $book->authors[0]->name }}</h6>
+                            </div>
+                            <div class="ml-4 bg-white mt-auto">
+                                <p class="text-gray-3"> {{ substr($book->publish_date, 0, 4) }}</p>
                             </div>
                         </div>
                     </a>

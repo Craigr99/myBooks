@@ -132,6 +132,11 @@
 
 
 
+.flex-1 {
+    flex: 1;
+}
+
+
 
 
 .shadow {
@@ -207,6 +212,10 @@
 
 .text-white {
     color: $white;
+}
+
+.text-black {
+    color: $black;
 }
 
 .text-purple {

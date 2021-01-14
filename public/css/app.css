@@ -11102,6 +11102,10 @@ h6 {
   margin-bottom: 18rem;
 }
 
+.flex-1 {
+  flex: 1;
+}
+
 .shadow {
   box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.25);
 }
@@ -11169,6 +11173,10 @@ h6 {
 
 .text-white {
   color: #ffffff;
+}
+
+.text-black {
+  color: #0C120C;
 }
 
 .text-purple {
@@ -11313,6 +11321,9 @@ a:hover {
 
 body {
   background-color: #ffffff;
+  display: flex;
+  flex-direction: column;
+  min-height: 100%;
 }
 
 ul {
@@ -11322,6 +11333,10 @@ ul {
 
 li {
   list-style: none;
+}
+
+a:hover .card {
+  color: initial;
 }
 
 .flash {
@@ -11416,7 +11431,7 @@ li {
 }
 
 .card .header {
-  background-color: #64B5F6;
+  background-color: #1E88E5;
   color: #ffffff;
   padding: 20px 0 20px 20px;
   border-top-left-radius: 10px;
@@ -11427,6 +11442,7 @@ li {
 .footer {
   background-color: #474657;
   color: #ffffff;
+  margin-top: auto;
 }
 
 .footer-outer {

@@ -34,7 +34,7 @@
                                     </thead>
                                     <tbody>
                                         @foreach ($books as $book)
-                                            <tr>
+                                            <tr class="table-light">
                                                 <td>{{ $book->id }}</td>
                                                 <td>{{ $book->title }}</td>
                                                 <td>

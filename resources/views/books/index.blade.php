@@ -1,37 +1,39 @@
 @extends('layouts.app')
 
 @section('content')
-    @include('inc.navbar')
 
     <div class="container">
+        @include('inc.navbar')
         <div class="row">
             @if (isset($data))
                 @foreach ($data as $item)
-                    <div class="col-3">
-                        <a href="{{ route('books.search.show', [$item['id'], $item['volumeInfo']['title']]) }}">
-                            <div class="card shadow rounded mb-4" style="min-height: 500px">
+                    <div class="col-md-4 d-flex">
+                        <a class="d-flex text-black w-100"
+                            href="{{ route('books.search.show', [$item['id'], $item['volumeInfo']['title']]) }}">
+                            <div class="card shadow rounded mb-4 flex-1">
                                 <div class="card-body">
                                     @if (isset($item['volumeInfo']['imageLinks']['thumbnail']))
-                                        <img src="{{ $item['volumeInfo']['imageLinks']['thumbnail'] }}" class="mb-4 ">
+                                        <div class="text-center">
+                                            <img src="{{ $item['volumeInfo']['imageLinks']['thumbnail'] }}" class="mb-4 ">
+                                        </div>
                                     @endif
-                                    <h6> {{ $item['volumeInfo']['title'] }}</h6>
+                                    <h5 class="font-medium text-primary-500 mb-2"> {{ $item['volumeInfo']['title'] }}</h5>
+                                    @if (isset($item['volumeInfo']['authors']))
+                                        <h6 class="font-light mb-3"> {{ implode('  ', $item['volumeInfo']['authors']) }}
+                                        </h6>
+                                    @else
+                                        Not found
+                                    @endif
 
                                 </div>
-                                <div class="card-footer">
-                                    <p><b>Authors</b>
-                                        @if (isset($item['volumeInfo']['authors']))
-                                            {{ implode('  ', $item['volumeInfo']['authors']) }}
-                                        @else
-                                            Not found
-                                        @endif
-
-                                    </p>
-                                    <p><b>Published</b>
-                                        @if (isset($item['volumeInfo']['publishedDate']))
-                                            {{ $item['volumeInfo']['publishedDate'] }}
-                                        @else
-                                            Not found
-                                        @endif
+                                {{-- card footer --}}
+                                <div class="ml-4 bg-white mt-auto">
+                                    @if (isset($item['volumeInfo']['publishedDate']))
+                                        <p class="text-gray-3">
+                                            {{ date('d-m-Y', strtotime($item['volumeInfo']['publishedDate'])) }} </p>
+                                    @else
+                                        Not found
+                                    @endif
                                     </p>
                                 </div>
                             </div>
