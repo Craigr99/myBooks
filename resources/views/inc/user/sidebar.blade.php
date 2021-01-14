@@ -16,7 +16,7 @@
                         class="fas fa-home mr-4"></span>Home</a>
             </li>
             <li class="list-item my-2 {{ Request::is('user/profile') ? 'active' : '' }}">
-                <a href="{{ route('user.profile') }}" class="btn my-btn btn-block"><span
+                <a href="{{ route('user.profile.index') }}" class="btn my-btn btn-block"><span
                         class="fas fa-user mr-4"></span>Profile</a>
             </li>
             <li class="list-item my-2">

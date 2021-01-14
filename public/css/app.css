@@ -11439,6 +11439,47 @@ a:hover .card {
   width: 80%;
 }
 
+.profile-header {
+  height: 200px;
+}
+
+@media (min-width: 768px) {
+  .profile-header {
+    height: 300px;
+  }
+}
+
+.profile-img {
+  width: 160px;
+  position: absolute;
+  height: 160px;
+  top: 80px;
+  left: 50%;
+  transform: translateX(-50%);
+  margin-right: 100px;
+}
+
+@media (min-width: 768px) {
+  .profile-img {
+    width: 120px;
+    height: 120px;
+    left: 14%;
+    top: 240px;
+  }
+}
+
+@media (min-width: 992px) {
+  .profile-img {
+    width: 200px;
+    position: absolute;
+    height: 200px;
+    top: 150px;
+    left: 5%;
+    margin-right: 100px;
+    transform: none;
+  }
+}
+
 .footer {
   background-color: #474657;
   color: #ffffff;

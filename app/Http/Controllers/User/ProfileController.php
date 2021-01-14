@@ -17,7 +17,12 @@ class ProfileController extends Controller
     }
     public function index()
     {
-        return view('user.profile');
+        return view('user.profile.index');
+    }
+
+    public function edit()
+    {
+        return view('user.profile.edit');
     }
 
     public function update(Request $request)
@@ -54,6 +59,6 @@ class ProfileController extends Controller
 
         $request->session()->flash('info', 'Profile updated successfully!');
 
-        return redirect()->route('user.profile');
+        return redirect()->route('user.profile.index');
     }
 }

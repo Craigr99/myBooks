@@ -58,7 +58,7 @@
                         <a class="dropdown-item" href="{{ route('user.home') }}">
                             <span class="fas fa-home mr-4 d-sm-none"></span> Dashboard
                         </a>
-                        <a class="dropdown-item d-md-none" href="{{ route('user.profile') }}">
+                        <a class="dropdown-item d-md-none" href="{{ route('user.profile.index') }}">
                             <span class="fas fa-user mr-4"></span> Profile
                         </a>
                         @if (Auth::user()->hasRole('admin'))
@@ -89,7 +89,7 @@
 
                         <a class="dropdown-item bg-gray-7" href="{{ route('logout') }}"
                             onclick="event.preventDefault();
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                     document.getElementById('logout-form').submit();">
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                         document.getElementById('logout-form').submit();">
                             {{ __('Logout') }}
                         </a>
 
