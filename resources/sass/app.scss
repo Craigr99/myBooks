@@ -48,6 +48,12 @@ a:hover .card {
 }
 
 
+// Navbar 
+.dropdown-menu {
+    border-radius: $radius !important;
+    border: 1px solid $gray-4 !important;
+}
+
 // Sidebar
 .sidebar {
     margin-top: 146px;

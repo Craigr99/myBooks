@@ -10908,6 +10908,7 @@ p {
   font-size: 16px;
   font-weight: 400;
   letter-spacing: 0.5px;
+  margin: 0;
 }
 
 h1,
@@ -11350,6 +11351,11 @@ a:hover .card {
 .card {
   border: none !important;
   box-shadow: 0 0 0 1pt #E9ECEF !important;
+}
+
+.dropdown-menu {
+  border-radius: 10px !important;
+  border: 1px solid #BDBDBD !important;
 }
 
 .sidebar {

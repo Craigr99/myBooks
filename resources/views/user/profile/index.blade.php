@@ -10,14 +10,24 @@
                 <div class="row">
                     <div class="col col-lg-10 mt-5 position-relative">
                         <main class="card rounded">
-                            <img class="profile-header rounded-top image-fill" src="{{ asset('img/header.jpg') }}"
-                                height="300px">
+                            {{-- Header image --}}
+                            @if (Auth::user()->header_image !== 'default_header.png')
+                                <img class="profile-header rounded-top image-fill"
+                                    src="{{ asset('storage/images/' . Auth::user()->header_image) }}" height="300px">
+                            @else
+                                <img class="profile-header rounded-top image-fill" src="{{ asset('img/header.jpg') }}"
+                                    height="300px">
+                            @endif
+                            {{-- Profile image --}}
                             @if (Auth::user()->image !== 'default.png')
                                 <img src="{{ asset('storage/images/' . Auth::user()->image) }}"
                                     class="profile-img rounded-circle image-fill" />
                             @else
-                                <img src="{{ asset('img/default.png') }}" class="profile-img rounded-circle image-fill" />
+                                <img src="{{ asset('img/default.png') }}"
+                                    class="profile-img rounded-circle image-fill border" />
                             @endif
+
+                            {{-- Card body --}}
                             <div class="card-body vh-100">
                                 <div class="row border-bottom">
                                     <div
@@ -31,12 +41,16 @@
                                                         {{ Auth::user()->username }}
                                                     </p>
                                                 </div>
-                                                <p class="bio w-75 text-gray-3 d-none d-xl-block">
-                                                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Possimus
-                                                    quibusdam beatae et asperiores odio suscipit assumenda aperiam alias.
-                                                    Adipisci, veritatis perspiciatis laudantium odit velit eaque eligendi
-                                                    dolorem repudiandae similique debitis.
-                                                </p>
+                                                <a class="bio w-75 text-accent-100 d-lg-none" data-toggle="collapse"
+                                                    href="#bioCollapse" role="button" aria-expanded="false"
+                                                    aria-controls="bioCollapse">
+                                                    <p>About me..</p>
+                                                </a>
+                                                <div class="collapse mb-3 d-lg-block" id="bioCollapse">
+                                                    <p class="mt-lg-2">
+                                                        {{ Auth::user()->bio }}
+                                                    </p>
+                                                </div>
                                                 <div class="followers d-flex text-gray-3">
                                                     <p class="mr-3">Followers: <b>122</b></p>
                                                     <p>Following: <b>1222</b></p>
@@ -56,17 +70,31 @@
                                         </div>
                                     </div>
                                 </div>
-                                {{-- Profile Blogs & Reviews --}}
+                                {{-- Profile Blogs & Reviews
+                                --}}
                                 <div class="d-flex">
-                                    <button class="btn w-100 btn-link border-right">Blogs</button>
-                                    <button class="btn w-100 btn-link">Reviews</button>
+                                    <button class="btn w-100 btn-link border-right">Reviews</button>
+                                    <button class="btn w-100 btn-link">Blogs</button>
                                 </div>
                         </main>
                     </div>
                     {{-- Following bar --}}
-                    <div class="col-lg-2 mt-5">
-                        <aside class="red">
-                            s
+                    <div class="col-lg-2 mt-5 d-none d-lg-block">
+                        <aside class="following">
+                            <div class="card rounded">
+                                <div class="header">
+                                    <p class="font-medium m-0">Following</p>
+                                </div>
+                                <div class="card-body">
+                                    @for ($i = 0; $i < 4; $i++)
+                                        <div class="d-flex align-items-center mb-3">
+                                            <img class="border rounded-circle image-fill" width="40px" height="40px"
+                                                src="{{ asset('img/default.png') }}" alt="Profile image">
+                                            <p class="ml-3 m-0">Test name</p>
+                                        </div>
+                                    @endfor
+                                </div>
+                            </div>
                         </aside>
                     </div>
                 </div>
