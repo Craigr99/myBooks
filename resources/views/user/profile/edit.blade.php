@@ -60,7 +60,7 @@
                                 <label for="bio">Bio</label>
                                 <textarea name="bio" id="bio"
                                     class="form-control {{ $errors->has('bio') ? 'is-invalid' : '' }}"
-                                    placeholder="Enter bio">{{ Auth::user()->bio }}</textarea>
+                                    placeholder="Enter bio" rows="4">{{ Auth::user()->bio }}</textarea>
                                 @if ($errors->has('bio'))
                                     <span class="invalid-feedback">
                                         {{ $errors->first('bio') }}
