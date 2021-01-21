@@ -62,10 +62,10 @@
                                             <div>
                                                 @if ($user->id == Auth::user()->id)
                                                     <a class="btn my-btn my-btn-outline my-btn-small d-md-none"
-                                                        href="{{ route('user.profile.edit') }}">Edit
+                                                        href="{{ route('user.profile.edit', Auth::user()->id) }}">Edit
                                                         profile</a>
                                                     <a class="btn my-btn my-btn-outline d-none d-md-block"
-                                                        href="{{ route('user.profile.edit') }}">Edit
+                                                        href="{{ route('user.profile.edit', Auth::user()->id) }}">Edit
                                                         profile</a>
 
                                                 @else

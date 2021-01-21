@@ -25,7 +25,7 @@ class ProfileController extends Controller
         ]);
     }
 
-    public function edit()
+    public function edit($id)
     {
         return view('user.profile.edit');
     }
@@ -75,7 +75,7 @@ class ProfileController extends Controller
 
         $request->session()->flash('info', 'Profile updated successfully!');
 
-        return redirect()->route('user.profile.index');
+        return redirect()->route('user.profile.index', $user->id);
     }
 
 }

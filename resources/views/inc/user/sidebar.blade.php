@@ -15,7 +15,7 @@
                 <a href="{{ route('user.home') }}" class="btn my-btn btn-block"><span
                         class="fas fa-home mr-4"></span>Home</a>
             </li>
-            <li class="list-item my-2 {{ Request::is('user/profile') ? 'active' : '' }}">
+            <li class="list-item my-2 {{ request()->is('user/profile*') ? 'active' : '' }}">
                 <a href="{{ route('user.profile.index', Auth::user()->id) }}" class="btn my-btn btn-block"><span
                         class="fas fa-user mr-4"></span>Profile</a>
             </li>
