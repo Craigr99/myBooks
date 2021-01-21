@@ -133,6 +133,16 @@ class User extends Authenticatable
         return $this->follow($user);
     }
 
+    // get number of Users that follow a user
+    public function followers()
+    {
+        return $this->belongsToMany(
+            User::class,
+            'follows',
+            'following_user_id',
+            'user_id')->withTimestamps()->count();
+    }
+
     // The users that a user follows
     public function follows()
     {

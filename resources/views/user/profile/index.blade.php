@@ -52,8 +52,10 @@
                                                     </p>
                                                 </div>
                                                 <div class="followers d-flex text-gray-2">
-                                                    <p class="mr-3">Followers: <b>122</b></p>
-                                                    <p>Following: <b>1222</b></p>
+                                                    <p class="mr-3">Followers:
+                                                        <b>{{ $user->followers() }}</b>
+                                                    </p>
+                                                    <p>Following: <b>{{ $user->follows->count() }}</b></p>
                                                 </div>
                                                 <p class="text-gray-2 mt-2">Member since: <br class="d-sm-none" />
                                                     <b>{{ date('d-m-Y', strtotime($user->created_at)) }}</b>
@@ -106,7 +108,7 @@
                                                     src="{{ asset('img/default.png') }}" width="40px" height="40px">
                                             @endif
                                             <a href="{{ route('user.profile.index', $user->id) }}">
-                                                <p class="ml-3 m-0">{{ $user->f_name }} {{ $user->l_name }}</p>
+                                                <p class="ml-3 m-0 text-black">{{ $user->f_name }} {{ $user->l_name }}</p>
                                             </a>
                                         </div>
                                     @endforeach
