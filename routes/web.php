@@ -37,8 +37,11 @@ Route::get('/admin/users', [App\Http\Controllers\Admin\UserController::class, 'i
 
 // User routes
 Route::get('/user/home', [App\Http\Controllers\User\HomeController::class, 'index'])->name('user.home');
-Route::get('/user/profile', [App\Http\Controllers\User\ProfileController::class, 'index'])->name('user.profile');
-Route::put('/user', [App\Http\Controllers\User\ProfileController::class, 'update'])->name('user.profile.update');
 
 Route::get('/user/books/{name}', [App\Http\Controllers\User\BookController::class, 'index'])->name('user.books.shelf.index');
 Route::post('/user/books/{id}', [App\Http\Controllers\User\BookController::class, 'store'])->name('user.books.store');
+
+Route::get('/user/profile/{id}', [App\Http\Controllers\User\ProfileController::class, 'index'])->name('user.profile.index');
+Route::get('/user/profile/edit/{id}', [App\Http\Controllers\User\ProfileController::class, 'edit'])->name('user.profile.edit');
+Route::put('/user', [App\Http\Controllers\User\ProfileController::class, 'update'])->name('user.profile.update');
+Route::post('/user/profile/{id}/follow', [App\Http\Controllers\User\FollowsController::class, 'store'])->name('user.profile.store'); // follow a user

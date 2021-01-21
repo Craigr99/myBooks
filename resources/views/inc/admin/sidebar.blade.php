@@ -15,7 +15,7 @@
                     <a href="{{ route('admin.home') }}" class="btn my-btn btn-block"><span
                             class="fas fa-home mr-4"></span>Home</a>
                 </li>
-                <li class="list-item my-2 {{ Request::is('admin/profile') ? 'active' : '' }}">
+                <li class="list-item my-2 {{ request()->is('admin/profile*') ? 'active' : '' }}">
                     <a href="{{ route('admin.profile') }}" class="btn my-btn btn-block"><span
                             class="fas fa-user mr-4"></span>Profile</a>
                 </li>
@@ -27,11 +27,11 @@
             <ul class="nav-list list-group mt-5 px-3">
                 <p class="text-sm text-gray-4 ml-3">TABLES</p>
 
-                <li class="list-item my-2 {{ Request::is(['admin/books', 'admin/books/create']) ? 'active' : '' }}">
+                <li class="list-item my-2 {{ request()->is('admin/books*') ? 'active' : '' }}">
                     <a href="{{ route('admin.books.index') }}" class="btn my-btn btn-block"><span
                             class="fas fa-book mr-4"></span>Books</a>
                 </li>
-                <li class="list-item my-2 {{ Request::is(['admin/users']) ? 'active' : '' }}">
+                <li class="list-item my-2 {{ request()->is('admin/users*') ? 'active' : '' }}">
                     <a href="{{ route('admin.users.index') }}" class="btn my-btn btn-block"><span
                             class="fas fa-users mr-4"></span>Users</a>
                 </li>
