@@ -45,3 +45,6 @@ Route::get('/user/profile/{id}', [App\Http\Controllers\User\ProfileController::c
 Route::get('/user/profile/edit/{id}', [App\Http\Controllers\User\ProfileController::class, 'edit'])->name('user.profile.edit');
 Route::put('/user', [App\Http\Controllers\User\ProfileController::class, 'update'])->name('user.profile.update');
 Route::post('/user/profile/{id}/follow', [App\Http\Controllers\User\FollowsController::class, 'store'])->name('user.profile.store'); // follow a user
+
+Route::get('/user/blogs/create', [App\Http\Controllers\User\BlogController::class, 'create'])->name('user.blogs.create');
+Route::post('/user/blogs/store', [App\Http\Controllers\User\BlogController::class, 'store'])->name('user.blogs.store');

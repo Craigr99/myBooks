@@ -48,6 +48,11 @@ class User extends Authenticatable
         return $this->belongsToMany('App\Models\Book', 'user_book')->withPivot('user_id', 'book_id', 'shelf');
     }
 
+    public function blogs()
+    {
+        return $this->hasMany('App\Models\Blog');
+    }
+
     //return all books from the reading shelf for this user
     public function reading()
     {
