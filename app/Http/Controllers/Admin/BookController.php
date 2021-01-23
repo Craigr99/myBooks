@@ -1,4 +1,9 @@
 <?php
+# @Date:   2021-01-18T10:09:10+00:00
+# @Last modified time: 2021-01-23T14:37:06+00:00
+
+
+
 
 namespace App\Http\Controllers\Admin;
 
@@ -7,6 +12,8 @@ use App\Models\Author;
 use App\Models\Book;
 use App\Models\Category;
 use App\Models\Publisher;
+use App\Models\Review;
+use Auth;
 use DB;
 use Http;
 use Illuminate\Http\Request;
@@ -172,9 +179,11 @@ class BookController extends Controller
     public function show($id)
     {
         $book = Book::findOrFail($id);
+        $reviews = $book->reviews;
 
         return view('admin.books.show', [
             'book' => $book,
+            'reviews' => $reviews,
         ]);
     }
 
