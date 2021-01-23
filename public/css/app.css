@@ -10908,6 +10908,7 @@ p {
   font-size: 16px;
   font-weight: 400;
   letter-spacing: 0.5px;
+  margin: 0;
 }
 
 h1,
@@ -11352,6 +11353,11 @@ a:hover .card {
   box-shadow: 0 0 0 1pt #E9ECEF !important;
 }
 
+.dropdown-menu {
+  border-radius: 10px !important;
+  border: 1px solid #BDBDBD !important;
+}
+
 .sidebar {
   margin-top: 146px;
 }
@@ -11437,6 +11443,47 @@ a:hover .card {
   border-top-left-radius: 10px;
   border-bottom-right-radius: 10px;
   width: 80%;
+}
+
+.profile-header {
+  height: 200px;
+}
+
+@media (min-width: 768px) {
+  .profile-header {
+    height: 300px;
+  }
+}
+
+.profile-img {
+  width: 160px;
+  position: absolute;
+  height: 160px;
+  top: 80px;
+  left: 50%;
+  transform: translateX(-50%);
+  margin-right: 100px;
+}
+
+@media (min-width: 768px) {
+  .profile-img {
+    width: 120px;
+    height: 120px;
+    left: 14%;
+    top: 240px;
+  }
+}
+
+@media (min-width: 992px) {
+  .profile-img {
+    width: 200px;
+    position: absolute;
+    height: 200px;
+    top: 150px;
+    left: 5%;
+    margin-right: 100px;
+    transform: none;
+  }
 }
 
 .footer {

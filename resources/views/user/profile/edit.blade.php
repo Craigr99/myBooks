@@ -56,15 +56,42 @@
                                     </span>
                                 @endif
                             </div>
-                            <div class="custom-file">
-                                <input type="file" name="image"
-                                    class="custom-file-input {{ $errors->has('image') ? 'is-invalid' : '' }}" id="image">
-                                <label class="custom-file-label" for="image">Profile Image</label>
-                                @if ($errors->has('image'))
+                            <div class="form-group">
+                                <label for="bio">Bio</label>
+                                <textarea name="bio" id="bio"
+                                    class="form-control {{ $errors->has('bio') ? 'is-invalid' : '' }}"
+                                    placeholder="Enter bio" rows="4">{{ Auth::user()->bio }}</textarea>
+                                @if ($errors->has('bio'))
                                     <span class="invalid-feedback">
-                                        {{ $errors->first('image') }}
+                                        {{ $errors->first('bio') }}
                                     </span>
                                 @endif
+                            </div>
+                            <div class="form-group">
+                                <div class="custom-file">
+                                    <input type="file" name="image"
+                                        class="custom-file-input {{ $errors->has('image') ? 'is-invalid' : '' }}"
+                                        id="image">
+                                    <label class="custom-file-label" for="image">Profile Image</label>
+                                    @if ($errors->has('image'))
+                                        <span class="invalid-feedback">
+                                            {{ $errors->first('image') }}
+                                        </span>
+                                    @endif
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <div class="custom-file">
+                                    <input type="file" name="header_image"
+                                        class="custom-file-input {{ $errors->has('header_image') ? 'is-invalid' : '' }}"
+                                        id="header_image">
+                                    <label class="custom-file-label" for="header_image">Header Image</label>
+                                    @if ($errors->has('header_image'))
+                                        <span class="invalid-feedback">
+                                            {{ $errors->first('header_image') }}
+                                        </span>
+                                    @endif
+                                </div>
                             </div>
                             <button type="submit" class="btn my-btn my-btn-primary mt-3">Update</button>
                         </form>
