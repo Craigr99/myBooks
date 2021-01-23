@@ -1,4 +1,9 @@
 <?php
+# @Date:   2021-01-18T10:09:10+00:00
+# @Last modified time: 2021-01-23T13:18:21+00:00
+
+
+
 
 namespace App\Models;
 
@@ -42,6 +47,10 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+
+    public function reviews(){
+      return $this->hasMany('App\Models\Review');
+    }
 
     public function books()
     {

@@ -1,4 +1,9 @@
 <?php
+# @Date:   2021-01-18T10:09:12+00:00
+# @Last modified time: 2021-01-23T14:47:55+00:00
+
+
+
 
 use App\Http\Controllers\BookController;
 use Illuminate\Support\Facades\Auth;
@@ -33,6 +38,10 @@ Route::get('/admin/books/{id}/edit', [App\Http\Controllers\Admin\BookController:
 Route::put('/admin/books/{id}', [App\Http\Controllers\Admin\BookController::class, 'update'])->name('admin.books.update');
 Route::delete('/admin/books/{id}/{name?}', [App\Http\Controllers\Admin\BookController::class, 'destroy'])->name('admin.books.destroy');
 
+Route::get('/admin/books/{id}/reviews/create', [App\Http\Controllers\Admin\ReviewController::class, 'create'])->name('admin.reviews.create');
+Route::post('/admin/books/{id}/reviews/store', [App\Http\Controllers\Admin\ReviewController::class, 'store'])->name('admin.reviews.store');
+Route::delete('/admin/books/{id}/reviews/{rid}', [App\Http\Controllers\Admin\ReviewController::class, 'destroy'])->name('admin.reviews.destroy');
+
 Route::get('/admin/users', [App\Http\Controllers\Admin\UserController::class, 'index'])->name('admin.users.index');
 
 // User routes
@@ -42,3 +51,6 @@ Route::put('/user', [App\Http\Controllers\User\ProfileController::class, 'update
 
 Route::get('/user/books/{name}', [App\Http\Controllers\User\BookController::class, 'index'])->name('user.books.shelf.index');
 Route::post('/user/books/{id}', [App\Http\Controllers\User\BookController::class, 'store'])->name('user.books.store');
+
+Route::get('/user/books/{id}/reviews/create', [App\Http\Controllers\User\ReviewController::class, 'create'])->name('user.reviews.create');
+Route::post('/user/books/{id}/reviews/store', [App\Http\Controllers\User\ReviewController::class, 'store'])->name('user.reviews.store');
