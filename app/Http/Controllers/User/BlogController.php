@@ -3,8 +3,9 @@
 namespace App\Http\Controllers\User;
 
 use App\Http\Controllers\Controller;
-use Illuminate\Http\Request;
 use App\Models\Blog;
+use App\Models\User;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
 class BlogController extends Controller
@@ -14,9 +15,12 @@ class BlogController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index($id)
     {
-        //
+        $user = User::findOrFail($id);
+        return view('user.profile.blogs.index', [
+            'user' => $user,
+        ]);
     }
 
     /**
@@ -40,7 +44,7 @@ class BlogController extends Controller
         $rules = [
             'title' => 'required|string|min:5|max:255',
             'subtitle' => 'nullable|string|min:5|max:255',
-            'body' => 'required|string|min:10|max:1000'
+            'body' => 'required|string|min:10|max:1000',
         ];
 
         $request->validate($rules);

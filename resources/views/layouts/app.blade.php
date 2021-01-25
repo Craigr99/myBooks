@@ -30,7 +30,7 @@
             @if (Request::is(['login', 'register']))
 
             @else
-                @include('inc.footer')
+                {{-- @include('inc.footer') --}}
             @endif
 
         </main>

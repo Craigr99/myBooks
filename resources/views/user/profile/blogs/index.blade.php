@@ -86,24 +86,28 @@
                                     {{-- Profile Blogs & Reviews
                                     --}}
                                     <div class="d-flex">
-                                        <button
-                                            class="btn w-100 btn-link border-right border-top border-primary">Reviews</button>
-                                        <a href="{{ route('user.blogs.index', $user->id) }}"
-                                            class="btn w-100 btn-link border-top">Blogs</a>
+                                        <a href="{{ route('user.profile.index', $user->id) }}"
+                                            class="btn w-100 btn-link border-right border-top">Reviews</a>
+                                        <button class="btn w-100 btn-link border-top border-primary">Blogs</button>
                                     </div>
 
                                     <div class="border-bottom border-top mt-5 py-4">
                                         <div class="d-flex justify-content-between align-items-center px-4">
-                                            <h5>Book Reviews</h5>
+                                            <h5>Blog posts</h5>
+                                            @if ($user->id == Auth::user()->id)
+                                                <a href="{{ route('user.blogs.create') }}"
+                                                    class="btn my-btn my-btn-outline">New
+                                                    Blog</a>
+                                            @endif
                                         </div>
                                     </div>
                                     <div class="d-flex flex-column">
-                                        @if (count($user->reviews) === 0)
-                                            <h4 class="p-4">No reviews found.</h4>
+                                        @if (count($user->blogs) === 0)
+                                            <h4 class="p-4">No blogs found.</h4>
                                         @endif
-                                        @foreach ($user->reviews as $review)
+                                        @foreach ($user->blogs as $blog)
                                             <div class="d-flex border-bottom py-4">
-                                                <div class="mr-3">
+                                                <div class="mr-4">
                                                     {{-- Profile image
                                                     --}}
                                                     @if ($user->image !== 'default.png')
@@ -116,10 +120,11 @@
                                                     @endif
                                                 </div>
                                                 <div class="d-flex flex-column">
-                                                    <h6 class="text-gray-4 mb-2">{{ $review->created_at->diffForHumans() }}
+                                                    <h6 class="text-gray-4 mb-2">{{ $blog->created_at->diffForHumans() }}
                                                     </h6>
-                                                    <h5 class="mb-3">{{ $review->title }}</h5>
-                                                    <p> {{ Str::limit($review->body, 140) }}</p>
+                                                    <h5>{{ $blog->title }}</h5>
+                                                    <p class="mt-2 mb-3">{{ $blog->subtitle }}</p>
+                                                    <p> {{ Str::limit($blog->body, 140) }}</p>
                                                     <a href="#" class="btn-link text-primary-600 mt-3">Read
                                                         more</a>
                                                 </div>

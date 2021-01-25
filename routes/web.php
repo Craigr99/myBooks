@@ -2,9 +2,6 @@
 # @Date:   2021-01-18T10:09:12+00:00
 # @Last modified time: 2021-01-23T14:47:55+00:00
 
-
-
-
 use App\Http\Controllers\BookController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
@@ -50,7 +47,6 @@ Route::get('/user/home', [App\Http\Controllers\User\HomeController::class, 'inde
 Route::get('/user/books/{name}', [App\Http\Controllers\User\BookController::class, 'index'])->name('user.books.shelf.index');
 Route::post('/user/books/{id}', [App\Http\Controllers\User\BookController::class, 'store'])->name('user.books.store');
 
-
 Route::get('/user/books/{id}/reviews/create', [App\Http\Controllers\User\ReviewController::class, 'create'])->name('user.reviews.create');
 Route::post('/user/books/{id}/reviews/store', [App\Http\Controllers\User\ReviewController::class, 'store'])->name('user.reviews.store');
 
@@ -59,5 +55,6 @@ Route::get('/user/profile/edit/{id}', [App\Http\Controllers\User\ProfileControll
 Route::put('/user', [App\Http\Controllers\User\ProfileController::class, 'update'])->name('user.profile.update');
 Route::post('/user/profile/{id}/follow', [App\Http\Controllers\User\FollowsController::class, 'store'])->name('user.profile.store'); // follow a user
 
+Route::get('/user/{id}/blogs', [App\Http\Controllers\User\BlogController::class, 'index'])->name('user.blogs.index');
 Route::get('/user/blogs/create', [App\Http\Controllers\User\BlogController::class, 'create'])->name('user.blogs.create');
 Route::post('/user/blogs/store', [App\Http\Controllers\User\BlogController::class, 'store'])->name('user.blogs.store');
