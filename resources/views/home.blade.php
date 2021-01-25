@@ -6,36 +6,14 @@
     <nav class="bg-gray-6">
         <div class="container d-flex justify-content-between align-items-center">
             <ul class="py-3 d-flex w-75 justify-content-between">
-                <li>
-                    <a href="#" class="text-primary-500">
-                        <h6>Action</h6>
-                    </a>
-                </li>
-                <li>
-                <li>
-                    <a href="#" class="text-primary-500">
-                        <h6>Action</h6>
-                    </a>
-                </li>
-                <li>
-                <li>
-                    <a href="#" class="text-primary-500">
-                        <h6>Action</h6>
-                    </a>
-                </li>
-                <li>
-                <li>
-                    <a href="#" class="text-primary-500">
-                        <h6>Action</h6>
-                    </a>
-                </li>
-                <li>
-                <li>
-                    <a href="#" class="text-primary-500">
-                        <h6>Action</h6>
-                    </a>
-                </li>
-                <li>
+                @foreach ($categories as $category)
+                    <li>
+                        <a href="{{ route('categories.books.index', $category->id) }}" class="text-primary-500">
+                            <h6>{{ $category->name }}</h6>
+                        </a>
+                    </li>
+
+                @endforeach
             </ul>
             <ul class="d-flex justify-content-between">
                 <li class="mr-5"><a href="#" class="text-primary-500">

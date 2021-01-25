@@ -125,7 +125,8 @@
                                                     <h5>{{ $blog->title }}</h5>
                                                     <p class="mt-2 mb-3">{{ $blog->subtitle }}</p>
                                                     <p> {{ Str::limit($blog->body, 140) }}</p>
-                                                    <a href="#" class="btn-link text-primary-600 mt-3">Read
+                                                    <a href="{{ route('user.blogs.show', $blog->id) }}"
+                                                        class="btn-link text-primary-600 mt-3">Read
                                                         more</a>
                                                 </div>
                                             </div>

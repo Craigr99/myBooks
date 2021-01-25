@@ -1,14 +1,12 @@
 <?php
 
-namespace App\Http\Controllers\User;
+namespace App\Http\Controllers;
 
-use App\Http\Controllers\Controller;
-use App\Models\Blog;
-use App\Models\User;
+use App\Models\Book;
+use App\Models\Category;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Auth;
 
-class BlogController extends Controller
+class CategoryController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -17,9 +15,15 @@ class BlogController extends Controller
      */
     public function index($id)
     {
-        $user = User::findOrFail($id);
-        return view('user.profile.blogs.index', [
-            'user' => $user,
+        $books = Book::all();
+        $category = Category::findOrFail($id);
+        $books = $category->books()->paginate(10);
+        $categories = Category::all();
+
+        return view('books.categories.index', [
+            'books' => $books,
+            'categories' => $categories,
+            'cat' => $category,
         ]);
     }
 
@@ -30,7 +34,7 @@ class BlogController extends Controller
      */
     public function create()
     {
-        return view('user.profile.blogs.create');
+        //
     }
 
     /**
@@ -41,25 +45,7 @@ class BlogController extends Controller
      */
     public function store(Request $request)
     {
-        $rules = [
-            'title' => 'required|string|min:5|max:255',
-            'subtitle' => 'nullable|string|min:5|max:255',
-            'body' => 'required|string|min:10|max:1000',
-        ];
-
-        $request->validate($rules);
-
-        $blog = new Blog;
-        $blog->title = $request->title;
-        $blog->subtitle = $request->subtitle;
-        $blog->body = $request->body;
-        $blog->user_id = Auth::id();
-
-        $blog->save();
-
-        $request->session()->flash('success', 'Blog posted successfully!');
-
-        return redirect()->route('user.profile.index', Auth::id());
+        //
     }
 
     /**
@@ -70,12 +56,7 @@ class BlogController extends Controller
      */
     public function show($id)
     {
-        $blog = Blog::findOrFail($id);
-
-        return view('user.profile.blogs.show', [
-            'blog' => $blog,
-        ]);
-
+        //
     }
 
     /**

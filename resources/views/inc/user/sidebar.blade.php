@@ -22,12 +22,6 @@
             <li class="list-item my-2">
                 <a href="#" class="btn my-btn btn-block"><span class="fas fa-users mr-4"></span>Following</a>
             </li>
-            <li class="list-item my-2">
-                <a href="#" class="btn my-btn btn-block"><span class="fas fa-pen-alt mr-4"></span>Blogs</a>
-            </li>
-            <li class="list-item my-2">
-                <a href="#" class="btn my-btn btn-block"><span class="fas fa-pen-alt mr-4"></span>Reviews</a>
-            </li>
         </ul>
 
         <ul class="nav-list list-group mt-5 px-3">
