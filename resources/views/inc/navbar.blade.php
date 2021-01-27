@@ -56,7 +56,7 @@
 
                     <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
                         <a class="dropdown-item" href="{{ route('user.home') }}">
-                            <span class="fas fa-home mr-4 d-sm-none"></span> Dashboard
+                            <span class="fas fa-home mr-4"></span> Dashboard
                         </a>
                         <a class="dropdown-item d-md-none" href="{{ route('user.profile.index', Auth::user()->id) }}">
                             <span class="fas fa-user mr-4"></span> Profile
@@ -88,7 +88,7 @@
                         @endif
                         <a class="dropdown-item bg-gray-7" href="{{ route('logout') }}"
                             onclick="event.preventDefault();
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                     document.getElementById('logout-form').submit();">
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                         document.getElementById('logout-form').submit();">
                             <span class="fas fa-sign-out-alt mr-4"></span>
                             Logout
                         </a>
