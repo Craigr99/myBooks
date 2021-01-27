@@ -1,6 +1,6 @@
 <nav class="navbar navbar-expand-md navbar-light py-4">
     <a href="{{ route('homepage') }}">
-        <h4 class="text-gray-1 mr-5">myBooks</h4>
+        <h5 class="text-gray-1 mr-5">myBooks</h5>
     </a>
     @if (Auth::user()->hasRole('admin'))
         {{-- Search bar --}}
@@ -86,11 +86,11 @@
                                 <span class="fas fa-check mr-4"></span> Finished reading
                             </a>
                         @endif
-
                         <a class="dropdown-item bg-gray-7" href="{{ route('logout') }}"
                             onclick="event.preventDefault();
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                             document.getElementById('logout-form').submit();">
-                            {{ __('Logout') }}
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                     document.getElementById('logout-form').submit();">
+                            <span class="fas fa-sign-out-alt mr-4"></span>
+                            Logout
                         </a>
 
                         <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">

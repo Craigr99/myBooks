@@ -1,6 +1,6 @@
-@import url(https://fonts.googleapis.com/css2?family=Roboto:wght@300;
+@import url(https://fonts.googleapis.com/css2?family=Open+Sans&family=Poppins:wght@200;
 
-400&family=Rubik:wght@300;400;500&display=swap);@charset "UTF-8";
+300;500&display=swap);@charset "UTF-8";
 
 :root {
   --blue: #3490dc;
@@ -11995,12 +11995,12 @@ a.text-dark:focus {
 }
 
 body {
-  font-family: "Roboto", sans-serif;
+  font-family: "Open Sans", sans-serif;
   color: #0C120C;
 }
 
 p {
-  font-family: "Roboto", sans-serif;
+  font-family: "Open Sans", sans-serif;
   font-size: 16px;
   font-weight: 400;
   letter-spacing: 0.5px;
@@ -12013,7 +12013,7 @@ h3,
 h4,
 h5,
 h6 {
-  font-family: "Rubik", sans-serif;
+  font-family: "Poppins", sans-serif;
   margin: 0;
 }
 
@@ -12055,28 +12055,28 @@ h6 {
 }
 
 .subtitle-1 {
-  font-family: "Rubik", sans-serif;
+  font-family: "Poppins", sans-serif;
   font-size: 16px;
   font-weight: 400;
   letter-spacing: 0.15px;
 }
 
 .subtitle-2 {
-  font-family: "Rubik", sans-serif;
+  font-family: "Poppins", sans-serif;
   font-size: 14px;
   font-weight: 500;
   letter-spacing: 0.1px;
 }
 
 .caption {
-  font-family: "Roboto", sans-serif;
+  font-family: "Open Sans", sans-serif;
   font-size: 12px;
   font-weight: 400;
   letter-spacing: 0.4px;
 }
 
 .overline {
-  font-family: "Roboto", sans-serif;
+  font-family: "Open Sans", sans-serif;
   font-size: 10px;
   font-weight: 400;
   letter-spacing: 1.5px;
@@ -12085,6 +12085,10 @@ h6 {
 
 .text-sm {
   font-size: 12px;
+}
+
+.font-x-light {
+  font-weight: 200;
 }
 
 .font-light {
@@ -12299,6 +12303,18 @@ h6 {
 
 .text-gray-4 {
   color: #BDBDBD;
+}
+
+.text-gray-5 {
+  color: #E9ECEF;
+}
+
+.text-gray-6 {
+  color: #F2F2F2;
+}
+
+.text-gray-7 {
+  color: #F8F9FA;
 }
 
 .my-btn {

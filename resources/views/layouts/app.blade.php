@@ -21,6 +21,7 @@
 
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+    <link rel="stylesheet" href="https://drive.google.com/uc?id=1jLrfISsLUcRiwgNl0koSfsS6lylj0E7h">
 </head>
 
 <body>

@@ -14,10 +14,14 @@
                         </div>
 
                         <div class="col-md-6 px-md-4">
-                            <div class="d-flex align-items-center justify-content-center h-100 px-4">
+                            <div class="d-flex align-items-center justify-content-center h-100 px-5 px-sm-4">
                                 <form action="{{ route('register') }}" method="POST">
                                     @csrf
-                                    <h4 class="text-primary-500 mb-4">Create a myBooks <br> account</h4>
+                                    <h4 class="text-primary-500 mb-4">Create a <span>
+                                            <a href="{{ route('welcome') }}">
+                                                myBooks
+                                            </a>
+                                        </span> <br> account</h4>
                                     <div class="row form-group">
                                         <div class="col col-sm-6">
                                             <input id="f_name" type="text"
@@ -44,7 +48,7 @@
                                     </div>
 
                                     <div class="row form-group">
-                                        <div class="col-12 col-sm-6">
+                                        <div class="col col-sm-6">
                                             <input id="email" type="email"
                                                 class="form-control @error('email') is-invalid @enderror" name="email"
                                                 value="{{ old('email') }}" required autofocus placeholder="Email">
@@ -55,7 +59,7 @@
                                                 </span>
                                             @enderror
                                         </div>
-                                        <div class="col-12 col-sm-6 mt-3 mt-sm-0">
+                                        <div class="col col-sm-6">
                                             <input id="username" type="text"
                                                 class="form-control @error('username') is-invalid @enderror" name="username"
                                                 value="{{ old('username') }}" required autofocus placeholder="Username">

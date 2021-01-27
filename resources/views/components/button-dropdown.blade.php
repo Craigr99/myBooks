@@ -18,7 +18,7 @@
                     @csrf
                     <input class="dropdown-item py-2 my-btn-light border w-100" name="later" value="Want to read"
                         type="submit" />
-                    <input class="dropdown-item py-2 my-btn-light border w-100" name="reading" value="Currently reading"
+                    <input class="dropdown-item py-2 my-btn-light w-100" name="reading" value="Currently reading"
                         type="submit" />
                     <input class="dropdown-item py-2 my-btn-light border w-100" name="finished" value="Finished reading"
                         type="submit" />

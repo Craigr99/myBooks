@@ -19,51 +19,57 @@
                         </div>
 
                         <div class="col-md-6 px-5 px-lg-0">
-                            <div class="d-flex align-items-center justify-content-center h-100 ">
-                                <form action="{{ route('login') }}" method="POST">
-                                    @csrf
-                                    <h4 class="text-primary-500">Log in</h4>
-                                    <p class="my-4">Don’t have an account? <a href="{{ route('register') }}"
-                                            class="text-primary-500">Create one
-                                            now</a></p>
-                                    <input id="email" type="email" class="form-control @error('email') is-invalid @enderror"
-                                        name="email" value="{{ old('email') }}" required autofocus placeholder="Email">
+                            <div class="d-flex flex-column h-100 align-items-center justify-content-center">
+                                <a href="{{ route('welcome') }}" class="align-self-start pt-5 px-5 d-md-none">
+                                    <h5 class="text-gray-1">myBooks</h5>
+                                </a>
+                                <div class="d-flex align-items-center justify-content-center h-100">
+                                    <form action="{{ route('login') }}" method="POST">
+                                        @csrf
+                                        <h4 class="text-primary-500">Log in</h4>
+                                        <p class="my-4">Don’t have an account? <a href="{{ route('register') }}"
+                                                class="text-primary-500">Create one
+                                                now</a></p>
+                                        <input id="email" type="email"
+                                            class="form-control @error('email') is-invalid @enderror" name="email"
+                                            value="{{ old('email') }}" required autofocus placeholder="Email">
 
-                                    @error('email')
-                                        <span class="invalid-feedback" role="alert">
-                                            <strong>{{ $message }}</strong>
-                                        </span>
-                                    @enderror
+                                        @error('email')
+                                            <span class="invalid-feedback" role="alert">
+                                                <strong>{{ $message }}</strong>
+                                            </span>
+                                        @enderror
 
-                                    <input id="password" type="password"
-                                        class="form-control mt-3 @error('password') is-invalid @enderror" name="password"
-                                        required autocomplete="current-password" placeholder="Password">
+                                        <input id="password" type="password"
+                                            class="form-control mt-3 @error('password') is-invalid @enderror"
+                                            name="password" required autocomplete="current-password" placeholder="Password">
 
-                                    @error('password')
-                                        <span class="invalid-feedback" role="alert">
-                                            <strong>{{ $message }}</strong>
-                                        </span>
-                                    @enderror
+                                        @error('password')
+                                            <span class="invalid-feedback" role="alert">
+                                                <strong>{{ $message }}</strong>
+                                            </span>
+                                        @enderror
 
-                                    <div class="d-flex align-items-center mt-4 mb-3">
-                                        <button type="submit" class="btn my-btn my-btn-primary mr-3">Login</button>
-                                        <div class="form-check">
-                                            <input class="form-check-input" type="checkbox" name="remember" id="remember"
-                                                {{ old('remember') ? 'checked' : '' }}>
+                                        <div class="d-flex align-items-center mt-4 mb-3">
+                                            <button type="submit" class="btn my-btn my-btn-primary mr-3">Login</button>
+                                            <div class="form-check">
+                                                <input class="form-check-input" type="checkbox" name="remember"
+                                                    id="remember" {{ old('remember') ? 'checked' : '' }}>
 
-                                            <label class="form-check-label text-sm" for="remember">
-                                                Remember password
-                                            </label>
+                                                <label class="form-check-label text-sm" for="remember">
+                                                    Remember password
+                                                </label>
+                                            </div>
                                         </div>
-                                    </div>
-                                    <div class="text-center">
-                                        @if (Route::has('password.request'))
-                                            <a href="{{ route('password.request') }}" class="text-primary-500">
-                                                Forgot your password?
-                                            </a>
-                                        @endif
-                                    </div>
-                                </form>
+                                        <div class="text-center">
+                                            @if (Route::has('password.request'))
+                                                <a href="{{ route('password.request') }}" class="text-primary-500">
+                                                    Forgot your password?
+                                                </a>
+                                            @endif
+                                        </div>
+                                    </form>
+                                </div>
                             </div>
                         </div>
                     </div>
