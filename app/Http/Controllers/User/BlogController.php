@@ -59,7 +59,7 @@ class BlogController extends Controller
 
         $request->session()->flash('success', 'Blog posted successfully!');
 
-        return redirect()->route('user.profile.index', Auth::id());
+        return redirect()->route('user.blogs.index', Auth::id());
     }
 
     /**

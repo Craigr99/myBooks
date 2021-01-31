@@ -59,5 +59,6 @@ Route::get('/user/{id}/blogs', [App\Http\Controllers\User\BlogController::class,
 Route::get('/user/blogs/create', [App\Http\Controllers\User\BlogController::class, 'create'])->name('user.blogs.create');
 Route::get('/user/blogs/{id}', [App\Http\Controllers\User\BlogController::class, 'show'])->name('user.blogs.show');
 Route::post('/user/blogs/store', [App\Http\Controllers\User\BlogController::class, 'store'])->name('user.blogs.store');
+Route::get('/user/reviews/{id}', [App\Http\Controllers\User\ReviewController::class, 'show'])->name('user.reviews.show');
 
 Route::get('/{category}/books', [App\Http\Controllers\CategoryController::class, 'index'])->name('categories.books.index');

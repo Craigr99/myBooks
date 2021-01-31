@@ -27,8 +27,8 @@
                                         </div>
                                     </a>
                                 </div>
-                            @empty
-                                <p>No books found in this shelf</p>
+                                @empty
+                                    <p class="ml-3">No books found in this shelf.</p>
                             @endforelse
                         </div>
                     </section>
@@ -58,7 +58,7 @@
                                         </a>
                                 </div>
                             @empty
-                                <p>No books found in this shelf</p>
+                                <p class="ml-2">No reviews found.</p>
                             @endforelse
 
                         </div>

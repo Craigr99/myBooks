@@ -83,8 +83,7 @@
                                     </div>
                                 </div>
                                 <section class="posts">
-                                    {{-- Profile Blogs & Reviews
-                                    --}}
+                                    {{-- Profile Blogs & Reviews --}}
                                     <div class="d-flex">
                                         <button
                                             class="btn w-100 btn-link border-right border-top border-primary">Reviews</button>
@@ -104,8 +103,7 @@
                                         @foreach ($user->reviews as $review)
                                             <div class="d-flex border-bottom py-4">
                                                 <div class="mr-3">
-                                                    {{-- Profile image
-                                                    --}}
+                                                    {{-- Profile image --}}
                                                     @if ($user->image !== 'default.png')
                                                         <img src="{{ asset('storage/images/' . $user->image) }}"
                                                             class="rounded-circle image-fill" height="70px" width="70px" />
@@ -116,11 +114,13 @@
                                                     @endif
                                                 </div>
                                                 <div class="d-flex flex-column">
-                                                    <h6 class="text-gray-4 mb-2">{{ $review->created_at->diffForHumans() }}
+                                                    <h6 class="text-gray-4 mb-2">
+                                                        {{ $review->created_at->diffForHumans() }}
                                                     </h6>
                                                     <h5 class="mb-3">{{ $review->title }}</h5>
                                                     <p> {{ Str::limit($review->body, 140) }}</p>
-                                                    <a href="#" class="btn-link text-primary-600 mt-3">Read
+                                                    <a href="{{ route('user.reviews.show', $review->id) }}"
+                                                        class="btn-link text-primary-600 mt-3">Read
                                                         more</a>
                                                 </div>
                                             </div>
@@ -142,13 +142,15 @@
                                         <div class="d-flex align-items-center mb-3">
                                             @if ($user->image !== 'default.png')
                                                 <img class="border rounded-circle image-fill" width="40px" height="40px"
-                                                    src="{{ asset('storage/images/' . $user->image) }}" alt="Profile image">
+                                                    src="{{ asset('storage/images/' . $user->image) }}"
+                                                    alt="Profile image">
                                             @else
                                                 <img class="border rounded-circle image-fill"
                                                     src="{{ asset('img/default.png') }}" width="40px" height="40px">
                                             @endif
                                             <a href="{{ route('user.profile.index', $user->id) }}">
-                                                <p class="ml-3 m-0 text-black">{{ $user->f_name }} {{ $user->l_name }}</p>
+                                                <p class="ml-3 m-0 text-black">{{ $user->f_name }} {{ $user->l_name }}
+                                                </p>
                                             </a>
                                         </div>
                                     @endforeach

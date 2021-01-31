@@ -2,23 +2,21 @@
 # @Date:   2021-01-23T13:49:52+00:00
 # @Last modified time: 2021-01-23T15:03:22+00:00
 
-
-
-
 namespace App\Http\Controllers\User;
 
 use App\Http\Controllers\Controller;
-use Illuminate\Http\Request;
 use App\Models\Book;
 use App\Models\Review;
-use Auth;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class ReviewController extends Controller
 {
 
-    public function __construct(){
-      $this->middleware('auth');
-      $this->middleware('role:user');
+    public function __construct()
+    {
+        $this->middleware('auth');
+        $this->middleware('role:user');
     }
     /**
      * Display a listing of the resource.
@@ -40,7 +38,7 @@ class ReviewController extends Controller
         $book = Book::findOrFail($id);
 
         return view('user.books.reviews.create', [
-          'book' => $book
+            'book' => $book,
         ]);
     }
 
@@ -70,7 +68,11 @@ class ReviewController extends Controller
      */
     public function show($id)
     {
-        //
+        $review = Review::findOrFail($id);
+
+        return view('user.profile.reviews.show', [
+            'review' => $review,
+        ]);
     }
 
     /**

@@ -21,7 +21,8 @@
                         <div class="col-md-6 px-5 px-lg-0">
                             <div class="d-flex flex-column h-100 align-items-center justify-content-center">
                                 <a href="{{ route('welcome') }}" class="align-self-start pt-5 px-5 d-md-none">
-                                    <h5 class="text-gray-1">myBooks</h5>
+                                    <small class="text-accent-300 ml-4"><span class="fas fa-long-arrow-alt-left"></span>
+                                        back home</small>
                                 </a>
                                 <div class="d-flex align-items-center justify-content-center h-100">
                                     <form action="{{ route('login') }}" method="POST">

@@ -16,7 +16,7 @@
                                 <label for="title">Title</label>
                                 <input type="text" name="title" id="title"
                                     class="form-control {{ $errors->has('title') ? 'is-invalid' : '' }}"
-                                    value="{{ old('title')}}" placeholder="Blog Title" />
+                                    value="{{ old('title') }}" placeholder="Blog Title" />
                                 @if ($errors->has('title'))
                                     <span class="invalid-feedback">
                                         {{ $errors->first('title') }}

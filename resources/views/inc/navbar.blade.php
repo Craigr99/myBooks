@@ -56,10 +56,10 @@
 
                     <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
                         <a class="dropdown-item" href="{{ route('user.home') }}">
-                            <span class="fas fa-home mr-4"></span> Dashboard
+                            <span class="fas fa-home text-gray-3 mr-4"></span> Dashboard
                         </a>
                         <a class="dropdown-item d-md-none" href="{{ route('user.profile.index', Auth::user()->id) }}">
-                            <span class="fas fa-user mr-4"></span> Profile
+                            <span class="fas fa-user text-gray-3 mr-4"></span> Profile
                         </a>
                         @if (Auth::user()->hasRole('admin'))
                             <a class="dropdown-item d-md-none" href="{{ route('admin.books.index') }}">
@@ -71,25 +71,25 @@
                         @endif
                         @if (Auth::user()->hasRole('user'))
                             <a class="dropdown-item d-md-none" href="#">
-                                <span class="fas fa-pen-alt mr-4"></span> Blogs
+                                <span class="fas fa-pen-alt text-gray-3 mr-4"></span> Blogs
                             </a>
                             <a class="dropdown-item d-md-none" href="#">
-                                <span class="fas fa-pen-alt mr-4"></span> Reviews
+                                <span class="fas fa-pen-alt text-gray-3 mr-4"></span> Reviews
                             </a>
                             <a class="dropdown-item d-md-none" href="#">
-                                <span class="fas fa-book-open mr-4"></span> Reading
+                                <span class="fas fa-book-open text-gray-3 mr-4"></span> Reading
                             </a>
                             <a class="dropdown-item d-md-none" href="#">
-                                <span class="fas fa-clipboard-list mr-4"></span> Want to read
+                                <span class="fas fa-clipboard-list text-gray-3 mr-4"></span> Want to read
                             </a>
                             <a class="dropdown-item d-md-none" href="#">
-                                <span class="fas fa-check mr-4"></span> Finished reading
+                                <span class="fas fa-check text-gray-3 mr-4"></span> Finished reading
                             </a>
                         @endif
                         <a class="dropdown-item bg-gray-7" href="{{ route('logout') }}"
                             onclick="event.preventDefault();
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                         document.getElementById('logout-form').submit();">
-                            <span class="fas fa-sign-out-alt mr-4"></span>
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                     document.getElementById('logout-form').submit();">
+                            <span class="fas fa-sign-out-alt mr-4 text-gray-2"></span>
                             Logout
                         </a>
 
@@ -102,7 +102,8 @@
         </ul>
         @if (Auth::user()->hasRole('admin'))
             {{-- Search bar --}}
-            <form action="{{ route('admin.books.search.index') }}" method="POST" class="form-inline my-lg-0 d-sm-none">
+            <form action="{{ route('admin.books.search.index') }}" method="POST"
+                class="form-inline my-lg-0 d-sm-none">
                 @csrf
                 <div class="d-flex align-items-center w-100">
                     <input name="title" class="form-control" type="search" placeholder="Search books"
