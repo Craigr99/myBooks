@@ -27,8 +27,8 @@
                                         </div>
                                     </a>
                                 </div>
-                                @empty
-                                    <p class="ml-3">No books found in this shelf.</p>
+                            @empty
+                                <p class="ml-3">No books found in this shelf.</p>
                             @endforelse
                         </div>
                     </section>
@@ -38,24 +38,22 @@
                         <h4 class="text-gray-1">Your reviews</h4>
 
                         <div class="row mt-4">
-                            @forelse(Auth::user()->reviews as $review)
+                            @forelse(Auth::user()->reviews()->paginate(3) as $review)
                                 <div class="col-12 col-md-6 col-lg-6 col-xl-4 d-flex">
-                                    {{-- <a class="d-flex text-black w-100"
-                                        href="{{ route('books.search.show', $book->id) }}"> --}}
-                                        <a class="d-flex text-black w-100" href="#">
-                                            <div class="card shadow rounded mb-4 flex-1">
-                                                <div class="card-body d-flex flex-md-column flex-lg-row">
-                                                    <img src="{{ $review->book->image }}"
-                                                        class="mb-4 mb-md-0 image-fill img-fluid rounded border">
-                                                    <div class="ml-3 ml-md-0 ml-lg-3 mt-3">
-                                                        <h5>3.6</h5>
-                                                        <h6 class="text-primary-700 mt-3 mb-4"> {{ $review->title }}</h6>
-                                                        <p class="text-gray-1">"{{ $review->body }}"</p>
+                                    <a class="d-flex text-black w-100" href="{{ route('user.reviews.show', $review->id) }}">
+                                        <div class="card shadow rounded mb-4 flex-1">
+                                            <div class="card-body d-flex flex-md-column flex-lg-row">
+                                                <img src="{{ $review->book->image }}"
+                                                    class="mb-4 mb-md-0 image-fill img-fluid rounded border">
+                                                <div class="ml-3 ml-md-0 ml-lg-3 mt-3">
+                                                    <h5>3.6</h5>
+                                                    <h6 class="text-primary-700 mt-3 mb-4"> {{ $review->title }}</h6>
+                                                    <p class="text-gray-1">"{{ $review->body }}"</p>
 
-                                                    </div>
                                                 </div>
                                             </div>
-                                        </a>
+                                        </div>
+                                    </a>
                                 </div>
                             @empty
                                 <p class="ml-2">No reviews found.</p>
