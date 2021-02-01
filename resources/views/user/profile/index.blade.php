@@ -97,10 +97,10 @@
                                         </div>
                                     </div>
                                     <div class="d-flex flex-column">
-                                        @if (count($user->reviews) === 0)
+                                        @if (count($reviews) === 0)
                                             <h4 class="p-4">No reviews found.</h4>
                                         @endif
-                                        @foreach ($user->reviews as $review)
+                                        @foreach ($reviews as $review)
                                             <div class="d-flex border-bottom py-4">
                                                 <div class="mr-3">
                                                     {{-- Profile image --}}
@@ -113,20 +113,28 @@
                                                             width="70px" />
                                                     @endif
                                                 </div>
-                                                <div class="d-flex flex-column">
-                                                    <h6 class="text-gray-4 mb-2">
-                                                        {{ $review->created_at->diffForHumans() }}
-                                                    </h6>
-                                                    <h5 class="mb-3">{{ $review->title }}</h5>
-                                                    <p> {{ Str::limit($review->body, 140) }}</p>
-                                                    <a href="{{ route('user.reviews.show', $review->id) }}"
-                                                        class="btn-link text-primary-600 mt-3">Read
-                                                        more</a>
+                                                <div class="d-flex">
+                                                    <img src="{{ $review->book->image }}" class="rounded img-fluid mr-3"
+                                                        width="80" />
+                                                    <div class="flex-column">
+                                                        <p class="text-gray-4 font-x-light mb-2">
+                                                            {{ $review->created_at->diffForHumans() }}
+                                                        </p>
+                                                        <h5 class="mb-3">{{ $review->title }}</h5>
+                                                        <p> {{ Str::limit($review->body, 140) }}</p>
+                                                        <a href="{{ route('user.reviews.show', $review->id) }}"
+                                                            class="btn-link text-primary-600 mt-3">Read
+                                                            more</a>
+                                                    </div>
                                                 </div>
                                             </div>
                                         @endforeach
                                     </div>
                                 </section>
+                                </table>
+                                <div class="d-flex justify-content-center mt-3">
+                                    {!! $reviews->links('pagination::bootstrap-4') !!}
+                                </div>
                             </div>
                         </main>
                     </div>

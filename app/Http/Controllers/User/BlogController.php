@@ -18,8 +18,11 @@ class BlogController extends Controller
     public function index($id)
     {
         $user = User::findOrFail($id);
+        $blogs = $user->blogs()->latest()->paginate(8);
+
         return view('user.profile.blogs.index', [
             'user' => $user,
+            'blogs' => $blogs,
         ]);
     }
 

@@ -83,8 +83,7 @@
                                     </div>
                                 </div>
                                 <section class="posts">
-                                    {{-- Profile Blogs & Reviews
-                                    --}}
+                                    {{-- Profile Blogs & Reviews --}}
                                     <div class="d-flex">
                                         <a href="{{ route('user.profile.index', $user->id) }}"
                                             class="btn w-100 btn-link border-right border-top">Reviews</a>
@@ -105,11 +104,10 @@
                                         @if (count($user->blogs) === 0)
                                             <h4 class="p-4">No blogs found.</h4>
                                         @endif
-                                        @foreach ($user->blogs as $blog)
+                                        @foreach ($blogs as $blog)
                                             <div class="d-flex border-bottom py-4">
                                                 <div class="mr-4">
-                                                    {{-- Profile image
-                                                    --}}
+                                                    {{-- Profile image --}}
                                                     @if ($user->image !== 'default.png')
                                                         <img src="{{ asset('storage/images/' . $user->image) }}"
                                                             class="rounded-circle image-fill" height="70px" width="70px" />
@@ -120,8 +118,9 @@
                                                     @endif
                                                 </div>
                                                 <div class="d-flex flex-column">
-                                                    <h6 class="text-gray-4 mb-2">{{ $blog->created_at->diffForHumans() }}
-                                                    </h6>
+                                                    <p class="text-gray-4 font-x-light mb-2">
+                                                        {{ $blog->created_at->diffForHumans() }}
+                                                    </p>
                                                     <h5>{{ $blog->title }}</h5>
                                                     <p class="mt-2 mb-3">{{ $blog->subtitle }}</p>
                                                     <p> {{ Str::limit($blog->body, 140) }}</p>
@@ -133,6 +132,10 @@
                                         @endforeach
                                     </div>
                                 </section>
+
+                                <div class="d-flex justify-content-center mt-3">
+                                    {!! $blogs->links('pagination::bootstrap-4') !!}
+                                </div>
                             </div>
                         </main>
                     </div>
@@ -148,13 +151,15 @@
                                         <div class="d-flex align-items-center mb-3">
                                             @if ($user->image !== 'default.png')
                                                 <img class="border rounded-circle image-fill" width="40px" height="40px"
-                                                    src="{{ asset('storage/images/' . $user->image) }}" alt="Profile image">
+                                                    src="{{ asset('storage/images/' . $user->image) }}"
+                                                    alt="Profile image">
                                             @else
                                                 <img class="border rounded-circle image-fill"
                                                     src="{{ asset('img/default.png') }}" width="40px" height="40px">
                                             @endif
                                             <a href="{{ route('user.profile.index', $user->id) }}">
-                                                <p class="ml-3 m-0 text-black">{{ $user->f_name }} {{ $user->l_name }}</p>
+                                                <p class="ml-3 m-0 text-black">{{ $user->f_name }} {{ $user->l_name }}
+                                                </p>
                                             </a>
                                         </div>
                                     @endforeach

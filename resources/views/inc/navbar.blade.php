@@ -1,7 +1,5 @@
 <nav class="navbar navbar-expand-md navbar-light py-4">
-    <a href="{{ route('homepage') }}">
-        <h5 class="text-gray-1 mr-5">myBooks</h5>
-    </a>
+    <x-logo></x-logo>
     @if (Auth::user()->hasRole('admin'))
         {{-- Search bar --}}
         <form action="{{ route('admin.books.search.index') }}" method="POST"
@@ -88,7 +86,7 @@
                         @endif
                         <a class="dropdown-item bg-gray-7" href="{{ route('logout') }}"
                             onclick="event.preventDefault();
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                         document.getElementById('logout-form').submit();">
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                     document.getElementById('logout-form').submit();">
                             <span class="fas fa-sign-out-alt mr-4 text-gray-2"></span>
                             Logout
                         </a>

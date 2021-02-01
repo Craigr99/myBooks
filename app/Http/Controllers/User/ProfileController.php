@@ -19,9 +19,11 @@ class ProfileController extends Controller
     public function index($id)
     {
         $user = User::find($id);
+        $reviews = $user->reviews()->latest()->paginate(8);
 
         return view('user.profile.index', [
             'user' => $user,
+            'reviews' => $reviews,
         ]);
     }
 
