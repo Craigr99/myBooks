@@ -48,6 +48,7 @@
                                                     <img src="{{ $review->book->image }}"
                                                         class="mb-4 mb-md-0 image-fill img-fluid rounded border">
                                                     <div class="ml-3 ml-md-0 ml-lg-3 mt-3">
+                                                        <h5 class="text-primary-700 mt-3 mb-4"> {{$review->book->title}}</h5>
                                                         <h5>3.6</h5>
                                                         <h6 class="text-primary-700 mt-3 mb-4"> {{ $review->title }}</h6>
                                                         <p class="text-gray-1">"{{ $review->body }}"</p>
