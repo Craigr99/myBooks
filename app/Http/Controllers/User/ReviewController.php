@@ -1,6 +1,6 @@
 <?php
 # @Date:   2021-01-23T13:49:52+00:00
-# @Last modified time: 2021-01-23T15:03:22+00:00
+# @Last modified time: 2021-02-01T10:16:08+00:00
 
 
 
@@ -59,7 +59,7 @@ class ReviewController extends Controller
         $review->book_id = $id;
         $review->save();
 
-        return redirect()->route('user.books.show', $id);
+        return redirect()->route('user.home');
     }
 
     /**
