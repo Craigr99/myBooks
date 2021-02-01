@@ -1,6 +1,6 @@
 <?php
 # @Date:   2021-01-18T10:09:12+00:00
-# @Last modified time: 2021-01-23T14:47:55+00:00
+# @Last modified time: 2021-02-01T10:14:31+00:00
 
 use App\Http\Controllers\BookController;
 use Illuminate\Support\Facades\Auth;
@@ -46,6 +46,7 @@ Route::get('/user/home', [App\Http\Controllers\User\HomeController::class, 'inde
 
 Route::get('/user/books/{name}', [App\Http\Controllers\User\BookController::class, 'index'])->name('user.books.shelf.index');
 Route::post('/user/books/{id}', [App\Http\Controllers\User\BookController::class, 'store'])->name('user.books.store');
+Route::get('/user/books/{id}', [App\Http\Controllers\User\BookController::class, 'show'])->name('user.books.show');
 
 Route::get('/user/books/{id}/reviews/create', [App\Http\Controllers\User\ReviewController::class, 'create'])->name('user.reviews.create');
 Route::post('/user/books/{id}/reviews/store', [App\Http\Controllers\User\ReviewController::class, 'store'])->name('user.reviews.store');

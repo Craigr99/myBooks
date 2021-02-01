@@ -30,7 +30,7 @@
                                 <label for="body">Body</label>
                                 <input type="text" class="form-control" id="body" name="body" value="{{ old('body') }}" />
                             </div>
-                            <a href="{{ route('user.books.show', $book->id) }}" class="btn btn-default">Cancel</a>
+                            <a href="{{ route('user.home') }}" class="btn btn-default">Cancel</a>
                             <button type="submit" class="btn btn-primary pull-right">Submit</button>
                         </form>
                     </div>
