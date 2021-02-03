@@ -41,25 +41,6 @@ class BookController extends Controller
         }
     }
 
-    public function store(Request $request)
-    {
-        $response = Http::get('https://www.googleapis.com/books/v1/volumes', [
-            'q' => $request->input('title'),
-            'maxResults' => 10,
-        ]);
-
-        if (isset($response->json()['items'])) {
-            foreach ($response->json()['items'] as $book) {
-                var_dump($book['volumeInfo']['publishedDate']);
-            }
-
-        } else {
-            return view('books.index', [
-                'data' => null,
-            ]);
-        }
-    }
-
     /**
      * Display the specified resource.
      *
