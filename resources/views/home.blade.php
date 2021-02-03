@@ -34,7 +34,14 @@
                                 <div class="text-center">
                                     <img src="{{ $book->image }}" class="mb-3 rounded img-fluid">
                                 </div>
-                                <p class="text-gray-3 mb-2">4.5</p>
+                                <div class="d-flex align-items-center mb-2">
+                                    <p class="text-gray-3 mr-3">4.5</p>
+                                    @foreach ($book->categories as $category)
+                                        <span
+                                            class="badge badge-pill badge-primary align-self-center">{{ $category->name }}</span>
+
+                                    @endforeach
+                                </div>
                                 <h5 class=" text-primary-500 mb-2"> {{ $book->title }}</h5>
                                 <h6 class="font-light mb-3"> {{ $book->authors[0]->name }}</h6>
                             </div>
