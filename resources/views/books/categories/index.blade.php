@@ -13,7 +13,7 @@
 
     <div class="container mt-5">
         <div class="row">
-            @foreach ($books as $book)
+            @forelse ($books as $book)
                 <div class="col-12 d-flex">
                     <a class="d-flex flex-column flex-md-row text-black" href="{{ route('books.search.show', $book->id) }}">
                         <div class="card shadow rounded mb-5 flex-1">
@@ -44,9 +44,12 @@
                             </div>
                         </div>
                     </a>
-
-                </div>
-            @endforeach
+                @empty
+                    <div class="w-100 text-center">
+                        <h4>No {{ $cat->name }} books found </h4>
+                    </div>
+                @endforelse
+            </div>
         </div>
         <div class="d-flex justify-content-center mb-5 ">
             {!! $books->links('pagination::bootstrap-4') !!}

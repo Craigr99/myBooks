@@ -13,9 +13,9 @@
                             <form action="{{ route('admin.books.search.index') }}" method="POST"
                                 class="form-inline my-2 my-lg-0 d-none d-sm-block">
                                 @csrf
-                                <input name="title" class="form-control mr-sm-2" type="search" placeholder="Search books"
+                                <input name="title" class="form-control" type="search" placeholder="Search books"
                                     aria-label="Search books">
-                                <button class="btn btn-outline-success rounded my-2 my-sm-0" type="submit">Search</button>
+                                <button class="btn my-btn-outline rounded my-2 my-sm-0" type="submit">Search</button>
                             </form>
                             <h4 class="mt-3">Add a new book</h4>
                             <form action="{{ route('admin.books.store') }}" method="POST" class="mt-5"
@@ -35,7 +35,7 @@
                                 </div>
                                 <div class="form-group">
                                     <label for="author">Authors</label>
-                                    <select multiple name="authors[]" id="author"
+                                    <select size="10" multiple name="authors[]" id="author"
                                         class="form-control {{ $errors->has('authors') ? 'is-invalid' : '' }}">
                                         @foreach ($authors as $author)
                                             <option value="{{ $author->id }}"
@@ -127,7 +127,7 @@
                                 </div>
                                 <div class="form-group">
                                     <label for="category">Categories</label>
-                                    <select multiple name="categories[]" id="category"
+                                    <select size="10" multiple name="categories[]" id="category"
                                         class="form-control {{ $errors->has('categories') ? 'is-invalid' : '' }}">
                                         @foreach ($categories as $category)
                                             <option value="{{ $category->id }}"
