@@ -4,9 +4,9 @@ namespace App\Http\Controllers;
 
 use App\Http\Controllers\Controller;
 use App\Models\Book;
-use Auth;
-use Http;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Http;
 
 class BookController extends Controller
 {
@@ -33,6 +33,25 @@ class BookController extends Controller
             return view('books.index', [
                 'data' => $response->json()['items'],
             ]);
+
+        } else {
+            return view('books.index', [
+                'data' => null,
+            ]);
+        }
+    }
+
+    public function store(Request $request)
+    {
+        $response = Http::get('https://www.googleapis.com/books/v1/volumes', [
+            'q' => $request->input('title'),
+            'maxResults' => 10,
+        ]);
+
+        if (isset($response->json()['items'])) {
+            foreach ($response->json()['items'] as $book) {
+                var_dump($book['volumeInfo']['publishedDate']);
+            }
 
         } else {
             return view('books.index', [
@@ -91,4 +110,5 @@ class BookController extends Controller
 
         return redirect()->route('admin.books.index');
     }
+
 }

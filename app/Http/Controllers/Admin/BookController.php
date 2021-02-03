@@ -2,9 +2,6 @@
 # @Date:   2021-01-18T10:09:10+00:00
 # @Last modified time: 2021-01-23T14:37:06+00:00
 
-
-
-
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
@@ -12,8 +9,6 @@ use App\Models\Author;
 use App\Models\Book;
 use App\Models\Category;
 use App\Models\Publisher;
-use App\Models\Review;
-use Auth;
 use DB;
 use Http;
 use Illuminate\Http\Request;
@@ -103,14 +98,15 @@ class BookController extends Controller
         // Set variables
         // dd($response->json()['items'][0]);
         $book = $response->json()['items'][0]['volumeInfo'];
-        $title = $book['title'];
-        $publish_date = $book['publishedDate'];
+
+        isset($book['title']) ? $title = $book['title'] : $title = 'Not found';
+        isset($book['publishedDate']) ? $publish_date = $book['publishedDate'] : $publish_date = 'Not found';
         isset($book['description']) ? $description = $book['description'] : $description = 'Not found';
-        $publisher = $book['publisher'];
-        $image = $book['imageLinks']['thumbnail'];
-        $page_count = $book['pageCount'];
-        $authors = $book['authors'];
-        $categories = $book['categories'];
+        isset($book['publisher']) ? $publisher = $book['publisher'] : $publisher = 'Not found';
+        isset($book['imageLinks']['thumbnail']) ? $image = $book['imageLinks']['thumbnail'] : $image = 'Not found';
+        isset($book['pageCount']) ? $page_count = $book['pageCount'] : $page_count = 'Not found';
+        isset($book['authors']) ? $authors = $book['authors'] : $authors = 'Not found';
+        isset($book['categories']) ? $categories = $book['categories'] : $categories = 'Not found';
 
         // Insert new or update Publisher in publishers table
         DB::table('publishers')->updateOrInsert([
