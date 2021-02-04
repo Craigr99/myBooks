@@ -2,7 +2,7 @@
     @if (Auth::user()->hasBook($book))
         <form action="{{ route('user.books.store', $book->id) }}" method="POST">
             @csrf
-            <button class="btn my-btn my-btn-small my-btn-primary mt-4 w-100" name="remove" type="submit"><i
+            <button class="btn my-btn my-btn-small my-btn-danger mt-4 w-100" name="remove" type="submit"><i
                     class="fas fa-minus-circle mr-2"></i>Remove book</button>
         </form>
     @else

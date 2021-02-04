@@ -2,9 +2,6 @@
 # @Date:   2021-01-18T10:09:10+00:00
 # @Last modified time: 2021-01-23T15:02:46+00:00
 
-
-
-
 namespace App\Http\Controllers\User;
 
 use App\Http\Controllers\Controller;
@@ -86,13 +83,13 @@ class BookController extends Controller
      */
     public function show($id)
     {
-      $book = Book::findOrFail($id);
-      $reviews = $book->reviews;
+        $book = Book::findOrFail($id);
+        $reviews = $book->reviews;
 
-      return view('admin.books.show', [
-          'book' => $book,
-          'reviews' => $reviews,
-      ]);
+        return view('admin.books.show', [
+            'book' => $book,
+            'reviews' => $reviews,
+        ]);
     }
 
     /**

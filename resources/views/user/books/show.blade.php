@@ -12,7 +12,7 @@
                             @csrf
                             <input type="hidden" value="DELETE" name="_method">
 
-                            <button class="btn my-btn my-btn-small my-btn-primary mt-4 mb-4 w-100" type="submit"><i
+                            <button class="btn my-btn my-btn-small my-btn-danger mt-4 mb-4 w-100" type="submit"><i
                                     class="fas fa-minus-circle mr-2"></i> Remove
                                 book</button>
                         </form>
@@ -50,9 +50,9 @@
 
                         <h3>{{ $book->title }}</h3>
                     </div>
-                    <h1 class="text-gray-3">
+                    <h2 class="text-gray-3">
                         {{ $book->rating }}/5
-                    </h1>
+                    </h2>
                 </div>
                 <h6>by
                     @foreach ($book->authors as $author)

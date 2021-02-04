@@ -55,7 +55,7 @@
                                     </a>
                                 </div>
                             @empty
-                                <p class="ml-2">No reviews found.</p>
+                                <p class="ml-3">No reviews found.</p>
                             @endforelse
 
                         </div>

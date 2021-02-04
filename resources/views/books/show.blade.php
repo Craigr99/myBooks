@@ -51,13 +51,13 @@
 
                         <h3>{{ $item['volumeInfo']['title'] }}</h3>
                     </div>
-                    <h1 class="text-gray-3">
+                    <h2 class="text-gray-3">
                         @if (isset($item['volumeInfo']['averageRating']))
                             {{ $item['volumeInfo']['averageRating'] }}/5
                         @else
                             Not found
                         @endif
-                    </h1>
+                    </h2>
                 </div>
                 <h6>by
                     @if (isset($item['volumeInfo']['authors']))
