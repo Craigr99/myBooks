@@ -9,14 +9,16 @@
                 @include('inc.navbar')
                 <div class="col col-xl-8 offset-xl-2 mt-5">
                     <main class="card card-body rounded">
-                        <h4 class="my-4">New Blog Post</h4>
-                        <form action="{{ route('user.blogs.store') }}" method="post" enctype="multipart/form-data">
+                        <h4 class="my-4">Edit Blog Post</h4>
+                        <form action="{{ route('user.blogs.update', $blog->id) }}" method="post"
+                            enctype="multipart/form-data">
                             @csrf
+                            @method('PUT')
                             <div class="form-group">
                                 <label for="title">Title</label>
                                 <input type="text" name="title" id="title"
                                     class="form-control {{ $errors->has('title') ? 'is-invalid' : '' }}"
-                                    value="{{ old('title') }}" placeholder="Blog Title" />
+                                    value="{{ old('title', $blog->title) }}" placeholder="Blog Title" />
                                 @if ($errors->has('title'))
                                     <span class="invalid-feedback">
                                         {{ $errors->first('title') }}
@@ -27,7 +29,7 @@
                                 <label for="subtitle">Sub-title (optional)</label>
                                 <input type="text" name="subtitle" id="subtitle"
                                     class="form-control {{ $errors->has('subtitle') ? 'is-invalid' : '' }}"
-                                    value="{{ old('subtitle') }}" placeholder="Sub-title (optional)">
+                                    value="{{ old('title', $blog->subtitle) }}" placeholder="Sub-title (optional)">
                                 @if ($errors->has('subtitle'))
                                     <span class="invalid-feedback">
                                         {{ $errors->first('subtitle') }}
@@ -42,7 +44,7 @@
                                     <input type="file" name="image"
                                         class="custom-file-input {{ $errors->has('image') ? 'is-invalid' : '' }}"
                                         id="image">
-                                    <label class="custom-file-label" for="image">Upload image </label>
+                                    <label class="custom-file-label" for="image">Upload image</label>
                                     @if ($errors->has('image'))
                                         <span class="invalid-feedback">
                                             {{ $errors->first('image') }}
@@ -55,14 +57,14 @@
                                 <label for="body">Body</label>
                                 <textarea name="body" id="body"
                                     class="form-control {{ $errors->has('body') ? 'is-invalid' : '' }}"
-                                    placeholder="Blog body" rows="20">{{ old('body') }}</textarea>
+                                    placeholder="Blog body" rows="20">{{ old('body', $blog->body) }}</textarea>
                                 @if ($errors->has('body'))
                                     <span class="invalid-feedback">
                                         {{ $errors->first('body') }}
                                     </span>
                                 @endif
                             </div>
-                            <button type="submit" class="btn my-btn my-btn-primary mt-3">Post blog</button>
+                            <button type="submit" class="btn my-btn my-btn-primary mt-3">Update blog</button>
                         </form>
                     </main>
                 </div>

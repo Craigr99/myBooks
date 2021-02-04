@@ -7,9 +7,14 @@ use App\Models\Blog;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Storage;
 
 class BlogController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
     /**
      * Display a listing of the resource.
      *
@@ -47,7 +52,8 @@ class BlogController extends Controller
         $rules = [
             'title' => 'required|string|min:5|max:255',
             'subtitle' => 'nullable|string|min:5|max:255',
-            'body' => 'required|string|min:10|max:1000',
+            'image' => 'nullable|max:1999',
+            'body' => 'required|string|min:10',
         ];
 
         $request->validate($rules);
@@ -57,6 +63,15 @@ class BlogController extends Controller
         $blog->subtitle = $request->subtitle;
         $blog->body = $request->body;
         $blog->user_id = Auth::id();
+
+        if ($request->hasFile('image')) {
+            $image = $request->image;
+            $ext = $image->getClientOriginalExtension();
+            $filename = uniqid() . '.' . $ext;
+            $image->storeAs('public/images', $filename);
+            Storage::delete("public/images/{$blog->image}");
+            $blog->image = $filename;
+        }
 
         $blog->save();
 
@@ -89,7 +104,11 @@ class BlogController extends Controller
      */
     public function edit($id)
     {
-        //
+        $blog = Blog::findOrFail($id);
+
+        return view('user.profile.blogs.edit', [
+            'blog' => $blog,
+        ]);
     }
 
     /**
@@ -101,7 +120,36 @@ class BlogController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $blog = Blog::findOrFail($id);
+
+        $rules = [
+            'title' => 'required|string|min:5|max:255',
+            'subtitle' => 'nullable|string|min:5|max:255',
+            'image' => 'nullable|max:1999',
+            'body' => 'required|string|min:10',
+        ];
+
+        $request->validate($rules);
+
+        $blog->title = $request->title;
+        $blog->subtitle = $request->subtitle;
+        $blog->body = $request->body;
+        $blog->user_id = Auth::id();
+
+        if ($request->hasFile('image')) {
+            $image = $request->image;
+            $ext = $image->getClientOriginalExtension();
+            $filename = uniqid() . '.' . $ext;
+            $image->storeAs('public/images', $filename);
+            Storage::delete("public/images/{$blog->image}");
+            $blog->image = $filename;
+        }
+
+        $blog->save();
+
+        $request->session()->flash('info', 'Blog updated successfully!');
+
+        return redirect()->route('user.blogs.show', $blog->id);
     }
 
     /**
@@ -110,8 +158,12 @@ class BlogController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Request $request, $id)
     {
-        //
+        $blog = Blog::findOrFail($id);
+        $blog->delete();
+
+        $request->session()->flash('danger', 'Blog deleted successfully!');
+        return redirect()->route('user.blogs.index', Auth::id());
     }
 }

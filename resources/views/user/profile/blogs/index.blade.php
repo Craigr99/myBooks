@@ -105,30 +105,48 @@
                                             <h4 class="p-4">No blogs found.</h4>
                                         @endif
                                         @foreach ($blogs as $blog)
-                                            <div class="d-flex border-bottom py-4">
-                                                <div class="mr-4">
-                                                    {{-- Profile image --}}
-                                                    @if ($user->image !== 'default.png')
-                                                        <img src="{{ asset('storage/images/' . $user->image) }}"
-                                                            class="rounded-circle image-fill" height="70px" width="70px" />
-                                                    @else
-                                                        <img src="{{ asset('img/default.png') }}"
-                                                            class="rounded-circle image-fill border" height="70px"
-                                                            width="70px" />
+                                            <a href="{{ route('user.blogs.show', $blog->id) }}" class="text-black">
+                                                <div class="d-flex border-bottom py-4">
+                                                    <div class="mr-4">
+                                                        {{-- Profile image --}}
+                                                        @if ($user->image !== 'default.png')
+                                                            <img src="{{ asset('storage/images/' . $user->image) }}"
+                                                                class="rounded-circle image-fill" height="70px"
+                                                                width="70px" />
+                                                        @else
+                                                            <img src="{{ asset('img/default.png') }}"
+                                                                class="rounded-circle image-fill border" height="70px"
+                                                                width="70px" />
+                                                        @endif
+                                                    </div>
+                                                    <div class="d-flex flex-column">
+                                                        <p class="text-gray-4 font-x-light mb-2">
+                                                            {{ $blog->updated_at->diffForHumans() }}
+                                                        </p>
+                                                        <h5>{{ $blog->title }}</h5>
+                                                        <p class="mt-2 mb-3">{{ $blog->subtitle }}</p>
+                                                        <p> {{ Str::limit($blog->body, 140) }}</p>
+                                                        <a href="{{ route('user.blogs.show', $blog->id) }}"
+                                                            class="btn-link text-primary-600 mt-3">Read
+                                                            more</a>
+                                                    </div>
+
+                                                    @if ($blog->user->id == Auth::user()->id)
+                                                        <div class="ml-auto">
+                                                            <form style="display: inline-block" method="POST"
+                                                                action="{{ route('user.blogs.destroy', $blog->id) }}">
+                                                                <input type="hidden" value="DELETE" name="_method">
+                                                                <input type="hidden" value="{{ csrf_token() }}"
+                                                                    name="_token">
+                                                                <button type="submit" class="btn my-btn-danger">
+                                                                    <i class="fas fa-trash"></i>
+                                                                </button>
+                                                            </form>
+                                                        </div>
                                                     @endif
+
                                                 </div>
-                                                <div class="d-flex flex-column">
-                                                    <p class="text-gray-4 font-x-light mb-2">
-                                                        {{ $blog->created_at->diffForHumans() }}
-                                                    </p>
-                                                    <h5>{{ $blog->title }}</h5>
-                                                    <p class="mt-2 mb-3">{{ $blog->subtitle }}</p>
-                                                    <p> {{ Str::limit($blog->body, 140) }}</p>
-                                                    <a href="{{ route('user.blogs.show', $blog->id) }}"
-                                                        class="btn-link text-primary-600 mt-3">Read
-                                                        more</a>
-                                                </div>
-                                            </div>
+                                            </a>
                                         @endforeach
                                     </div>
                                 </section>

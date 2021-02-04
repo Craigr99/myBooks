@@ -59,8 +59,12 @@ Route::post('/user/profile/{id}/follow', [App\Http\Controllers\User\FollowsContr
 
 Route::get('/user/{id}/blogs', [App\Http\Controllers\User\BlogController::class, 'index'])->name('user.blogs.index');
 Route::get('/user/blogs/create', [App\Http\Controllers\User\BlogController::class, 'create'])->name('user.blogs.create');
+Route::get('/user/blogs/edit/{id}', [App\Http\Controllers\User\BlogController::class, 'edit'])->name('user.blogs.edit');
 Route::get('/user/blogs/{id}', [App\Http\Controllers\User\BlogController::class, 'show'])->name('user.blogs.show');
 Route::post('/user/blogs/store', [App\Http\Controllers\User\BlogController::class, 'store'])->name('user.blogs.store');
+Route::put('/user/blogs/{id}', [App\Http\Controllers\User\BlogController::class, 'update'])->name('user.blogs.update');
+Route::delete('/user/blogs/{id}', [App\Http\Controllers\User\BlogController::class, 'destroy'])->name('user.blogs.destroy');
+
 Route::get('/user/reviews/{id}', [App\Http\Controllers\User\ReviewController::class, 'show'])->name('user.reviews.show');
 
 Route::get('/{category}/books', [App\Http\Controllers\CategoryController::class, 'index'])->name('categories.books.index');
