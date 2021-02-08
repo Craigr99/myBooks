@@ -13,8 +13,8 @@
 
     <div class="container mt-5">
         <div class="row">
-            @foreach ($books as $book)
-                <div class="col-12 d-flex">
+            <div class="col-12">
+                @forelse ($books as $book)
                     <a class="d-flex flex-column flex-md-row text-black" href="{{ route('books.search.show', $book->id) }}">
                         <div class="card shadow rounded mb-5 flex-1">
                             <div class="card-body text-center text-md-left">
@@ -32,8 +32,19 @@
                                             {{ $book->description }}
                                         </p>
                                     </div>
-                                    <div class="buttons">
-                                        <x-button-dropdown :book="$book"></x-button-dropdown>
+                                    <div class="buttons ml-md-auto">
+                                        @if (Auth::user()->hasRole('admin'))
+                                            <form action="{{ route('books.destroy', $book->title) }}" method="POST">
+                                                <input type="hidden" value="DELETE" name="_method">
+                                                @csrf
+                                                <button class="btn my-btn my-btn-small my-btn-danger mt-4 mb-4 w-100"
+                                                    type="submit"><i class="fas fa-minus-circle mr-2"></i> Remove
+                                                    book</button>
+                                            </form>
+
+                                        @else
+                                            <x-button-dropdown :book="$book"></x-button-dropdown>
+                                        @endif
                                         <a class="btn my-btn my-btn-secondary my-btn-small mt-3 w-100"
                                             href="{{ route('user.reviews.create', $book->id) }}"><i
                                                 class="fas fa-pen mr-2"></i>Write
@@ -44,9 +55,12 @@
                             </div>
                         </div>
                     </a>
-
-                </div>
-            @endforeach
+                @empty
+                    <div class="w-100 text-center">
+                        <h4>No {{ $cat->name }} books found </h4>
+                    </div>
+                @endforelse
+            </div>
         </div>
         <div class="d-flex justify-content-center mb-5 ">
             {!! $books->links('pagination::bootstrap-4') !!}

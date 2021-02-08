@@ -13,8 +13,9 @@
                         <form action="{{ route('books.destroy', $item['volumeInfo']['title']) }}" method="POST">
                             <input type="hidden" value="DELETE" name="_method">
                             @csrf
-                            <button class="btn my-btn my-btn-small my-btn-primary mt-4 mb-4 w-100" type="submit"><i
-                                    class="fas fa-bookmark"></i> Remove book</button>
+                            <button class="btn my-btn my-btn-small my-btn-danger mt-4 mb-4 w-100" type="submit"><i
+                                    class="fas fa-minus-circle mr-2"></i> Remove
+                                book</button>
                         </form>
                     @else
                         <form action="{{ route('admin.books.add', $item['volumeInfo']['title']) }}" method="POST">
@@ -32,7 +33,7 @@
                 @if (Auth::user()->hasRole('user'))
                     <a class="btn my-btn my-btn-small my-btn-secondary w-100" href="#"><i class="fas fa-pen mr-2"></i> Write
                         a
-                        reviewwwwwww</a>
+                        review</a>
                 @endif
             </div>
             <div class="col-7">
@@ -50,13 +51,13 @@
 
                         <h3>{{ $item['volumeInfo']['title'] }}</h3>
                     </div>
-                    <h1 class="text-gray-3">
+                    <h2 class="text-gray-3">
                         @if (isset($item['volumeInfo']['averageRating']))
                             {{ $item['volumeInfo']['averageRating'] }}/5
                         @else
                             Not found
                         @endif
-                    </h1>
+                    </h2>
                 </div>
                 <h6>by
                     @if (isset($item['volumeInfo']['authors']))

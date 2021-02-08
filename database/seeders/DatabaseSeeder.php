@@ -2,9 +2,6 @@
 # @Date:   2021-01-18T10:09:11+00:00
 # @Last modified time: 2021-01-23T13:20:13+00:00
 
-
-
-
 namespace Database\Seeders;
 
 use Illuminate\Database\Seeder;

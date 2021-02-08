@@ -5,7 +5,7 @@
                     <img src="{{ asset('storage/images/' . Auth::user()->image) }}" class="rounded-circle image-fill"
                         height="160px" width="160px" />
                 @else
-                    <img src="{{ asset('img/default.png') }}" class="rounded-circle image-fill" height="50%"
+                    <img src="{{ asset('img/default.png') }}" class="rounded-circle image-fill border" height="50%"
                         width="50%" />
                 @endif
             </div>

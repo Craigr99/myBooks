@@ -2,9 +2,6 @@
 # @Date:   2021-01-18T10:09:10+00:00
 # @Last modified time: 2021-01-23T14:37:06+00:00
 
-
-
-
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
@@ -12,11 +9,9 @@ use App\Models\Author;
 use App\Models\Book;
 use App\Models\Category;
 use App\Models\Publisher;
-use App\Models\Review;
-use Auth;
-use DB;
 use Http;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 use Storage;
 
 class BookController extends Controller
@@ -103,61 +98,75 @@ class BookController extends Controller
         // Set variables
         // dd($response->json()['items'][0]);
         $book = $response->json()['items'][0]['volumeInfo'];
-        $title = $book['title'];
-        $publish_date = $book['publishedDate'];
-        isset($book['description']) ? $description = $book['description'] : $description = 'Not found';
-        $publisher = $book['publisher'];
-        $image = $book['imageLinks']['thumbnail'];
-        $page_count = $book['pageCount'];
-        $authors = $book['authors'];
-        $categories = $book['categories'];
 
-        // Insert new or update Publisher in publishers table
-        DB::table('publishers')->updateOrInsert([
-            'name' => $publisher,
-        ]);
-        $publisher = Publisher::where('name', $publisher)->first();
+        // If a book with the title & date exists, return error
+        if (DB::table('books')->where('title', $book['title'])->orWhere('publish_date', $book['publishedDate'])->first()) {
+            $request->session()->flash('danger', 'ERROR - Book already stored in the database!');
+            return redirect()->route('admin.books.index');
+        } else {
+            // Add new book
+            isset($book['title']) ? $title = $book['title'] : $title = 'Not found';
+            isset($book['publishedDate']) ? $publish_date = $book['publishedDate'] : $publish_date = 'Not found';
+            isset($book['description']) ? $description = $book['description'] : $description = 'Not found';
+            isset($book['publisher']) ? $publisher = $book['publisher'] : $publisher = 'Not found';
+            isset($book['imageLinks']['thumbnail']) ? $image = $book['imageLinks']['thumbnail'] : $image = 'Not found';
+            isset($book['pageCount']) ? $page_count = $book['pageCount'] : $page_count = 0;
+            isset($book['authors']) ? $authors = $book['authors'] : $authors = 'Not found';
+            isset($book['categories']) ? $categories = $book['categories'] : $categories = 'Not found';
 
-        // Insert new or update Book in books table
-        DB::table('books')->updateOrInsert([
-            'title' => $title,
-            'description' => $description,
-            'publish_date' => $publish_date,
-            'page_count' => $page_count,
-            'image' => $image,
-            'publisher_id' => $publisher->id,
-        ]);
+            // Insert new or update Publisher in publishers table
+            if (isset($book['publisher'])) {
+                DB::table('publishers')->updateOrInsert([
+                    'name' => $publisher,
+                ]);
+            }
 
-        // Insert new category if it does not exist, and insert book category row in DB
-        foreach ($categories as $category) {
-            DB::table('categories')->updateOrInsert([
-                'name' => $category,
+            $publisher = Publisher::where('name', $publisher)->first();
+
+            // Insert new or update Book in books table
+            DB::table('books')->updateOrInsert([
+                'title' => $title,
+                'description' => $description,
+                'publish_date' => $publish_date,
+                'page_count' => $page_count,
+                'image' => $image,
+                'publisher_id' => $publisher->id,
             ]);
 
-            $book = Book::where('title', $title)->first();
-            $category = Category::where('name', $category)->first();
+            // Insert new category if it does not exist, and insert book category row in DB
+            if (isset($book['categories'])) {
+                foreach ($categories as $category) {
+                    DB::table('categories')->updateOrInsert([
+                        'name' => $category,
+                    ]);
 
-            DB::table('book_category')->updateOrInsert([
-                'book_id' => $book->id,
-                'category_id' => $category->id,
-            ]);
-        }
+                    $book = Book::where('title', $title)->first();
+                    $category = Category::where('name', $category)->first();
 
-        // Insert new authors if they do not exist, and insert author_book rows in DB
+                    DB::table('book_category')->updateOrInsert([
+                        'book_id' => $book->id,
+                        'category_id' => $category->id,
+                    ]);
+                }
+            }
 
-        foreach ($authors as $author) {
-            // print_r($author);
-            DB::table('authors')->updateOrInsert([
-                'name' => $author,
-            ]);
+            // Insert new authors if they do not exist, and insert author_book rows in DB
+            if (isset($book['authors'])) {
+                foreach ($authors as $author) {
+                    DB::table('authors')->updateOrInsert([
+                        'name' => $author,
+                    ]);
 
-            $author = Author::where('name', $author)->first();
-            $book = Book::where('title', $title)->first();
+                    $author = Author::where('name', $author)->first();
+                    $book = Book::where('title', $title)->first();
 
-            DB::table('author_book')->updateOrInsert([
-                'author_id' => $author->id,
-                'book_id' => $book->id,
-            ]);
+                    DB::table('author_book')->updateOrInsert([
+                        'author_id' => $author->id,
+                        'book_id' => $book->id,
+                    ]);
+                }
+            }
+
         }
 
         $request->session()->flash('success', 'Book added successfully!');
@@ -168,6 +177,10 @@ class BookController extends Controller
     public function destroy(Request $request, $id)
     {
         $book = Book::findOrFail($id);
+
+        $reviews = $book->reviews();
+
+        $reviews->delete();
 
         $book->delete();
 

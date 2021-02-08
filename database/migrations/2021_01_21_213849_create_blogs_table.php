@@ -17,8 +17,9 @@ class CreateBlogsTable extends Migration
             $table->id();
             $table->string('title');
             $table->string('subtitle')->nullable();
-            $table->longText('body', 1000);
+            $table->text('body');
             $table->bigInteger('user_id')->unsigned();
+            $table->string('image', 255)->nullable();
 
             $table->foreign('user_id')->references('id')->on('users')->onUpdate('cascade')->onDelete('cascade');;
 

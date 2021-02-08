@@ -6,7 +6,7 @@
         </div>
         <div class="container mt-5">
             <x-logo></x-logo>
-            <div class="row hero_left">
+            <div class="row hero_left vh-80">
                 <div class="col">
                     <p class="caption text-muted mb-2">WELCOME TO MYBOOKS</p>
                     <h5>A new way to explore books <br />

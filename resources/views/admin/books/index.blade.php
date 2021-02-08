@@ -54,10 +54,16 @@
                                                 <td class="d-flex justify-content-lg-between">
                                                     <a href="{{ route('admin.books.show', $book->id) }}">View</a>
                                                     <a href="{{ route('admin.books.edit', $book->id) }}">Edit</a>
-                                                    <a href="#" data-toggle="modal" data-target="#delete-modal">Delete</a>
+                                                    {{-- <a href="#" data-toggle="modal" data-target="#delete-modal">Delete</a> --}}
+                                                    <form style="display: inline-block" method="POST"
+                                                        action="{{ route('admin.books.destroy', $book->id) }}">
+                                                        <input type="hidden" value="DELETE" name="_method">
+                                                        @csrf
+                                                        <button type="submit" class="input-delete">Delete</button>
+                                                    </form>
                                                 </td>
                                             </tr>
-                                            <x-flash-modal :id="$book->id" />
+                                            {{-- <x-flash-modal :id="$book->id" /> --}}
                                         @endforeach
                                     </tbody>
                                 </table>

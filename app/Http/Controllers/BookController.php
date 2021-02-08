@@ -4,9 +4,9 @@ namespace App\Http\Controllers;
 
 use App\Http\Controllers\Controller;
 use App\Models\Book;
-use Auth;
-use Http;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Http;
 
 class BookController extends Controller
 {
@@ -91,4 +91,5 @@ class BookController extends Controller
 
         return redirect()->route('admin.books.index');
     }
+
 }
