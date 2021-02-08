@@ -1,6 +1,6 @@
 <?php
 # @Date:   2021-01-18T10:09:12+00:00
-# @Last modified time: 2021-02-01T10:14:31+00:00
+# @Last modified time: 2021-02-08T01:03:10+00:00
 
 use App\Http\Controllers\BookController;
 use Illuminate\Support\Facades\Auth;
@@ -35,6 +35,7 @@ Route::get('/admin/books/{id}/edit', [App\Http\Controllers\Admin\BookController:
 Route::put('/admin/books/{id}', [App\Http\Controllers\Admin\BookController::class, 'update'])->name('admin.books.update');
 Route::delete('/admin/books/{id}/{name?}', [App\Http\Controllers\Admin\BookController::class, 'destroy'])->name('admin.books.destroy');
 
+Route::get('/admin/reviews', [App\Http\Controllers\Admin\ReviewController::class, 'index'])->name('admin.reviews.index');
 Route::get('/admin/books/{id}/reviews/create', [App\Http\Controllers\Admin\ReviewController::class, 'create'])->name('admin.reviews.create');
 Route::post('/admin/books/{id}/reviews/store', [App\Http\Controllers\Admin\ReviewController::class, 'store'])->name('admin.reviews.store');
 Route::delete('/admin/books/{id}/reviews/{rid}', [App\Http\Controllers\Admin\ReviewController::class, 'destroy'])->name('admin.reviews.destroy');

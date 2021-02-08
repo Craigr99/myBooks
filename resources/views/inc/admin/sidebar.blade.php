@@ -35,6 +35,10 @@
                     <a href="{{ route('admin.users.index') }}" class="btn my-btn btn-block"><span
                             class="fas fa-users mr-4"></span>Users</a>
                 </li>
+                <li class="list-item my-2 {{ request()->is('admin/reviews*') ? 'active' : '' }}">
+                    <a href="{{ route('admin.reviews.index') }}" class="btn my-btn btn-block"><span
+                            class="fas fa-edit mr-4"></span>Reviews</a>
+                </li>
                 <li class="list-item my-2">
                     <a href="#" class="btn my-btn btn-block"><span class="fas fa-list mr-4"></span>Categories</a>
                 </li>

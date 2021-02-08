@@ -1,6 +1,6 @@
 <?php
 # @Date:   2021-01-23T13:49:58+00:00
-# @Last modified time: 2021-01-23T14:48:20+00:00
+# @Last modified time: 2021-02-08T01:23:28+00:00
 
 
 
@@ -11,6 +11,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Book;
 use App\Models\Review;
+use App\Models\User;
 use Auth;
 
 class ReviewController extends Controller
@@ -27,7 +28,11 @@ class ReviewController extends Controller
      */
     public function index()
     {
-        //
+      $reviews = Review::paginate(10);
+
+      return view('admin.reviews.index', [
+          'reviews' => $reviews,
+      ]);
     }
 
     /**
@@ -108,6 +113,9 @@ class ReviewController extends Controller
 
         $review->delete();
 
-        return redirect()->route('admin.books.show', $id);
+        $request->session()->flash('danger', 'Review removed successfully!');
+
+        return redirect()->route('admin.reviews.index');
+
     }
 }
