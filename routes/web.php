@@ -17,7 +17,7 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
 Route::get('/homepage', [App\Http\Controllers\HomeController::class, 'homepage'])->name('homepage');
 
 // Routes from api
-Route::post('/admin/books/search', [BookController::class, 'index'])->name('admin.books.search.index');
+Route::post('/books/search', [BookController::class, 'index'])->name('books.search.index');
 // Route::post('/admin/books/search/books', [BookController::class, 'store'])->name('admin.books.search.store');
 Route::get('/books/show/{id}/{name?}', [BookController::class, 'show'])->name('books.search.show');
 Route::delete('/books/{name}', [BookController::class, 'destroy'])->name('books.destroy');
@@ -47,6 +47,7 @@ Route::get('/admin/users', [App\Http\Controllers\Admin\UserController::class, 'i
 Route::get('/user/home', [App\Http\Controllers\User\HomeController::class, 'index'])->name('user.home');
 
 Route::get('/user/books/{name}', [App\Http\Controllers\User\BookController::class, 'index'])->name('user.books.shelf.index');
+Route::post('/user/books/search/{title}', [App\Http\Controllers\User\BookController::class, 'storeGoogleBook'])->name('user.googlebooks.store');
 Route::post('/user/books/{id}', [App\Http\Controllers\User\BookController::class, 'store'])->name('user.books.store');
 Route::get('/user/books/{id}', [App\Http\Controllers\User\BookController::class, 'show'])->name('user.books.show');
 
@@ -58,6 +59,7 @@ Route::get('/user/profile/edit/{id}', [App\Http\Controllers\User\ProfileControll
 Route::put('/user', [App\Http\Controllers\User\ProfileController::class, 'update'])->name('user.profile.update');
 Route::post('/user/profile/{id}/follow', [App\Http\Controllers\User\FollowsController::class, 'store'])->name('user.profile.store'); // follow a user
 
+// Blogs
 Route::get('/user/{id}/blogs', [App\Http\Controllers\User\BlogController::class, 'index'])->name('user.blogs.index');
 Route::get('/user/blogs/create', [App\Http\Controllers\User\BlogController::class, 'create'])->name('user.blogs.create');
 Route::get('/user/blogs/edit/{id}', [App\Http\Controllers\User\BlogController::class, 'edit'])->name('user.blogs.edit');

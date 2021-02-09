@@ -19,7 +19,11 @@
                                         </div>
                                     @endisset
                                     <div class="d-flex align-items-center mb-2">
-                                        <p class="text-gray-3 mr-3">4.5</p>
+                                        @isset($item['volumeInfo']['averageRating'])
+                                            <p class="text-gray-3 mr-3">
+                                                {{ $item['volumeInfo']['averageRating'] }}/5
+                                            </p>
+                                        @endisset
                                         @isset($item['volumeInfo']['categories'])
 
                                             @foreach ($item['volumeInfo']['categories'] as $category)
@@ -48,25 +52,29 @@
                                         </p>
                                     </div>
                                     {{-- Button --}}
-                                    <div>
-                                        @if (App\Models\Book::where('title', '=', $item['volumeInfo']['title'])->exists())
-                                            <form action="{{ route('books.destroy', $item['volumeInfo']['title']) }}"
-                                                method="POST">
-                                                <input type="hidden" value="DELETE" name="_method">
-                                                @csrf
-                                                <button class="btn my-btn my-btn-small my-btn-danger mt-4 mb-4 w-100"
-                                                    type="submit"><i class="fas fa-minus-circle mr-2"></i> Remove
-                                                    book</button>
-                                            </form>
-                                        @else
-                                            <form action="{{ route('admin.books.add', $item['volumeInfo']['title']) }}"
-                                                method="POST">
-                                                @csrf
-                                                <button class="btn my-btn my-btn-small my-btn-primary mt-4 mb-4 w-100"
-                                                    type="submit"><i class="fas fa-bookmark mr-2"></i> Save book</button>
-                                            </form>
-                                        @endif
-                                    </div>
+                                    @if (Auth::user()->hasRole('admin'))
+                                        <div>
+                                            @if (App\Models\Book::where('title', '=', $item['volumeInfo']['title'])->exists())
+                                                <form action="{{ route('books.destroy', $item['volumeInfo']['title']) }}"
+                                                    method="POST">
+                                                    <input type="hidden" value="DELETE" name="_method">
+                                                    @csrf
+                                                    <button class="btn my-btn my-btn-small my-btn-danger mt-4 mb-4 w-100"
+                                                        type="submit"><i class="fas fa-minus-circle mr-2"></i> Remove
+                                                        book</button>
+                                                </form>
+                                            @else
+                                                <form
+                                                    action="{{ route('admin.books.add', $item['volumeInfo']['title']) }}"
+                                                    method="POST">
+                                                    @csrf
+                                                    <button class="btn my-btn my-btn-small my-btn-primary mt-4 mb-4 w-100"
+                                                        type="submit"><i class="fas fa-bookmark mr-2"></i> Save
+                                                        book</button>
+                                                </form>
+                                            @endif
+                                        </div>
+                                    @endif
                                 </div>
                             </div>
                         </a>

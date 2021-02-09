@@ -24,16 +24,16 @@ class ReviewSeeder extends Seeder
         $review = new Review();
         $review->title = 'Amazing Read!';
         $review->body = 'So interesting, I was on the edge of my seat';
-        $review->user_id = 1;
+        $review->user_id = 2;
         $review->book_id = $book->id;
         $review->save();
 
-        // $review = new Review();
-        // $review->title = 'Boring';
-        // $review->body = 'Dull material, not very engaging';
-        // $review->user_id = 2;
-        // $review->book_id = 3;
-        // $review->save();
+        $review = new Review();
+        $review->title = 'Boring';
+        $review->body = 'Dull material, not very engaging';
+        $review->user_id = 2;
+        $review->book_id = $book->id;
+        $review->save();
 
         // for ($i = 1; $i <= count($books); $i++) {
         //     $review = Review::factory()->create();

@@ -5,7 +5,6 @@ namespace App\Http\Controllers;
 use App\Http\Controllers\Controller;
 use App\Models\Book;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Http;
 
 class BookController extends Controller
@@ -13,7 +12,6 @@ class BookController extends Controller
     public function __construct()
     {
         $this->middleware('auth');
-        $this->middleware('role:admin,user');
     }
 
     /**
@@ -51,26 +49,18 @@ class BookController extends Controller
     {
         $book = Book::find($id);
 
-        // IF user is an admin
-        if (Auth::user()->hasRole('Admin')) {
-            $response = Http::get('https://www.googleapis.com/books/v1/volumes', [
-                'volumeId' => $id,
-                'q' => $name,
-            ]);
+        $response = Http::get('https://www.googleapis.com/books/v1/volumes', [
+            'volumeId' => $id,
+            'q' => $name,
+        ]);
 
-            // If the book is from an API search
-            if (isset($response->json()['items'][0])) {
-                return view('books.show', [
-                    'item' => $response->json()['items'][0],
-                ]);
-            } else {
-                // Return view for books from local database
-                return view('user.books.show', [
-                    'book' => $book,
-                ]);
-            }
+        // If the book is from an API search
+        if (isset($response->json()['items'][0])) {
+            return view('books.show', [
+                'item' => $response->json()['items'][0],
+            ]);
         } else {
-            // if user is an ordinary user
+            // Return view for books from local database
             return view('user.books.show', [
                 'book' => $book,
             ]);

@@ -12,6 +12,7 @@ use App\Models\Publisher;
 use Http;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Str;
 use Storage;
 
 class BookController extends Controller
@@ -24,7 +25,7 @@ class BookController extends Controller
 
     public function index()
     {
-        $books = Book::paginate(10);
+        $books = Book::orderBy('created_at', 'ASC')->paginate(10);
 
         return view('admin.books.index', [
             'books' => $books,
@@ -61,6 +62,7 @@ class BookController extends Controller
         ]);
 
         $book = new Book();
+        $book->id = Str::random(10);
         $book->title = $request->input('title');
         $book->description = $request->input('description');
         $book->publish_date = $request->input('publish_date');
@@ -98,6 +100,7 @@ class BookController extends Controller
         // Set variables
         // dd($response->json()['items'][0]);
         $book = $response->json()['items'][0]['volumeInfo'];
+        $book_id = $response->json()['items'][0]['id'];
 
         // If a book with the title & date exists, return error
         if (DB::table('books')->where('title', $book['title'])->orWhere('publish_date', $book['publishedDate'])->first()) {
@@ -105,6 +108,7 @@ class BookController extends Controller
             return redirect()->route('admin.books.index');
         } else {
             // Add new book
+            isset($book_id) ? $id = $book_id : $id = 'NULL';
             isset($book['title']) ? $title = $book['title'] : $title = 'Not found';
             isset($book['publishedDate']) ? $publish_date = $book['publishedDate'] : $publish_date = 'Not found';
             isset($book['description']) ? $description = $book['description'] : $description = 'Not found';
@@ -122,9 +126,9 @@ class BookController extends Controller
             }
 
             $publisher = Publisher::where('name', $publisher)->first();
-
             // Insert new or update Book in books table
             DB::table('books')->updateOrInsert([
+                'id' => $id,
                 'title' => $title,
                 'description' => $description,
                 'publish_date' => $publish_date,

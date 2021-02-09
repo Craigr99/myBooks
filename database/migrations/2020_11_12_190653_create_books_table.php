@@ -15,7 +15,7 @@ class CreateBooksTable extends Migration
     {
         Schema::create('books', function (Blueprint $table) {
             $table->engine = 'InnoDB';
-            $table->string('id')->primary()->unique();
+            $table->string('id')->primary()->unique()->index();
             $table->string('title');
             $table->longText('description');
             $table->string('image', 255)->default('image.png');

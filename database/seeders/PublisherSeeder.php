@@ -40,7 +40,7 @@ class PublisherSeeder extends Seeder
         // $publisher->save();
 
         for ($i = 1; $i <= 10; $i++) {
-            Publisher::factory()->hasBooks(mt_rand(1, 15))->create();
+            Publisher::factory()->hasBooks(mt_rand(1, 2))->create();
         }
     }
 }

@@ -29,22 +29,24 @@
                         </a>
                     </li>
                 @endforeach
-                <li>
-                    <div class="dropdown">
-                        <a href="#" class="text-primary-500" type="button" id="dropdownMenuButton"
-                            data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                            <p>Other Categories <small class="fas fa-chevron-down"></small></p>
-                        </a>
-                        <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                            @foreach ($categories->slice(5)->all() as $category)
-                                <a href="{{ route('categories.books.index', $category->id) }}"
-                                    class="dropdown-item text-primary-500">
-                                    <p>{{ $category->name }}</p>
-                                </a>
-                            @endforeach
+                @if (count($categories) > 5)
+                    <li>
+                        <div class="dropdown">
+                            <a href="#" class="text-primary-500" type="button" id="dropdownMenuButton"
+                                data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                <p>Other Categories <small class="fas fa-chevron-down"></small></p>
+                            </a>
+                            <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                                @foreach ($categories->slice(5)->all() as $category)
+                                    <a href="{{ route('categories.books.index', $category->id) }}"
+                                        class="dropdown-item text-primary-500">
+                                        <p>{{ $category->name }}</p>
+                                    </a>
+                                @endforeach
+                            </div>
                         </div>
-                    </div>
-                </li>
+                    </li>
+                @endif
             </ul>
         </div>
     </nav>
