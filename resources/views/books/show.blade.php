@@ -1,5 +1,6 @@
 @extends('layouts.app')
 
+
 @section('content')
     {{-- {{ dd($item) }} --}}
     <div class="container">
@@ -60,7 +61,9 @@
 
                 @endif
                 @if (Auth::user()->hasRole('user'))
-                    <a class="btn my-btn my-btn-small my-btn-secondary w-100" href="#"><i class="fas fa-pen mr-2"></i> Write
+                    <a class="btn my-btn my-btn-small my-btn-secondary mt-3 w-100"
+                        href="{{ route('user.reviews.create', $item['id']) }}"><i class="fas fa-pen mr-2"></i>
+                        Write
                         a
                         review</a>
                 @endif
@@ -103,7 +106,31 @@
                 @endif
 
                 <div class="reviews spacer-top-lg red">
-                    <h4>Book reviews</h4>
+                    <div class="card">
+                        <div class="card-header">
+                            Reviews
+                        </div>
+                        <div class="card-body">
+                            @if (count(App\Models\Book::find($item['id'])->reviews) == 0)
+                                <p>There are no reviews for this book.</p>
+                            @else
+                                <table class="table">
+                                    <thead>
+                                        <th>Title</th>
+                                        <th>Body</th>
+                                    </thead>
+                                    <tbody>
+                                        @foreach (App\Models\Book::find($item['id'])->reviews as $review)
+                                            <tr>
+                                                <th>{{ $review->title }}</th>
+                                                <th>{{ $review->body }}</th>
+                                            </tr>
+                                        @endforeach
+                                    </tbody>
+                                </table>
+                            @endif
+                        </div>
+                    </div>
                 </div>
             </div>
 

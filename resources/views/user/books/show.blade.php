@@ -129,7 +129,7 @@
                     </div>
                 </div>
             </div>
-            <div class="col-12 col-lg-5 col-xl-7 offset-lg-3 offset-xl-2">
+            <div class="col-12 col-lg-5 col-xl-7 offset-lg-3 offset-xl-2 spacer-top-lg">
                 <div class="card">
                     <div class="card-header">
                         Reviews

@@ -26,14 +26,15 @@
                                                             <form action="{{ route('user.books.store', $book->id) }}"
                                                                 method="POST">
                                                                 @csrf
-                                                                <button class="btn my-btn my-btn-primary w-100"><i
+                                                                <button class="btn my-btn my-btn-danger w-100"><i
                                                                         class="fas fa-minus-circle"></i> <span
                                                                         class="mx-2">Remove
                                                                         book</span></button>
                                                             </form>
-                                                            <button class="btn my-btn my-btn-secondary mt-3"><i
+                                                            <a href="{{ route('user.reviews.create', $book->id) }}"
+                                                                class="btn my-btn my-btn-secondary mt-3"><i
                                                                     class="fas fa-pen"></i> <span class="mx-2">Write a
-                                                                    review</span></button>
+                                                                    review</span></a>
                                                         </div>
                                                     </div>
                                                 </div>

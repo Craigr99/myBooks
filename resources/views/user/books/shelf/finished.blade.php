@@ -23,15 +23,18 @@
                                                         <h6 class="my-4 text-gray-1"> {{ $book->authors[0]->name }}</h6>
                                                         <hr class="w-75">
                                                         <div class="d-flex flex-column px-5 mt-4">
-                                                            <form action="{{ route('user.books.store', $book->id) }}" method="POST">
+                                                            <form action="{{ route('user.books.store', $book->id) }}"
+                                                                method="POST">
                                                                 @csrf
-                                                                <button class="btn my-btn my-btn-primary w-100"><i
-                                                                        class="fas fa-minus-circle"></i> <span class="mx-2">Remove
+                                                                <button class="btn my-btn my-btn-danger w-100"><i
+                                                                        class="fas fa-minus-circle"></i> <span
+                                                                        class="mx-2">Remove
                                                                         book</span></button>
                                                             </form>
-                                                            <button class="btn my-btn my-btn-secondary mt-3"><i
+                                                            <a href="{{ route('user.reviews.create', $book->id) }}"
+                                                                class="btn my-btn my-btn-secondary mt-3"><i
                                                                     class="fas fa-pen"></i> <span class="mx-2">Write a
-                                                                    review</span></button>
+                                                                    review</span></a>
                                                         </div>
                                                     </div>
                                                 </div>
@@ -43,7 +46,7 @@
                                         </div>
                                     @endforelse
                                 </div>
-    
+
                             </main>
                         </div>
                     </div>
