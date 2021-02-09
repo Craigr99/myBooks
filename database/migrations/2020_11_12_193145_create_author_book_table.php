@@ -16,11 +16,12 @@ class CreateAuthorBookTable extends Migration
         Schema::create('author_book', function (Blueprint $table) {
             $table->id();
             $table->bigInteger('author_id')->unsigned();
-            $table->bigInteger('book_id')->unsigned();
+            // $table->bigInteger('book_id')->unsigned();
+            $table->string('book_id')->references('id')->on('books');
             $table->timestamps();
 
             $table->foreign('author_id')->references('id')->on('authors')->onUpdate('cascade')->onDelete('cascade');
-            $table->foreign('book_id')->references('id')->on('books')->onUpdate('cascade')->onDelete('cascade');
+            // $table->foreign('book_id')->references('id')->on('books')->onUpdate('cascade')->onDelete('cascade');
         });
     }
 

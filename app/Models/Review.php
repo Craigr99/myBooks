@@ -2,9 +2,6 @@
 # @Date:   2021-01-23T13:11:45+00:00
 # @Last modified time: 2021-01-23T13:19:24+00:00
 
-
-
-
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
@@ -16,7 +13,7 @@ class Review extends Model
 
     public function book()
     {
-        return $this->belongsTo('App\Models\Book');
+        return $this->belongsTo('App\Models\Book', 'book_id');
     }
 
     public function user()
