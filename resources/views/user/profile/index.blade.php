@@ -15,8 +15,8 @@
                                 <img class="profile-header rounded-top image-fill"
                                     src="{{ asset('storage/images/' . $user->header_image) }}" height="300px">
                             @else
-                                <img class="profile-header rounded-top image-fill" src="{{ asset('img/header.jpg') }}"
-                                    height="300px">
+                                <img class="profile-header rounded-top image-fill"
+                                    src="{{ asset('img/default-header.jpg') }}" height="300px">
                             @endif
                             {{-- Profile image --}}
                             @if ($user->image !== 'default.png')
@@ -102,7 +102,7 @@
                                         @endif
                                         @foreach ($reviews as $review)
                                             <div class="d-flex border-bottom py-4">
-                                                <div class="mr-3">
+                                                <div class="mr-3 d-none d-md-block">
                                                     {{-- Profile image --}}
                                                     @if ($user->image !== 'default.png')
                                                         <img src="{{ asset('storage/images/' . $user->image) }}"
@@ -127,6 +127,19 @@
                                                             more</a>
                                                     </div>
                                                 </div>
+                                                @if ($review->user->id == Auth::user()->id)
+                                                    <div class="ml-auto">
+                                                        <form style="display: inline-block" method="POST"
+                                                            action="{{ route('user.reviews.destroy', $review->id) }}">
+                                                            <input type="hidden" value="DELETE" name="_method">
+                                                            <input type="hidden" value="{{ csrf_token() }}"
+                                                                name="_token">
+                                                            <button type="submit" class="btn my-btn-danger">
+                                                                <i class="fas fa-trash"></i>
+                                                            </button>
+                                                        </form>
+                                                    </div>
+                                                @endif
                                             </div>
                                         @endforeach
                                     </div>
@@ -143,15 +156,15 @@
                         <aside class="following">
                             <div class="card rounded">
                                 <div class="header">
-                                    <p class="font-medium m-0">Following</p>
+                                    <a href="{{ route('user.profile.following.index') }}"
+                                        class="text-white text-r font-medium m-0">Following</a>
                                 </div>
                                 <div class="card-body">
-                                    @foreach (Auth::user()->follows as $user)
+                                    @forelse (Auth::user()->follows as $user)
                                         <div class="d-flex align-items-center mb-3">
                                             @if ($user->image !== 'default.png')
                                                 <img class="border rounded-circle image-fill" width="40px" height="40px"
-                                                    src="{{ asset('storage/images/' . $user->image) }}"
-                                                    alt="Profile image">
+                                                    src="{{ asset('storage/images/' . $user->image) }}" alt="Profile image">
                                             @else
                                                 <img class="border rounded-circle image-fill"
                                                     src="{{ asset('img/default.png') }}" width="40px" height="40px">
@@ -161,7 +174,9 @@
                                                 </p>
                                             </a>
                                         </div>
-                                    @endforeach
+                                    @empty
+                                        <p>None found</p>
+                                    @endforelse
                                 </div>
                             </div>
                         </aside>

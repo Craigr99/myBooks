@@ -8,9 +8,17 @@
                     <div class="row vh-80">
                         <div class="col-sm-6 col-md-6 p-5 d-none d-md-flex login-left-container shadow flex-column"
                             style="background-image: url({{ asset('img/reading_time.svg') }})">
-                            <h4>
-                                <a class="text-white" href="{{ route('welcome') }}">myBooks</a>
-                            </h4>
+                            {{-- logo --}}
+                            <a href="{{ route('welcome') }}">
+                                <h5 class="text-white mr-5 d-flex align-items-center">
+                                    <span class="fas fa-book-open mr-3 text-primary-300"></span> myBooks
+                                </h5>
+                            </a>
+
+                            <div class="mt-auto">
+                                <h4>Welcome to myBooks!</h4>
+                                <p>Create an account to start exploring books and reviews</p>
+                            </div>
                         </div>
 
                         <div class="col-md-6 px-md-4">

@@ -8,6 +8,11 @@ use Auth;
 
 class FollowsController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('auth');
+        $this->middleware('role:user');
+    }
     // Follow users
     public function store($id)
     {
@@ -17,5 +22,10 @@ class FollowsController extends Controller
         Auth::user()->toggleFollow($user);
 
         return back();
+    }
+
+    public function index()
+    {
+        return view('user.profile.following.index');
     }
 }

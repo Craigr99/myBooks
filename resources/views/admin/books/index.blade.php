@@ -22,6 +22,7 @@
                                 <table class="table table-hover">
                                     <thead class="bg-primary-700 text-white">
                                         <tr>
+                                            <th scope="col">#</th>
                                             <th scope="col">ID</th>
                                             <th scope="col">Title</th>
                                             <th scope="col">Author(s)</th>
@@ -35,6 +36,7 @@
                                     <tbody>
                                         @foreach ($books as $book)
                                             <tr class="table-light">
+                                                <td>{{ $loop->iteration }}</td>
                                                 <td>{{ $book->id }}</td>
                                                 <td>{{ $book->title }}</td>
                                                 <td>

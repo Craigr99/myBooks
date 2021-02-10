@@ -5,6 +5,7 @@ namespace Database\Factories;
 use App\Models\Book;
 use App\Models\Publisher;
 use Illuminate\Database\Eloquent\Factories\Factory;
+use Illuminate\Support\Str;
 
 class BookFactory extends Factory
 {
@@ -28,6 +29,7 @@ class BookFactory extends Factory
         $dateFormat = $date->format('Y-m-d');
 
         return [
+            'id' => Str::random(20),
             'title' => $this->faker->catchPhrase,
             'description' => $this->faker->text($maxNbChars = 200),
             'image' => 'https://picsum.photos/200/300',

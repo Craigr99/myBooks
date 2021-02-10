@@ -2,9 +2,6 @@
 # @Date:   2021-01-18T10:09:10+00:00
 # @Last modified time: 2021-01-23T13:18:21+00:00
 
-
-
-
 namespace App\Models;
 
 use App\Models\Book;
@@ -48,8 +45,9 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
     ];
 
-    public function reviews(){
-      return $this->hasMany('App\Models\Review');
+    public function reviews()
+    {
+        return $this->hasMany('App\Models\Review');
     }
 
     public function books()
@@ -93,6 +91,11 @@ class User extends Authenticatable
     public function hasBook(Book $book)
     {
         return $this->usersBooks()->where('book_id', $book->id)->exists();
+    }
+
+    public function hasGoogleBook($book)
+    {
+        return $this->usersBooks()->where('book_id', $book['id'])->exists();
     }
 
     public function removeBook(Book $book)

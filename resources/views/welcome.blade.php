@@ -2,7 +2,7 @@
 
 @section('content')
     <header class="container-fluid hero overflow-hidden">
-        <div class="hero_img" style="background: url({{ asset('img/login_svg.svg') }}); background-size:50%">
+        <div class="hero_img" style="background: url({{ asset('img/login_svg.svg') }})">
         </div>
         <div class="container mt-5">
             <x-logo></x-logo>
@@ -26,25 +26,45 @@
     <main>
         <div class="container">
             <div class="row mt-5 spacer-bottom-lg">
-                <div class="col d-md-flex align-items-center ">
+                <div class="col d-lg-flex align-items-center ">
                     <img src="{{ asset('img/bookshelves.svg') }}" height="400px" width="450px" alt="">
-                    <div class="ml-md-5 p-md-5">
-                        <h5 class="mb-3">This is a feature </h5>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam venenatis odio vel sollicitudin
-                            consequat. Suspendisse placerat eu ipsum consequat mollis.</p>
+                    <div class="ml-lg-5 p-lg-5">
+                        <p class="fas fa-th-large text-primary-600 my-3"></p>
+                        <h5 class="mb-3">Keep track of your books with Shelves</h5>
+                        <p>Store books in one of the three bookshelves available: Reading, Want to read or Finished reading.
+                            Keeps track of your reading and organise your books!
+                        </p>
                     </div>
                 </div>
             </div>
             <div class="row spacer-bottom-lg">
-                <div class="col d-md-flex flex-row-reverse align-items-center ">
+                <div class="col d-lg-flex flex-row-reverse align-items-center ">
                     <img src="{{ asset('img/book_reading.svg') }}" height="400px" width="450px" alt="">
-                    <div class="pr-5">
-                        <h5 class="mb-3">This is a feature </h5>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam venenatis odio vel sollicitudin
-                            consequat. Suspendisse placerat eu ipsum consequat mollis.</p>
+                    <div class="pr-lg-5">
+                        <p class="fas fa-th-large text-primary-600 my-3"></p>
+                        <h5 class="mb-3">Review books</h5>
+                        <p>Recently read a book and want to let everyone know your thoughts? You can write reviews on any
+                            book on the
+                            website and read other reviews, and interact with reviews.
+                        </p>
+                    </div>
+                </div>
+            </div>
+            <div class="row mt-5 spacer-bottom-lg">
+                <div class="col d-lg-flex align-items-center ">
+                    <img src="{{ asset('img/book-pile.svg') }}" height="400px" width="450px" alt="">
+                    <div class="ml-lg-5 p-lg-5">
+                        <p class="fas fa-th-large text-primary-600 my-3"></p>
+                        <h5 class="mb-3">Hundreds of books to choose from</h5>
+                        <p>Explore hundreds of books at the touch of your finger, thanks to Google books API integration,
+                            simply make a search in the search bar and find hundreds of books.
+                        </p>
                     </div>
                 </div>
             </div>
         </div>
     </main>
+    <footer class="footer">
+        &copy; 2020 myBooks All rights reserved.
+    </footer>
 @endsection
