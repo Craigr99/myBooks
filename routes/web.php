@@ -71,3 +71,4 @@ Route::delete('/user/reviews/{id}', [App\Http\Controllers\User\ReviewController:
 Route::get('/user/reviews/{id}', [App\Http\Controllers\User\ReviewController::class, 'show'])->name('user.reviews.show');
 
 Route::get('/{category}/books', [App\Http\Controllers\CategoryController::class, 'index'])->name('categories.books.index');
+Route::get('/user/following', [App\Http\Controllers\User\FollowsController::class, 'index'])->name('user.profile.following.index');

@@ -156,7 +156,8 @@
                         <aside class="following">
                             <div class="card rounded">
                                 <div class="header">
-                                    <p class="font-medium m-0">Following</p>
+                                    <a href="{{ route('user.profile.following.index') }}"
+                                        class="text-white text-r font-medium m-0">Following</a>
                                 </div>
                                 <div class="card-body">
                                     @forelse (Auth::user()->follows as $user)

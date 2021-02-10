@@ -12083,6 +12083,10 @@ h6 {
   text-transform: uppercase;
 }
 
+.text-r {
+  font-size: 16px;
+}
+
 .text-sm {
   font-size: 12px;
 }
