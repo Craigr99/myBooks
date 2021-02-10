@@ -92,12 +92,18 @@ a:hover .card {
     &_img {
         position: absolute;
         right: -4%;
-        top: 10%;
+        top: -10%;
         display: block;
         height: 80%;
         width: 90%;
+        background-size: 50% !important;
         background-position: center right !important;
         background-repeat: no-repeat !important;
+
+        @include media-breakpoint-up(md) {
+            top: 10% !important;
+        }
+
     }
 
     &_left {
@@ -222,7 +228,9 @@ a:hover .card {
 
 
 .footer {
-    background-color: #474657;
+    padding: 20px;
+    background-color: $gray-1;
+    text-align: center;
     color: $white;
     margin-top: auto;
 

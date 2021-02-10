@@ -7,14 +7,17 @@
                 <div class="card rounded-lg shadow">
                     <div class="row vh-80">
                         <div class="col-sm-6 col-md-6 p-5 d-none d-md-flex login-left-container shadow flex-column"
-                            style="background-image: url({{ asset('img/login_svg.svg') }})">
-                            <h4>
-                                <a class="text-white" href="{{ route('welcome') }}">myBooks</a>
-                            </h4>
+                            style="background-image: url({{ asset('img/login-img.svg') }})">
+                            {{-- logo --}}
+                            <a href="{{ route('welcome') }}">
+                                <h5 class="text-white mr-5 d-flex align-items-center">
+                                    <span class="fas fa-book-open mr-3 text-primary-300"></span> myBooks
+                                </h5>
+                            </a>
 
                             <div class="mt-auto">
-                                <h4>Welcome</h4>
-                                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Lorem ipsum dolor sit amet.</p>
+                                <h4>Welcome back!</h4>
+                                <p>Login with your myBooks account to start exploring books</p>
                             </div>
                         </div>
 
