@@ -5,6 +5,7 @@
         <div class="row">
             @include('inc.user.sidebar')
             <div class="col-sm-8 col-lg-9 col-xl-10">
+                <x-flash-message />
                 @include('inc.navbar')
                 <main class="text-lg-left mt-5 px-3">
                     <h3 class="">Welcome back <span>{{ Auth::user()->f_name }}</span></h3>

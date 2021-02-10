@@ -83,7 +83,7 @@
                         @endif
                         <a class="dropdown-item bg-gray-7" href="{{ route('logout') }}"
                             onclick="event.preventDefault();
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                     document.getElementById('logout-form').submit();">
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                 document.getElementById('logout-form').submit();">
                             <span class="fas fa-sign-out-alt mr-4 text-gray-2"></span>
                             Logout
                         </a>
@@ -95,17 +95,14 @@
                 </li>
             @endguest
         </ul>
-        @if (Auth::user()->hasRole('admin'))
-            {{-- Search bar --}}
-            <form action="{{ route('admin.books.search.index') }}" method="POST"
-                class="form-inline my-lg-0 d-sm-none">
-                @csrf
-                <div class="d-flex align-items-center w-100">
-                    <input name="title" class="form-control" type="search" placeholder="Search books"
-                        aria-label="Search books">
-                    <button class="btn btn-outline-success rounded my-2 my-sm-0" type="submit">Search</button>
-                </div>
-            </form>
-        @endif
+        {{-- Search bar for mobile --}}
+        <form action="{{ route('books.search.index') }}" method="POST" class="form-inline my-lg-0 d-sm-none">
+            @csrf
+            <div class="d-flex align-items-center w-100">
+                <input name="title" class="form-control" type="search" placeholder="Search books"
+                    aria-label="Search books">
+                <button class="btn btn-outline-success rounded my-2 my-sm-0" type="submit">Search</button>
+            </div>
+        </form>
     </div>
 </nav>

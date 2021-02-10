@@ -57,6 +57,7 @@ class ReviewController extends Controller
         $review->book_id = $id;
         $review->save();
 
+        $request->session()->flash('success', 'Review posted successfully!');
         return redirect()->route('user.home');
     }
 
@@ -104,8 +105,12 @@ class ReviewController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Request $request, $id)
     {
-        //
+        $review = Review::findOrFail($id);
+        $review->delete();
+
+        $request->session()->flash('danger', 'Review deleted successfully!');
+        return redirect()->route('user.profile.index', Auth::id());
     }
 }

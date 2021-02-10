@@ -15,8 +15,8 @@
                                 <img class="profile-header rounded-top image-fill"
                                     src="{{ asset('storage/images/' . $user->header_image) }}" height="300px">
                             @else
-                                <img class="profile-header rounded-top image-fill" src="{{ asset('img/header.jpg') }}"
-                                    height="300px">
+                                <img class="profile-header rounded-top image-fill"
+                                    src="{{ asset('img/default-header.jpg') }}" height="300px">
                             @endif
                             {{-- Profile image --}}
                             @if ($user->image !== 'default.png')
@@ -127,6 +127,19 @@
                                                             more</a>
                                                     </div>
                                                 </div>
+                                                @if ($review->user->id == Auth::user()->id)
+                                                    <div class="ml-auto">
+                                                        <form style="display: inline-block" method="POST"
+                                                            action="{{ route('user.reviews.destroy', $review->id) }}">
+                                                            <input type="hidden" value="DELETE" name="_method">
+                                                            <input type="hidden" value="{{ csrf_token() }}"
+                                                                name="_token">
+                                                            <button type="submit" class="btn my-btn-danger">
+                                                                <i class="fas fa-trash"></i>
+                                                            </button>
+                                                        </form>
+                                                    </div>
+                                                @endif
                                             </div>
                                         @endforeach
                                     </div>
