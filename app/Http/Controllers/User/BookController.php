@@ -9,8 +9,8 @@ use App\Models\Author;
 use App\Models\Book;
 use App\Models\Category;
 use App\Models\Publisher;
-use Auth;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Http;
 
@@ -186,6 +186,37 @@ class BookController extends Controller
                 }
             }
 
+        } else {
+            // If the book exists in the database, just add to users bookshelf
+            $id = $response->json()['items'][0]['id'];
+            $book = Book::findOrFail($id);
+            $user = Auth::user();
+
+            //Check if user has book in shelf
+            if ($user->hasBook($book)) {
+                // Remove the book
+                $user->removeBook($book);
+                $request->session()->flash('danger', 'Book successfully removed from your shelf!');
+                return redirect()->route('user.books.shelf.index', 'reading');
+            } else {
+                // Check what list they selected and save the book
+                if ($request->input('later')) {
+                    $user->readLater()->attach($id, ['shelf' => 'Read Later']);
+                    $request->session()->flash('success', 'Book successfully added to your shelf!');
+
+                    return redirect()->route('user.books.shelf.index', 'later');
+                } else if ($request->input('reading')) {
+                    $user->reading()->attach($id, ['shelf' => 'Reading']);
+                    $request->session()->flash('success', 'Book successfully added to your shelf!');
+
+                    return redirect()->route('user.books.shelf.index', 'reading');
+                } else {
+                    $user->finishedReading()->attach($id, ['shelf' => 'Finished Reading']);
+                    $request->session()->flash('success', 'Book successfully added to your shelf!');
+
+                    return redirect()->route('user.books.shelf.index', 'finished');
+                }
+            }
         }
     }
 

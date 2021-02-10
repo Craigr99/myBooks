@@ -7,8 +7,10 @@
         @include('inc.navbar')
         <div class="row mt-5">
             <div class="col-2">
-                <img class="rounded" src="{{ $item['volumeInfo']['imageLinks']['thumbnail'] }}" width="160px"
-                    alt="Book cover image">
+                @if (isset($item['volumeInfo']['imageLinks']['thumbnail']))
+                    <img class="rounded" src="{{ $item['volumeInfo']['imageLinks']['thumbnail'] }}" width="160px"
+                        alt="Book cover image">
+                @endif
                 @if (Auth::user()->hasRole('admin'))
                     @if (App\Models\Book::where('title', '=', $item['volumeInfo']['title'])->exists())
                         <form action="{{ route('books.destroy', $item['volumeInfo']['title']) }}" method="POST">
@@ -111,23 +113,27 @@
                             Reviews
                         </div>
                         <div class="card-body">
-                            @if (count(App\Models\Book::find($item['id'])->reviews) == 0)
-                                <p>There are no reviews for this book.</p>
+                            @if (App\Models\Book::find($item['id']))
+                                @if (count(App\Models\Book::find($item['id'])->reviews) == 0)
+                                    <p>There are no reviews for this book.</p>
+                                @else
+                                    <table class="table">
+                                        <thead>
+                                            <th>Title</th>
+                                            <th>Body</th>
+                                        </thead>
+                                        <tbody>
+                                            @foreach (App\Models\Book::find($item['id'])->reviews as $review)
+                                                <tr>
+                                                    <th>{{ $review->title }}</th>
+                                                    <th>{{ $review->body }}</th>
+                                                </tr>
+                                            @endforeach
+                                        </tbody>
+                                    </table>
+                                @endif
                             @else
-                                <table class="table">
-                                    <thead>
-                                        <th>Title</th>
-                                        <th>Body</th>
-                                    </thead>
-                                    <tbody>
-                                        @foreach (App\Models\Book::find($item['id'])->reviews as $review)
-                                            <tr>
-                                                <th>{{ $review->title }}</th>
-                                                <th>{{ $review->body }}</th>
-                                            </tr>
-                                        @endforeach
-                                    </tbody>
-                                </table>
+                                <p>There are no reviews for this book.</p>
                             @endif
                         </div>
                     </div>
