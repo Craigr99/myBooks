@@ -25,7 +25,7 @@
 
     <main>
         <div class="container">
-            <div class="row mt-5 spacer-bottom-lg">
+            <div class="row mt-5 spacer-bottom-lg fade-in">
                 <div class="col d-lg-flex align-items-center ">
                     <img src="{{ asset('img/bookshelves.svg') }}" height="400px" width="450px" alt="">
                     <div class="ml-lg-5 p-lg-5">
@@ -37,7 +37,7 @@
                     </div>
                 </div>
             </div>
-            <div class="row spacer-bottom-lg">
+            <div class="row spacer-bottom-lg fade-in">
                 <div class="col d-lg-flex flex-row-reverse align-items-center ">
                     <img src="{{ asset('img/book_reading.svg') }}" height="400px" width="450px" alt="">
                     <div class="pr-lg-5">
@@ -50,7 +50,7 @@
                     </div>
                 </div>
             </div>
-            <div class="row mt-5 spacer-bottom-lg">
+            <div class="row mt-5 spacer-bottom-lg fade-in">
                 <div class="col d-lg-flex align-items-center ">
                     <img src="{{ asset('img/book-pile.svg') }}" height="400px" width="450px" alt="">
                     <div class="ml-lg-5 p-lg-5">

@@ -25,6 +25,7 @@
                                             <th scope="col">Email</th>
                                             <th scope="col">Username</th>
                                             <th scope="col">Role</th>
+                                            <th scope="col">Actions</th>
                                         </tr>
                                     </thead>
                                     <tbody>
@@ -36,6 +37,9 @@
                                                 <td>{{ $user->email }}</td>
                                                 <td>{{ $user->username }}</td>
                                                 <td>{{ $user->roles[0]->name }}</td>
+                                                <td class="d-flex justify-content-lg-between">
+                                                  <a href="{{ route('user.profile.index', $user->id) }}">View</a>
+                                                </td>
                                                 {{-- <td
                                                     class="d-flex justify-content-lg-between">
                                                     <a href="{{ route('admin.books.show', $book->id) }}">View</a>

@@ -12628,3 +12628,53 @@ a:hover .card {
   background-color: #2F2E41;
 }
 
+.fade-in{
+  opacity: 0;
+  transition: opacity 250ms ease-in;
+}
+
+.fade-in.appear {
+  opacity: 1;
+}
+
+.reviewHead{
+  width: 80%;
+  height: 50px;
+  padding: 12px 20px;
+  box-sizing: border-box;
+  border: 2px solid #ccc;
+  border-radius: 4px;
+  background-color: #f8f8f8;
+  font-size: 20px;
+  resize: none;
+  margin-left: 50px;
+}
+
+.reviewBody{
+  width: 80%;
+  height: 350px;
+  padding: 12px 20px;
+  box-sizing: border-box;
+  border: 2px solid #ccc;
+  border-radius: 4px;
+  background-color: #f8f8f8;
+  font-size: 16px;
+  resize: none;
+  margin-left: 50px;
+}
+
+.reviewBackground{
+  background-color: #3490dc;
+}
+.reviewTitle{
+  color: #343a40;
+  text-align: center;
+}
+.reviewTitlePush{
+  color: #343a40;
+  margin-left: 550px;
+}
+.reviewTitlePush1{
+  color: #343a40;
+  margin-left: 450px;
+}
