@@ -1,9 +1,9 @@
 @extends('layouts.app')
 
 @section('content')
-
     <div class="container">
         @include('inc.navbar')
+        <h5 class="text-center text-lg-left mt-5 mb-4">Showing results for "{{ $data[0]['volumeInfo']['title'] }}"</h5>
         <div class="row">
             @if (isset($data))
                 @foreach ($data as $item)

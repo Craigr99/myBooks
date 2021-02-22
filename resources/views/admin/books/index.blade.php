@@ -53,7 +53,7 @@
                                                         <span class="d-block"> {{ $category->name }} </span>
                                                     @endforeach
                                                 </td>
-                                                <td class="d-flex justify-content-lg-between">
+                                                <td class="d-flex flex-column justify-content-lg-between">
                                                     <a href="{{ route('admin.books.show', $book->id) }}">View</a>
                                                     <a href="{{ route('admin.books.edit', $book->id) }}">Edit</a>
                                                     {{-- <a href="#" data-toggle="modal" data-target="#delete-modal">Delete</a> --}}

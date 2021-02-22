@@ -107,7 +107,7 @@
                     <p class="mt-5">{{ Str::limit($item['volumeInfo']['description'], 500) }}</p>
                 @endif
 
-                <div class="reviews spacer-top-lg red">
+                <div class="reviews spacer-top-md red">
                     <div class="card">
                         <div class="card-header">
                             Reviews

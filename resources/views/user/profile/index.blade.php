@@ -3,7 +3,11 @@
 @section('content')
     <div class="container-fluid bg-gray-7">
         <div class="row">
-            @include('inc.user.sidebar')
+            @if (Auth::user()->hasRole('admin'))
+                @include('inc.admin.sidebar')
+            @else
+                @include('inc.user.sidebar')
+            @endif
             <div class="col col-sm-8 col-lg-9 col-xl-10">
                 <x-flash-message />
                 @include('inc.navbar')

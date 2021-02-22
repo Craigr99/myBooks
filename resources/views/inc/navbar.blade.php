@@ -57,11 +57,14 @@
                             <span class="fas fa-user text-gray-3 mr-4"></span> Profile
                         </a>
                         @if (Auth::user()->hasRole('admin'))
-                            <a class="dropdown-item d-md-none" href="{{ route('admin.books.index') }}">
-                                Books
+                            <a class="dropdown-item" href="{{ route('admin.books.index') }}">
+                                <span class="fas fa-book text-gray-3 mr-4"></span> Books
                             </a>
-                            <a class="dropdown-item d-md-none" href="{{ route('admin.users.index') }}">
-                                Users
+                            <a class="dropdown-item" href="{{ route('admin.users.index') }}">
+                                <span class="fas fa-users text-gray-3 mr-4"></span> Users
+                            </a>
+                            <a class="dropdown-item" href="{{ route('admin.reviews.index') }}">
+                                <span class="fas fa-edit text-gray-3 mr-4"></span> Reviews
                             </a>
                         @endif
                         @if (Auth::user()->hasRole('user'))
@@ -83,7 +86,7 @@
                         @endif
                         <a class="dropdown-item bg-gray-7" href="{{ route('logout') }}"
                             onclick="event.preventDefault();
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                 document.getElementById('logout-form').submit();">
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                         document.getElementById('logout-form').submit();">
                             <span class="fas fa-sign-out-alt mr-4 text-gray-2"></span>
                             Logout
                         </a>
@@ -101,7 +104,7 @@
             <div class="d-flex align-items-center w-100">
                 <input name="title" class="form-control" type="search" placeholder="Search books"
                     aria-label="Search books">
-                <button class="btn btn-outline-success rounded my-2 my-sm-0" type="submit">Search</button>
+                <button class="btn my-btn-outline rounded my-2 my-sm-0" type="submit">Search</button>
             </div>
         </form>
     </div>
