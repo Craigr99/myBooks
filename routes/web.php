@@ -65,7 +65,7 @@ Route::post('/user/blogs/store', [App\Http\Controllers\User\BlogController::clas
 Route::put('/user/blogs/{id}', [App\Http\Controllers\User\BlogController::class, 'update'])->name('user.blogs.update');
 Route::delete('/user/blogs/{id}', [App\Http\Controllers\User\BlogController::class, 'destroy'])->name('user.blogs.destroy');
 
-Route::get('/user/books/{id}/reviews/create', [App\Http\Controllers\User\ReviewController::class, 'create'])->name('user.reviews.create');
+Route::get('/user/books/{id}/{name?}/reviews/create', [App\Http\Controllers\User\ReviewController::class, 'create'])->name('user.reviews.create');
 Route::post('/user/books/{id}/reviews/store', [App\Http\Controllers\User\ReviewController::class, 'store'])->name('user.reviews.store');
 Route::delete('/user/reviews/{id}', [App\Http\Controllers\User\ReviewController::class, 'destroy'])->name('user.reviews.destroy');
 Route::get('/user/reviews/{id}', [App\Http\Controllers\User\ReviewController::class, 'show'])->name('user.reviews.show');

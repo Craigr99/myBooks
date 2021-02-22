@@ -64,7 +64,8 @@
                 @endif
                 @if (Auth::user()->hasRole('user'))
                     <a class="btn my-btn my-btn-small my-btn-secondary mt-3 w-100"
-                        href="{{ route('user.reviews.create', $item['id']) }}"><i class="fas fa-pen mr-2"></i>
+                        href="{{ route('user.reviews.create', [$item['id'], $item['volumeInfo']['title']]) }}"><i
+                            class="fas fa-pen mr-2"></i>
                         Write
                         a
                         review</a>

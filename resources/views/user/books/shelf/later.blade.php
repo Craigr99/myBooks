@@ -31,7 +31,7 @@
                                                                         class="mx-2">Remove
                                                                         book</span></button>
                                                             </form>
-                                                            <a href="{{ route('user.reviews.create', $book->id) }}"
+                                                            <a href="{{ route('user.reviews.create', [$book->id, $book->title]) }}"
                                                                 class="btn my-btn my-btn-secondary mt-3"><i
                                                                     class="fas fa-pen"></i> <span class="mx-2">Write a
                                                                     review</span></a>
