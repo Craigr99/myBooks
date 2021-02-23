@@ -80,7 +80,7 @@
                         <h3>{{ $book->title }}</h3>
                     </div>
                     <h2 class="text-gray-3">
-                        {{ $book->rating }}/5
+                        {{ number_format($book->avgRating(), 1) }}/5
                     </h2>
                 </div>
                 <h6>by
@@ -130,36 +130,75 @@
                     </div>
                 </div>
             </div>
-            <div class="col-12 col-lg-5 col-xl-7 offset-lg-3 offset-xl-2 spacer-top-md">
-                <div class="card">
-                    <div class="card-header">
-                        Reviews
-                    </div>
-                    <div class="card-body">
-                        @if (count($book->reviews) == 0)
-                            <p>There are no reviews for this book.</p>
-                        @else
-                            <table class="table">
-                                <thead>
-                                    <th>Title</th>
-                                    <th>Body</th>
-                                </thead>
-                                <tbody>
-                                    @foreach ($book->reviews as $review)
-                                        <tr>
-                                            <th>{{ $review->title }}</th>
-                                            <th>{{ $review->body }}</th>
-                                        </tr>
-                                    @endforeach
-                                </tbody>
-                            </table>
-                        @endif
-                    </div>
-                </div>
-
+            <div class="col-12 col-lg-5 col-xl-7 offset-lg-3 offset-xl-2 spacer-top-sm">
+                <span class="d-flex align-items-center">
+                    <h4>Book reviews</h4>
+                    <h5 class="ml-2">({{ count($book->reviews) }})</h5>
+                </span>
+                @if (count($book->reviews) == 0)
+                    <p>There are no reviews for this book.</p>
+                @else
+                    @foreach ($book->reviews as $review)
+                        <div class="card rounded shadow-lg mt-4">
+                            <div class="card-body">
+                                {{-- Card --}}
+                                <a href="{{ route('user.reviews.show', $review->id) }}" style="color: initial">
+                                    <div class="d-flex">
+                                        {{-- Profile image --}}
+                                        @if ($review->user->image !== 'default.png')
+                                            <img src="{{ asset('storage/images/' . $review->user->image) }}"
+                                                class="rounded-circle image-fill" height="60px" width="60px" />
+                                        @else
+                                            <img src="{{ asset('img/default.png') }}"
+                                                class="rounded-circle image-fill border" height="60px" width="60px" />
+                                        @endif
+                                        <div class="ml-4 w-100">
+                                            <div class="d-flex justify-content-between align-items-center">
+                                                <h4>{{ $review->rating }}/5</h4>
+                                                <small class="caption text-gray-4">21 minutes ago</small>
+                                            </div>
+                                            <h5 class="mt-4 mb-3">{{ $review->title }}</h5>
+                                            <p>{{ $review->body }}</p>
+                                            {{-- Icons --}}
+                                            <div class="mt-auto pt-4 text-gray-3">
+                                                {{-- Comment button toggle --}}
+                                                <a class="far fa-comment" data-toggle="collapse"
+                                                    href="#commentsDropdown{{ $review->id }}" role="button"
+                                                    aria-expanded="false"
+                                                    aria-controls="commentsDropdown{{ $review->id }}"></a> 6
+                                                {{-- Likes button --}}
+                                                <i class="far fa-heart ml-5"></i> 3
+                                                {{-- Comments dropdown --}}
+                                                <div class="collapse multi-collapse mt-2"
+                                                    id="commentsDropdown{{ $review->id }}">
+                                                    <div class="card card-body">
+                                                        <form action="">
+                                                            <label for="comment">Write a comment</label>
+                                                            <div class="d-flex">
+                                                                <input class="form-control form-control-sm" type="text"
+                                                                    placeholder="Write a comment..">
+                                                                <button type="submit"
+                                                                    class="btn btn-sm my-btn-primary rounded">Post</button>
+                                                            </div>
+                                                        </form>
+                                                        <div class="mt-3">
+                                                            <hr>
+                                                            <div class="comment">
+                                                                This is a comment
+                                                            </div>
+                                                            <hr>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </a>
+                            </div>
+                        </div>
+                    @endforeach
+                @endif
             </div>
-
         </div>
-    </div>
     </div>
 @endsection

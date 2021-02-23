@@ -38,4 +38,9 @@ class Book extends Model
     {
         return $this->hasMany('App\Models\Review', 'book_id');
     }
+
+    public function avgRating()
+    {
+        return $this->reviews->avg('rating');
+    }
 }

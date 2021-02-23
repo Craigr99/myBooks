@@ -26,6 +26,7 @@ class ReviewSeeder extends Seeder
         $review->body = 'So interesting, I was on the edge of my seat';
         $review->user_id = 2;
         $review->book_id = $book->id;
+        $review->rating = 4;
         $review->save();
 
         $review = new Review();
@@ -33,6 +34,7 @@ class ReviewSeeder extends Seeder
         $review->body = 'Dull material, not very engaging';
         $review->user_id = 2;
         $review->book_id = $book->id;
+        $review->rating = 3;
         $review->save();
 
         // for ($i = 1; $i <= count($books); $i++) {

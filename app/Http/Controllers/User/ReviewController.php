@@ -145,6 +145,7 @@ class ReviewController extends Controller
         $review->body = $request->input('body');
         $review->user_id = Auth::id();
         $review->book_id = $id;
+        $review->rating = $request->input('rating');
         $review->save();
 
         $request->session()->flash('success', 'Review posted successfully!');
