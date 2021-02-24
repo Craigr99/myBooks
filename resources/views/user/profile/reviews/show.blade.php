@@ -25,8 +25,9 @@
                                                         class="text-gray-1">
                                                         {{ $review->book->title }}
                                                     </a>
+
                                                 </h4>
-                                                <h4>9.1</h4>
+                                                <h4>{{ $review->rating }}/5</h4>
                                             </div>
                                             <div class="d-flex align-items-center">
                                                 <small class="text-gray-3 mr-2">by
@@ -47,7 +48,19 @@
                                                 @endif
                                             </div>
                                             <div class="mt-5">
-                                                <h5 class="text-primary-600 mb-2">{{ $review->title }}</h5>
+                                                <span class="d-flex align-items-center mb-2">
+                                                    <h5 class="text-primary-600 mr-4">{{ $review->title }}</h5>
+                                                    @if ($review->user->id == Auth::user()->id)
+                                                        <form class=" align-self-end" method="POST"
+                                                            action="{{ route('user.reviews.destroy', $review->id) }}">
+                                                            @method("DELETE")
+                                                            @csrf
+                                                            <button type="submit" class="btn  my-btn-danger">
+                                                                <i class="fas fa-trash text-sm"></i>
+                                                            </button>
+                                                        </form>
+                                                    @endif
+                                                </span>
                                                 <p>{{ $review->body }}</p>
                                             </div>
                                         </section>

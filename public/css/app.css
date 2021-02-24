@@ -12403,6 +12403,10 @@ h6 {
   padding: 10px !important;
 }
 
+.my-btn-xs {
+  padding: 4px !important;
+}
+
 .input-delete {
   border: none;
   background-color: transparent;

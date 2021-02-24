@@ -108,36 +108,37 @@
                     <p class="mt-5">{{ Str::limit($item['volumeInfo']['description'], 500) }}</p>
                 @endif
 
-                <div class="reviews spacer-top-md red">
-                    <div class="card">
-                        <div class="card-header">
-                            Reviews
-                        </div>
-                        <div class="card-body">
-                            @if (App\Models\Book::find($item['id']))
-                                @if (count(App\Models\Book::find($item['id'])->reviews) == 0)
-                                    <p>There are no reviews for this book.</p>
-                                @else
-                                    <table class="table">
-                                        <thead>
-                                            <th>Title</th>
-                                            <th>Body</th>
-                                        </thead>
-                                        <tbody>
-                                            @foreach (App\Models\Book::find($item['id'])->reviews as $review)
-                                                <tr>
-                                                    <th>{{ $review->title }}</th>
-                                                    <th>{{ $review->body }}</th>
-                                                </tr>
-                                            @endforeach
-                                        </tbody>
-                                    </table>
-                                @endif
-                            @else
+                <div class="spacer-top-sm">
+                    <span class="d-flex align-items-center">
+                        <h4>Book reviews</h4>
+                        <h5 class="ml-2">(0)</h5>
+                    </span>
+                    @if (App\Models\Book::find($item['id']))
+                        @if (count(App\Models\Book::find($item['id'])->reviews) == 0)
+                            <p>There are no reviews for this book.</p>
+                        @else
+                            <table class="table">
+                                <thead>
+                                    <th>Title</th>
+                                    <th>Body</th>
+                                </thead>
+                                <tbody>
+                                    @foreach (App\Models\Book::find($item['id'])->reviews as $review)
+                                        <tr>
+                                            <th>{{ $review->title }}</th>
+                                            <th>{{ $review->body }}</th>
+                                        </tr>
+                                    @endforeach
+                                </tbody>
+                            </table>
+                        @endif
+                    @else
+                        <div class="card rounded shadow-lg mt-4">
+                            <div class="card-body">
                                 <p>There are no reviews for this book.</p>
-                            @endif
+                            </div>
                         </div>
-                    </div>
+                    @endif
                 </div>
             </div>
 

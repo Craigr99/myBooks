@@ -99,8 +99,16 @@
                     </div>
                     <div class="card-body">
                         <ul class="d-flex justify-content-between mb-3">
-                            <li><b>Publisher:</b></li>
-                            <li>
+                            <li class="flex-1"><b>Authors:</b></li>
+                            <li class="flex-1 text-right">
+                                @foreach ($book->authors as $author)
+                                    {{ $author->name }}
+                                @endforeach
+                            </li>
+                        </ul>
+                        <ul class="d-flex justify-content-between mb-3">
+                            <li class="flex-1"><b>Publisher:</b></li>
+                            <li class="flex-1 text-right">
                                 {{ $book->publisher->name }}
                             </li>
                         </ul>
@@ -119,13 +127,13 @@
                         <ul class="d-flex justify-content-between mb-3">
                             <li><b>Average Rating:</b></li>
                             <li>
-                                {{ $book->rating }}
+                                {{ number_format($book->avgRating(), 1) }}/5
                             </li>
                         </ul>
                         <ul class="d-flex justify-content-between mb-3">
                             <li><b>Rating Count:</b></li>
                             <li>
-                                {{ $book->rating_count }}
+                                {{ count($book->reviews) }}
                             </li>
                         </ul>
                     </div>
@@ -139,7 +147,7 @@
                 @if (count($book->reviews) == 0)
                     <p>There are no reviews for this book.</p>
                 @else
-                    @foreach ($book->reviews as $review)
+                    @foreach ($book->reviews->sortByDesc('updated_at') as $review)
                         <div class="card rounded shadow-lg mt-4">
                             <div class="card-body">
                                 {{-- Card --}}
@@ -193,8 +201,8 @@
                                                                 <hr>
                                                                 <div class="comment d-flex align-items-center">
                                                                     {{-- Profile image --}}
-                                                                    @if ($review->user->image !== 'default.png')
-                                                                        <img src="{{ asset('storage/images/' . $review->user->image) }}"
+                                                                    @if ($comment->user->image !== 'default.png')
+                                                                        <img src="{{ asset('storage/images/' . $comment->user->image) }}"
                                                                             class="rounded-circle image-fill" height="30px"
                                                                             width="30px" />
                                                                     @else
@@ -203,8 +211,23 @@
                                                                             height="30px" width="30px" />
                                                                     @endif
                                                                     <p class="text-black ml-3">{{ $comment->body }}</p>
-                                                                    <small
-                                                                        class="caption text-gray-4 ml-auto">{{ $comment->created_at->diffForHumans() }}</small>
+                                                                    {{-- Right side of comment --}}
+                                                                    <div class="ml-auto d-flex flex-column">
+                                                                        <small
+                                                                            class="caption text-gray-4">{{ $comment->created_at->diffForHumans() }}</small>
+                                                                        {{-- Delete button for comment --}}
+                                                                        @if ($comment->user->id == Auth::user()->id)
+                                                                            <form class=" align-self-end" method="POST"
+                                                                                action="{{ route('user.review.comments.destroy', $comment->id) }}">
+                                                                                @method("DELETE")
+                                                                                @csrf
+                                                                                <button type="submit"
+                                                                                    class="btn my-btn-xs my-btn-danger">
+                                                                                    <i class="fas fa-trash text-sm"></i>
+                                                                                </button>
+                                                                            </form>
+                                                                        @endif
+                                                                    </div>
                                                                 </div>
                                                                 <hr>
                                                             @endforeach
