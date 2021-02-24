@@ -155,7 +155,8 @@
                                         <div class="ml-4 w-100">
                                             <div class="d-flex justify-content-between align-items-center">
                                                 <h4>{{ $review->rating }}/5</h4>
-                                                <small class="caption text-gray-4">21 minutes ago</small>
+                                                <small
+                                                    class="caption text-gray-4">{{ $review->created_at->diffForHumans() }}</small>
                                             </div>
                                             <h5 class="mt-4 mb-3">{{ $review->title }}</h5>
                                             <p>{{ $review->body }}</p>
@@ -165,14 +166,19 @@
                                                 <a class="far fa-comment" data-toggle="collapse"
                                                     href="#commentsDropdown{{ $review->id }}" role="button"
                                                     aria-expanded="false"
-                                                    aria-controls="commentsDropdown{{ $review->id }}"></a> 6
+                                                    aria-controls="commentsDropdown{{ $review->id }}"></a>
+                                                {{ count($review->comments) }}
                                                 {{-- Likes button --}}
                                                 <i class="far fa-heart ml-5"></i> 3
                                                 {{-- Comments dropdown --}}
+
                                                 <div class="collapse multi-collapse mt-2"
                                                     id="commentsDropdown{{ $review->id }}">
                                                     <div class="card card-body">
-                                                        <form action="">
+                                                        <form
+                                                            action="{{ route('user.review.comments.store', $review->id) }}"
+                                                            method="POST">
+                                                            @csrf
                                                             <label for="comment">Write a comment</label>
                                                             <div class="d-flex">
                                                                 <input class="form-control form-control-sm" type="text"
@@ -182,11 +188,25 @@
                                                             </div>
                                                         </form>
                                                         <div class="mt-3">
-                                                            <hr>
-                                                            <div class="comment">
-                                                                This is a comment
-                                                            </div>
-                                                            <hr>
+                                                            @foreach ($review->comments as $comment)
+                                                                <hr>
+                                                                <div class="comment d-flex align-items-center">
+                                                                    {{-- Profile image --}}
+                                                                    @if ($review->user->image !== 'default.png')
+                                                                        <img src="{{ asset('storage/images/' . $review->user->image) }}"
+                                                                            class="rounded-circle image-fill" height="30px"
+                                                                            width="30px" />
+                                                                    @else
+                                                                        <img src="{{ asset('img/default.png') }}"
+                                                                            class="rounded-circle image-fill border"
+                                                                            height="30px" width="30px" />
+                                                                    @endif
+                                                                    <p class="text-black ml-3">{{ $comment->body }}</p>
+                                                                    <small
+                                                                        class="caption text-gray-4 ml-auto">{{ $comment->created_at->diffForHumans() }}</small>
+                                                                </div>
+                                                                <hr>
+                                                            @endforeach
                                                         </div>
                                                     </div>
                                                 </div>
