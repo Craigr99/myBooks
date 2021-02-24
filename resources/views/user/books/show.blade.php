@@ -3,6 +3,7 @@
 @section('content')
     <div class="container">
         @include('inc.navbar')
+        <x-flash-message />
         <div class="row mt-5">
             <div class="col col-sm-4 col-lg-3 col-xl-2 text-center text-sm-left mb-5 mb-sm-0">
                 <img class="rounded" src="{{ $book->image }}" width="160px" alt="Book cover image">
@@ -181,14 +182,14 @@
                                                             @csrf
                                                             <label for="comment">Write a comment</label>
                                                             <div class="d-flex">
-                                                                <input class="form-control form-control-sm" type="text"
-                                                                    placeholder="Write a comment..">
+                                                                <input class="form-control form-control-sm" name="body"
+                                                                    type="text" placeholder="Write a comment..">
                                                                 <button type="submit"
                                                                     class="btn btn-sm my-btn-primary rounded">Post</button>
                                                             </div>
                                                         </form>
                                                         <div class="mt-3">
-                                                            @foreach ($review->comments as $comment)
+                                                            @foreach ($review->comments->sortByDesc('created_at') as $comment)
                                                                 <hr>
                                                                 <div class="comment d-flex align-items-center">
                                                                     {{-- Profile image --}}

@@ -44,6 +44,8 @@ class CommentController extends Controller
         $comment->body = $request->input('body');
         $comment->save();
 
+        $request->session()->flash('success', 'Comment posted successfully!');
+
         return back();
     }
 
