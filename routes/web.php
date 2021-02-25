@@ -73,5 +73,7 @@ Route::get('/user/reviews/{id}', [App\Http\Controllers\User\ReviewController::cl
 Route::post('/user/review/{id}/comments/store', [App\Http\Controllers\User\CommentController::class, 'store'])->name('user.review.comments.store');
 Route::delete('/user/comment/{id}', [App\Http\Controllers\User\CommentController::class, 'destroy'])->name('user.review.comments.destroy');
 
+Route::post('/user/review/{id}', [App\Http\Controllers\User\LikeController::class, 'store'])->name('user.reviews.likes.store');
+
 Route::get('/{category}/books', [App\Http\Controllers\CategoryController::class, 'index'])->name('categories.books.index');
 Route::get('/user/following', [App\Http\Controllers\User\FollowsController::class, 'index'])->name('user.profile.following.index');

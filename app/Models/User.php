@@ -93,6 +93,31 @@ class User extends Authenticatable
         return $this->usersBooks()->where('book_id', $book->id)->exists();
     }
 
+    public function likes()
+    {
+        return $this->belongsToMany('App\Models\Review', 'likes');
+    }
+
+    public function usersLikes()
+    {
+        return $this->belongsToMany(
+            Review::class,
+            'likes',
+            'user_id',
+            'review_id'
+        );
+    }
+
+    public function likesReview(Review $review)
+    {
+        return $this->usersLikes()->where('review_id', $review->id)->exists();
+    }
+
+    public function removeLike(Review $review)
+    {
+        return $this->usersLikes()->detach($review);
+    }
+
     public function hasGoogleBook($book)
     {
         return $this->usersBooks()->where('book_id', $book['id'])->exists();

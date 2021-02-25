@@ -177,10 +177,27 @@
                                                     aria-expanded="false"
                                                     aria-controls="commentsDropdown{{ $review->id }}"></a>
                                                 {{ count($review->comments) }}
-                                                {{-- Likes button --}}
-                                                <i class="far fa-heart ml-5"></i> 3
-                                                {{-- Comments dropdown --}}
 
+                                                {{-- Likes button --}}
+                                                @if (Auth::user()->likesReview($review))
+                                                    <form class="d-inline-flex"
+                                                        action="{{ route('user.reviews.likes.store', $review->id) }}"
+                                                        method="POST">
+                                                        @csrf
+                                                        <button class="far fa-heart ml-5"></button>
+                                                        {{ count($review->likes) }}
+                                                    </form>
+                                                @else
+                                                    <form class="d-inline-flex"
+                                                        action="{{ route('user.reviews.likes.store', $review->id) }}"
+                                                        method="POST">
+                                                        @csrf
+                                                        <button class="far fa-heart ml-5"></button>
+                                                        {{ count($review->likes) }}
+                                                    </form>
+                                                @endif
+
+                                                {{-- Comments dropdown --}}
                                                 <div class="collapse multi-collapse mt-2"
                                                     id="commentsDropdown{{ $review->id }}">
                                                     <div class="card card-body">
