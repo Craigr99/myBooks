@@ -132,7 +132,7 @@
             <div class="col-12 col-lg-5 col-xl-7 offset-lg-3 offset-xl-2 spacer-top-md">
                 <div class="card">
                     <div class="card-header">
-                        Reviews
+                        Here's what others had to say about this book!
                     </div>
                     <div class="card-body">
                         @if (count($book->reviews) == 0)
@@ -140,12 +140,14 @@
                         @else
                             <table class="table">
                                 <thead>
+                                    <th>User</th>
                                     <th>Title</th>
                                     <th>Body</th>
                                 </thead>
                                 <tbody>
                                     @foreach ($book->reviews as $review)
                                         <tr>
+                                            <th><a href="{{ route('user.profile.index', $review->user->id) }}">{{ $review->user->username }}</a></th>
                                             <th>{{ $review->title }}</th>
                                             <th>{{ $review->body }}</th>
                                         </tr>

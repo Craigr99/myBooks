@@ -12632,3 +12632,11 @@ a:hover .card {
   background-color: #2F2E41;
 }
 
+.fade-in{
+  opacity: 0;
+  transition: opacity 250ms ease-in;
+}
+
+.fade-in.appear {
+  opacity: 1;
+}
