@@ -12640,3 +12640,26 @@ a:hover .card {
 .fade-in.appear {
   opacity: 1;
 }
+
+.voter{
+  width: 50px;
+  border: none;
+  background: none;
+  color: #000000;
+  font-size: 30px;
+  margin: 0 10px;
+  pointer-events: none;
+
+}
+
+.voteButton{
+  background: none;
+  border: none;
+  font-size: 30px;
+  cursor: pointer;
+}
+
+.voteButton:active{
+  color: #004eff;
+  transform: scale(1.2);
+}

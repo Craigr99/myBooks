@@ -150,6 +150,16 @@
                                             <th><a href="{{ route('user.profile.index', $review->user->id) }}">{{ $review->user->username }}</a></th>
                                             <th>{{ $review->title }}</th>
                                             <th>{{ $review->body }}</th>
+                                            <th>
+                                              <button class="voteButton" id ="likebtn">
+                                              <i class="fa fa-thumbs-up"></i>
+                                              </button>
+                                              <input class="voter" type="number" id="like" value="0" name="">
+                                              <button class="voteButton" id ="dislikebtn">
+                                                <i class="fa fa-thumbs-down"></i>
+                                              </button>
+                                                <input class="voter" type="number" id="dislike" value="0" name="">
+                                            </th>
                                         </tr>
                                     @endforeach
                                 </tbody>
