@@ -7,7 +7,7 @@ use App\Models\Review;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
-class LikeController extends Controller
+class DislikeController extends Controller
 {
     public function __construct()
     {
@@ -20,19 +20,19 @@ class LikeController extends Controller
         $review = Review::findOrFail($id);
         $user = Auth::user();
 
-        // Check if user dislikes review
-        if ($user->dislikesReview($review)) {
-            $user->removeDislike($review);
+        // Check if user likes review
+        if ($user->likesReview($review)) {
+            $user->removeLike($review);
         }
 
-        //Check if user liked review
-        if ($user->likesReview($review)) {
-            // Remove the like from review
-            $user->removeLike($review);
+        //Check if user disliked review
+        if ($user->dislikesReview($review)) {
+            // Remove the dislike from review
+            $user->removeDislike($review);
             return back();
         } else {
-            // like
-            $user->likes()->attach($id);
+            // dislike
+            $user->dislikes()->attach($id);
             return back();
 
         }

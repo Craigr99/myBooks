@@ -25,24 +25,17 @@ faders.forEach(fader => {
   appearOnScroll.observe(fader);
 });
 
-const options = {
-  bottom: '64px', // default: '32px'
-  right: '32px', // default: '32px'
-  left: 'unset', // default: 'unset'
-  time: '0.3s', // default: '0.3s'
-  mixColor: '#fff', // default: '#fff'
-  backgroundColor: '#fff',  // default: '#fff'
-  buttonColorDark: '#100f2c',  // default: '#100f2c'
-  buttonColorLight: '#fff', // default: '#fff'
-  saveInCookies: false, // default: true,
-  label: '🌓', // default: ''
-  autoMatchOsTheme: true // default: true
-}
+let likebtn = document.querySelector('#likebtn');
+let dislikebtn = document.querySelector('#dislikebtn');
+let like = document.querySelector('#like');
+let dislike = document.querySelector('#dislike');
 
-const darkmode = new Darkmode(options);
-darkmode.showWidget();
+likebtn.addEventListener('click',()=>{
+  like.value = parseInt(like.value) + 1;
+  like.style.color = "#12ff00";
+})
 
-function addDarkmodeWidget() {
-    new Darkmode().showWidget();
-  }
-  window.addEventListener('load', addDarkmodeWidget);
+dislikebtn.addEventListener('click',()=>{
+  dislike.value = parseInt(dislike.value) + 1;
+  dislike.style.color = "#ff0000";
+})

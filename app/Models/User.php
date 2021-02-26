@@ -93,6 +93,26 @@ class User extends Authenticatable
         return $this->usersBooks()->where('book_id', $book->id)->exists();
     }
 
+    public function dislikes()
+    {
+        return $this->belongsToMany('App\Models\Review', 'dislikes');
+    }
+
+    public function usersDislikes()
+    {
+        return $this->belongsToMany(
+            Review::class,
+            'dislikes',
+            'user_id',
+            'review_id'
+        );
+    }
+
+    public function dislikesReview(Review $review)
+    {
+        return $this->usersDislikes()->where('review_id', $review->id)->exists();
+    }
+
     public function likes()
     {
         return $this->belongsToMany('App\Models\Review', 'likes');
@@ -106,6 +126,11 @@ class User extends Authenticatable
             'user_id',
             'review_id'
         );
+    }
+
+    public function removeDislike(Review $review)
+    {
+        return $this->usersDislikes()->detach($review);
     }
 
     public function likesReview(Review $review)

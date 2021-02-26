@@ -155,11 +155,15 @@
                                     <div class="d-flex">
                                         {{-- Profile image --}}
                                         @if ($review->user->image !== 'default.png')
-                                            <img src="{{ asset('storage/images/' . $review->user->image) }}"
-                                                class="rounded-circle image-fill" height="60px" width="60px" />
+                                            <a href="{{ route('user.profile.index', $review->user->id) }}">
+                                                <img src="{{ asset('storage/images/' . $review->user->image) }}"
+                                                    class="rounded-circle image-fill" height="60px" width="60px" />
+                                            </a>
                                         @else
-                                            <img src="{{ asset('img/default.png') }}"
-                                                class="rounded-circle image-fill border" height="60px" width="60px" />
+                                            <a href="{{ route('user.profile.index', $review->user->id) }}">
+                                                <img src="{{ asset('img/default.png') }}"
+                                                    class="rounded-circle image-fill border" height="60px" width="60px" />
+                                            </a>
                                         @endif
                                         <div class="ml-4 w-100">
                                             <div class="d-flex justify-content-between align-items-center">
@@ -178,24 +182,30 @@
                                                     aria-controls="commentsDropdown{{ $review->id }}"></a>
                                                 {{ count($review->comments) }}
 
-                                                {{-- Likes button --}}
-                                                @if (Auth::user()->likesReview($review))
-                                                    <form class="d-inline-flex"
-                                                        action="{{ route('user.reviews.likes.store', $review->id) }}"
-                                                        method="POST">
-                                                        @csrf
-                                                        <button class="far fa-heart ml-5"></button>
-                                                        {{ count($review->likes) }}
-                                                    </form>
-                                                @else
-                                                    <form class="d-inline-flex"
-                                                        action="{{ route('user.reviews.likes.store', $review->id) }}"
-                                                        method="POST">
-                                                        @csrf
-                                                        <button class="far fa-heart ml-5"></button>
-                                                        {{ count($review->likes) }}
-                                                    </form>
-                                                @endif
+                                                {{-- Like button --}}
+                                                <form class="d-inline-flex"
+                                                    action="{{ route('user.reviews.likes.store', $review->id) }}"
+                                                    method="POST">
+                                                    @csrf
+                                                    <button class="voteButton" id="likebtn">
+                                                        <i class="fa fa-thumbs-up"></i>
+                                                    </button>
+                                                    <input class="voter" type="number" name="liked"
+                                                        value="{{ count($review->likes) }}">
+
+                                                </form>
+                                                {{-- Dislike button --}}
+                                                <form class="d-inline-flex"
+                                                    action="{{ route('user.reviews.dislikes.store', $review->id) }}"
+                                                    method="POST">
+                                                    @csrf
+                                                    <button class="voteButton" id="dislikebtn">
+                                                        <i class="fa fa-thumbs-down"></i>
+                                                    </button>
+                                                    <input class="voter" type="number" id="dislike"
+                                                        value="{{ count($review->dislikes) }}" />
+                                                </form>
+
 
                                                 {{-- Comments dropdown --}}
                                                 <div class="collapse multi-collapse mt-2"
