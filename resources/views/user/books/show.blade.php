@@ -139,6 +139,7 @@
                     </div>
                 </div>
             </div>
+
             <div class="col-12 col-lg-5 col-xl-7 offset-lg-3 offset-xl-2 spacer-top-sm">
                 <span class="d-flex align-items-center">
                     <h4>Book reviews</h4>
@@ -181,6 +182,9 @@
                                                     aria-expanded="false"
                                                     aria-controls="commentsDropdown{{ $review->id }}"></a>
                                                 {{ count($review->comments) }}
+
+            
+
 
                                                 {{-- Like button --}}
                                                 <form class="d-inline-flex"

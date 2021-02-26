@@ -1,6 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
+
     <header class="container-fluid hero overflow-hidden">
         <div class="hero_img" style="background: url({{ asset('img/login_svg.svg') }})">
         </div>
