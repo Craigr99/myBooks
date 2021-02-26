@@ -1,12 +1,11 @@
 @extends('layouts.app')
 
-
 @section('content')
-    {{-- {{ dd($item) }} --}}
     <div class="container">
         @include('inc.navbar')
+        <x-flash-message />
         <div class="row mt-5">
-            <div class="col-2">
+            <div class="col col-sm-4 col-lg-3 col-xl-2 text-center text-sm-left mb-5 mb-sm-0">
                 @if (isset($item['volumeInfo']['imageLinks']['thumbnail']))
                     <img class="rounded" src="{{ $item['volumeInfo']['imageLinks']['thumbnail'] }}" width="160px"
                         alt="Book cover image">
@@ -64,13 +63,15 @@
                 @endif
                 @if (Auth::user()->hasRole('user'))
                     <a class="btn my-btn my-btn-small my-btn-secondary mt-3 w-100"
-                        href="{{ route('user.reviews.create', $item['id']) }}"><i class="fas fa-pen mr-2"></i>
+                        href="{{ route('user.reviews.create', [$item['id'], $item['volumeInfo']['title']]) }}"><i
+                            class="fas fa-pen mr-2"></i>
                         Write
                         a
                         review</a>
                 @endif
             </div>
-            <div class="col-7">
+
+            <div class="col col-sm-8 col-lg-5 col-xl-7 mb-5 mb-md-0">
                 <div class="d-flex justify-content-between">
                     <div class="w-75">
                         @if (isset($item['volumeInfo']['categories']))
@@ -86,10 +87,14 @@
                         <h3>{{ $item['volumeInfo']['title'] }}</h3>
                     </div>
                     <h2 class="text-gray-3">
-                        @if (isset($item['volumeInfo']['averageRating']))
-                            {{ $item['volumeInfo']['averageRating'] }}/5
+                        @if (App\Models\Book::find($item['id']))
+                            {{ number_format(App\Models\Book::find($item['id'])->avgRating(), 1) }}
                         @else
-                            Not found
+                            @if (isset($item['volumeInfo']['averageRating']))
+                                {{ $item['volumeInfo']['averageRating'] }}/5
+                            @else
+                                Not found
+                            @endif
                         @endif
                     </h2>
                 </div>
@@ -107,40 +112,10 @@
                     <p class="mt-5">{{ Str::limit($item['volumeInfo']['description'], 500) }}</p>
                 @endif
 
-                <div class="reviews spacer-top-md red">
-                    <div class="card">
-                        <div class="card-header">
-                            Reviews
-                        </div>
-                        <div class="card-body">
-                            @if (App\Models\Book::find($item['id']))
-                                @if (count(App\Models\Book::find($item['id'])->reviews) == 0)
-                                    <p>There are no reviews for this book.</p>
-                                @else
-                                    <table class="table">
-                                        <thead>
-                                            <th>Title</th>
-                                            <th>Body</th>
-                                        </thead>
-                                        <tbody>
-                                            @foreach (App\Models\Book::find($item['id'])->reviews as $review)
-                                                <tr>
-                                                    <th>{{ $review->title }}</th>
-                                                    <th>{{ $review->body }}</th>
-                                                </tr>
-                                            @endforeach
-                                        </tbody>
-                                    </table>
-                                @endif
-                            @else
-                                <p>There are no reviews for this book.</p>
-                            @endif
-                        </div>
-                    </div>
-                </div>
+
             </div>
 
-            <div class="col-3">
+            <div class="col d-md-none d-lg-block col-lg-4 col-xl-3">
                 <div class="card rounded shadow">
                     <div class="header">
                         <h6>Book information</h6>
@@ -204,7 +179,122 @@
                     </div>
                 </div>
             </div>
+
+            <div class="col-12 col-lg-5 col-xl-7 offset-lg-3 offset-xl-2 spacer-top-sm">
+                @if (App\Models\Book::find($item['id']))
+                    @if (count(App\Models\Book::find($item['id'])->reviews) == 0)
+                        <p>There are no reviews for this book.</p>
+                    @else
+                        <span class="d-flex align-items-center">
+                            <h4>Book reviews</h4>
+                            <h5 class="ml-2">({{ count(App\Models\Book::find($item['id'])->reviews) }})</h5>
+                        </span>
+                        @foreach (App\Models\Book::find($item['id'])->reviews->sortByDesc('updated_at') as $review)
+                            <div class="card rounded shadow-lg mt-4">
+                                <div class="card-body">
+                                    {{-- Card --}}
+                                    <a href="{{ route('user.reviews.show', $review->id) }}" style="color: initial">
+                                        <div class="d-flex">
+                                            {{-- Profile image --}}
+                                            @if ($review->user->image !== 'default.png')
+                                                <img src="{{ asset('storage/images/' . $review->user->image) }}"
+                                                    class="rounded-circle image-fill" height="60px" width="60px" />
+                                            @else
+                                                <img src="{{ asset('img/default.png') }}"
+                                                    class="rounded-circle image-fill border" height="60px" width="60px" />
+                                            @endif
+                                            <div class="ml-4 w-100">
+                                                <div class="d-flex justify-content-between align-items-center">
+                                                    <h4>{{ $review->rating }}/5</h4>
+                                                    <small
+                                                        class="caption text-gray-4">{{ $review->created_at->diffForHumans() }}</small>
+                                                </div>
+                                                <h5 class="mt-4 mb-3">{{ $review->title }}</h5>
+                                                <p>{{ $review->body }}</p>
+                                                {{-- Icons --}}
+                                                <div class="mt-auto pt-4 text-gray-3">
+                                                    {{-- Comment button toggle --}}
+                                                    <a class="far fa-comment" data-toggle="collapse"
+                                                        href="#commentsDropdown{{ $review->id }}" role="button"
+                                                        aria-expanded="false"
+                                                        aria-controls="commentsDropdown{{ $review->id }}"></a>
+                                                    {{ count($review->comments) }}
+                                                    {{-- Likes button --}}
+                                                    <i class="far fa-heart ml-5"></i> 3
+                                                    {{-- Comments dropdown --}}
+
+                                                    <div class="collapse multi-collapse mt-2"
+                                                        id="commentsDropdown{{ $review->id }}">
+                                                        <div class="card card-body">
+                                                            <form
+                                                                action="{{ route('user.review.comments.store', $review->id) }}"
+                                                                method="POST">
+                                                                @csrf
+                                                                <label for="comment">Write a comment</label>
+                                                                <div class="d-flex">
+                                                                    <input class="form-control form-control-sm" name="body"
+                                                                        type="text" placeholder="Write a comment..">
+                                                                    <button type="submit"
+                                                                        class="btn btn-sm my-btn-primary rounded">Post</button>
+                                                                </div>
+                                                            </form>
+                                                            <div class="mt-3">
+                                                                @foreach ($review->comments->sortByDesc('created_at') as $comment)
+                                                                    <hr>
+                                                                    <div class="comment d-flex align-items-center">
+                                                                        {{-- Profile image --}}
+                                                                        @if ($comment->user->image !== 'default.png')
+                                                                            <img src="{{ asset('storage/images/' . $comment->user->image) }}"
+                                                                                class="rounded-circle image-fill"
+                                                                                height="30px" width="30px" />
+                                                                        @else
+                                                                            <img src="{{ asset('img/default.png') }}"
+                                                                                class="rounded-circle image-fill border"
+                                                                                height="30px" width="30px" />
+                                                                        @endif
+                                                                        <p class="text-black ml-3">
+                                                                            {{ $comment->body }}</p>
+                                                                        {{-- Right side of comment --}}
+                                                                        <div class="ml-auto d-flex flex-column">
+                                                                            <small
+                                                                                class="caption text-gray-4">{{ $comment->created_at->diffForHumans() }}</small>
+                                                                            {{-- Delete button for comment --}}
+                                                                            @if ($comment->user->id == Auth::user()->id)
+                                                                                <form class=" align-self-end" method="POST"
+                                                                                    action="{{ route('user.review.comments.destroy', $comment->id) }}">
+                                                                                    @method("DELETE")
+                                                                                    @csrf
+                                                                                    <button type="submit"
+                                                                                        class="btn my-btn-xs my-btn-danger">
+                                                                                        <i class="fas fa-trash text-sm"></i>
+                                                                                    </button>
+                                                                                </form>
+                                                                            @endif
+                                                                        </div>
+                                                                    </div>
+                                                                    <hr>
+                                                                @endforeach
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </a>
+                                </div>
+                            </div>
+                        @endforeach
+                    @endif
+                @else
+                    <div class="card rounded shadow-lg mt-4">
+                        <div class="card-body">
+                            <p>There are no reviews for this book.</p>
+                        </div>
+                    </div>
+                @endif
+
+            </div>
+
         </div>
-    </div>
     </div>
 @endsection

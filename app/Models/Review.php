@@ -20,4 +20,18 @@ class Review extends Model
     {
         return $this->belongsTo('App\Models\User');
     }
+
+    public function comments()
+    {
+        return $this->hasMany('App\Models\Comment');
+    }
+
+    public function likes()
+    {
+        return $this->hasMany('App\Models\Like');
+    }
+    public function dislikes()
+    {
+        return $this->hasMany('App\Models\Dislike');
+    }
 }

@@ -28,8 +28,20 @@
                                     value="{{ old('title') }}" />
                             </div>
                             <div class="form-group">
-                                  <label for="body" class="reviewTitlePush1">What was your overall experience reading this book?</label>
-                                <input type="text" class="form-control reviewBody" id="body" name="body" value="{{ old('body') }}" />
+                                <label for="body" class="reviewTitlePush1">What was your overall experience reading this
+                                    book?</label>
+                                <input type="text" class="form-control reviewBody" id="body" name="body"
+                                    value="{{ old('body') }}" />
+                            </div>
+                            <div class="form-group">
+                                <label for="rating">Rating</label>
+                                <select class="form-control" name="rating" id="rating">
+                                    <option value="1" selected>1</option>
+                                    <option value="2">2</option>
+                                    <option value="3">3</option>
+                                    <option value="4">4</option>
+                                    <option value="5">5</option>
+                                </select>
                             </div>
                             <a href="{{ route('user.home') }}" class="btn btn-warning">Cancel</a>
                             <button type="submit" class="btn btn-primary pull-right">Submit</button>

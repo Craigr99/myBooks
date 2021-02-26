@@ -93,6 +93,56 @@ class User extends Authenticatable
         return $this->usersBooks()->where('book_id', $book->id)->exists();
     }
 
+    public function dislikes()
+    {
+        return $this->belongsToMany('App\Models\Review', 'dislikes');
+    }
+
+    public function usersDislikes()
+    {
+        return $this->belongsToMany(
+            Review::class,
+            'dislikes',
+            'user_id',
+            'review_id'
+        );
+    }
+
+    public function dislikesReview(Review $review)
+    {
+        return $this->usersDislikes()->where('review_id', $review->id)->exists();
+    }
+
+    public function likes()
+    {
+        return $this->belongsToMany('App\Models\Review', 'likes');
+    }
+
+    public function usersLikes()
+    {
+        return $this->belongsToMany(
+            Review::class,
+            'likes',
+            'user_id',
+            'review_id'
+        );
+    }
+
+    public function removeDislike(Review $review)
+    {
+        return $this->usersDislikes()->detach($review);
+    }
+
+    public function likesReview(Review $review)
+    {
+        return $this->usersLikes()->where('review_id', $review->id)->exists();
+    }
+
+    public function removeLike(Review $review)
+    {
+        return $this->usersLikes()->detach($review);
+    }
+
     public function hasGoogleBook($book)
     {
         return $this->usersBooks()->where('book_id', $book['id'])->exists();
@@ -164,5 +214,10 @@ class User extends Authenticatable
     public function follows()
     {
         return $this->belongsToMany(User::class, 'follows', 'user_id', 'following_user_id');
+    }
+
+    public function comments()
+    {
+        return $this->hasMany('App\Models\Comment');
     }
 }

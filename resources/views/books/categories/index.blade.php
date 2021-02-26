@@ -46,7 +46,7 @@
                                             <x-button-dropdown :book="$book"></x-button-dropdown>
                                         @endif
                                         <a class="btn my-btn my-btn-secondary my-btn-small mt-3 w-100"
-                                            href="{{ route('user.reviews.create', $book->id) }}"><i
+                                            href="{{ route('user.reviews.create', [$book->id, $book->title]) }}"><i
                                                 class="fas fa-pen mr-2"></i>Write
                                             a
                                             review</a>

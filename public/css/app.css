@@ -12200,6 +12200,10 @@ h6 {
   min-height: 80vh !important;
 }
 
+.spacer-top-sm {
+  margin-top: 6rem;
+}
+
 .spacer-top-md {
   margin-top: 12rem;
 }
@@ -12397,6 +12401,10 @@ h6 {
 
 .my-btn-small {
   padding: 10px !important;
+}
+
+.my-btn-xs {
+  padding: 4px !important;
 }
 
 .input-delete {
@@ -12662,4 +12670,4 @@ a:hover .card {
 .voteButton:active{
   color: #004eff;
   transform: scale(1.2);
-}
+

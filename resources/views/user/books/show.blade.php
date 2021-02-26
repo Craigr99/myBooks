@@ -3,6 +3,7 @@
 @section('content')
     <div class="container">
         @include('inc.navbar')
+        <x-flash-message />
         <div class="row mt-5">
             <div class="col col-sm-4 col-lg-3 col-xl-2 text-center text-sm-left mb-5 mb-sm-0">
                 <img class="rounded" src="{{ $book->image }}" width="160px" alt="Book cover image">
@@ -62,7 +63,8 @@
 
                 @if (Auth::user()->hasRole('user'))
                     <a class="btn my-btn my-btn-secondary my-btn-small mt-3 w-100"
-                        href="{{ route('user.reviews.create', $book->id) }}"><i class="fas fa-pen mr-2"></i>Write
+                        href="{{ route('user.reviews.create', [$book->id, $book->title]) }}"><i
+                            class="fas fa-pen mr-2"></i>Write
                         a
                         review</a>
                 @endif
@@ -79,7 +81,7 @@
                         <h3>{{ $book->title }}</h3>
                     </div>
                     <h2 class="text-gray-3">
-                        {{ $book->rating }}/5
+                        {{ number_format($book->avgRating(), 1) }}/5
                     </h2>
                 </div>
                 <h6>by
@@ -97,8 +99,16 @@
                     </div>
                     <div class="card-body">
                         <ul class="d-flex justify-content-between mb-3">
-                            <li><b>Publisher:</b></li>
-                            <li>
+                            <li class="flex-1"><b>Authors:</b></li>
+                            <li class="flex-1 text-right">
+                                @foreach ($book->authors as $author)
+                                    {{ $author->name }}
+                                @endforeach
+                            </li>
+                        </ul>
+                        <ul class="d-flex justify-content-between mb-3">
+                            <li class="flex-1"><b>Publisher:</b></li>
+                            <li class="flex-1 text-right">
                                 {{ $book->publisher->name }}
                             </li>
                         </ul>
@@ -117,60 +127,153 @@
                         <ul class="d-flex justify-content-between mb-3">
                             <li><b>Average Rating:</b></li>
                             <li>
-                                {{ $book->rating }}
+                                {{ number_format($book->avgRating(), 1) }}/5
                             </li>
                         </ul>
                         <ul class="d-flex justify-content-between mb-3">
                             <li><b>Rating Count:</b></li>
                             <li>
-                                {{ $book->rating_count }}
+                                {{ count($book->reviews) }}
                             </li>
                         </ul>
                     </div>
                 </div>
             </div>
-            <div class="col-12 col-lg-5 col-xl-7 offset-lg-3 offset-xl-2 spacer-top-md">
-                <div class="card">
-                    <div class="card-header">
-                        Here's what others had to say about this book!
-                    </div>
-                    <div class="card-body">
-                        @if (count($book->reviews) == 0)
-                            <p>There are no reviews for this book.</p>
-                        @else
-                            <table class="table">
-                                <thead>
-                                    <th>User</th>
-                                    <th>Title</th>
-                                    <th>Body</th>
-                                </thead>
-                                <tbody>
-                                    @foreach ($book->reviews as $review)
-                                        <tr>
-                                            <th><a href="{{ route('user.profile.index', $review->user->id) }}">{{ $review->user->username }}</a></th>
-                                            <th>{{ $review->title }}</th>
-                                            <th>{{ $review->body }}</th>
-                                            <th>
-                                              <button class="voteButton" id ="likebtn">
-                                              <i class="fa fa-thumbs-up"></i>
-                                              </button>
-                                              <input class="voter" type="number" id="like" value="0" name="">
-                                              <button class="voteButton" id ="dislikebtn">
-                                                <i class="fa fa-thumbs-down"></i>
-                                              </button>
-                                                <input class="voter" type="number" id="dislike" value="0" name="">
-                                            </th>
-                                        </tr>
-                                    @endforeach
-                                </tbody>
-                            </table>
-                        @endif
-                    </div>
-                </div>
 
+            <div class="col-12 col-lg-5 col-xl-7 offset-lg-3 offset-xl-2 spacer-top-sm">
+                <span class="d-flex align-items-center">
+                    <h4>Book reviews</h4>
+                    <h5 class="ml-2">({{ count($book->reviews) }})</h5>
+                </span>
+                @if (count($book->reviews) == 0)
+                    <p>There are no reviews for this book.</p>
+                @else
+                    @foreach ($book->reviews->sortByDesc('updated_at') as $review)
+                        <div class="card rounded shadow-lg mt-4">
+                            <div class="card-body">
+                                {{-- Card --}}
+                                <a href="{{ route('user.reviews.show', $review->id) }}" style="color: initial">
+                                    <div class="d-flex">
+                                        {{-- Profile image --}}
+                                        @if ($review->user->image !== 'default.png')
+                                            <a href="{{ route('user.profile.index', $review->user->id) }}">
+                                                <img src="{{ asset('storage/images/' . $review->user->image) }}"
+                                                    class="rounded-circle image-fill" height="60px" width="60px" />
+                                            </a>
+                                        @else
+                                            <a href="{{ route('user.profile.index', $review->user->id) }}">
+                                                <img src="{{ asset('img/default.png') }}"
+                                                    class="rounded-circle image-fill border" height="60px" width="60px" />
+                                            </a>
+                                        @endif
+                                        <div class="ml-4 w-100">
+                                            <div class="d-flex justify-content-between align-items-center">
+                                                <h4>{{ $review->rating }}/5</h4>
+                                                <small
+                                                    class="caption text-gray-4">{{ $review->created_at->diffForHumans() }}</small>
+                                            </div>
+                                            <h5 class="mt-4 mb-3">{{ $review->title }}</h5>
+                                            <p>{{ $review->body }}</p>
+                                            {{-- Icons --}}
+                                            <div class="mt-auto pt-4 text-gray-3">
+                                                {{-- Comment button toggle --}}
+                                                <a class="far fa-comment" data-toggle="collapse"
+                                                    href="#commentsDropdown{{ $review->id }}" role="button"
+                                                    aria-expanded="false"
+                                                    aria-controls="commentsDropdown{{ $review->id }}"></a>
+                                                {{ count($review->comments) }}
+
+            
+
+
+                                                {{-- Like button --}}
+                                                <form class="d-inline-flex"
+                                                    action="{{ route('user.reviews.likes.store', $review->id) }}"
+                                                    method="POST">
+                                                    @csrf
+                                                    <button class="voteButton" id="likebtn">
+                                                        <i class="fa fa-thumbs-up"></i>
+                                                    </button>
+                                                    <input class="voter" type="number" name="liked"
+                                                        value="{{ count($review->likes) }}">
+
+                                                </form>
+                                                {{-- Dislike button --}}
+                                                <form class="d-inline-flex"
+                                                    action="{{ route('user.reviews.dislikes.store', $review->id) }}"
+                                                    method="POST">
+                                                    @csrf
+                                                    <button class="voteButton" id="dislikebtn">
+                                                        <i class="fa fa-thumbs-down"></i>
+                                                    </button>
+                                                    <input class="voter" type="number" id="dislike"
+                                                        value="{{ count($review->dislikes) }}" />
+                                                </form>
+
+
+                                                {{-- Comments dropdown --}}
+                                                <div class="collapse multi-collapse mt-2"
+                                                    id="commentsDropdown{{ $review->id }}">
+                                                    <div class="card card-body">
+                                                        <form
+                                                            action="{{ route('user.review.comments.store', $review->id) }}"
+                                                            method="POST">
+                                                            @csrf
+                                                            <label for="comment">Write a comment</label>
+                                                            <div class="d-flex">
+                                                                <input class="form-control form-control-sm" name="body"
+                                                                    type="text" placeholder="Write a comment..">
+                                                                <button type="submit"
+                                                                    class="btn btn-sm my-btn-primary rounded">Post</button>
+                                                            </div>
+                                                        </form>
+                                                        <div class="mt-3">
+                                                            @foreach ($review->comments->sortByDesc('created_at') as $comment)
+                                                                <hr>
+                                                                <div class="comment d-flex align-items-center">
+                                                                    {{-- Profile image --}}
+                                                                    @if ($comment->user->image !== 'default.png')
+                                                                        <img src="{{ asset('storage/images/' . $comment->user->image) }}"
+                                                                            class="rounded-circle image-fill" height="30px"
+                                                                            width="30px" />
+                                                                    @else
+                                                                        <img src="{{ asset('img/default.png') }}"
+                                                                            class="rounded-circle image-fill border"
+                                                                            height="30px" width="30px" />
+                                                                    @endif
+                                                                    <p class="text-black ml-3">{{ $comment->body }}</p>
+                                                                    {{-- Right side of comment --}}
+                                                                    <div class="ml-auto d-flex flex-column">
+                                                                        <small
+                                                                            class="caption text-gray-4">{{ $comment->created_at->diffForHumans() }}</small>
+                                                                        {{-- Delete button for comment --}}
+                                                                        @if ($comment->user->id == Auth::user()->id)
+                                                                            <form class=" align-self-end" method="POST"
+                                                                                action="{{ route('user.review.comments.destroy', $comment->id) }}">
+                                                                                @method("DELETE")
+                                                                                @csrf
+                                                                                <button type="submit"
+                                                                                    class="btn my-btn-xs my-btn-danger">
+                                                                                    <i class="fas fa-trash text-sm"></i>
+                                                                                </button>
+                                                                            </form>
+                                                                        @endif
+                                                                    </div>
+                                                                </div>
+                                                                <hr>
+                                                            @endforeach
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </a>
+                            </div>
+                        </div>
+                    @endforeach
+                @endif
             </div>
-
         </div>
-    </div>
     </div>
 @endsection
