@@ -177,13 +177,14 @@
                                             {{-- Icons --}}
                                             <div class="mt-auto pt-4 text-gray-3">
                                                 {{-- Comment button toggle --}}
-                                                <a class="far fa-comment" data-toggle="collapse"
-                                                    href="#commentsDropdown{{ $review->id }}" role="button"
-                                                    aria-expanded="false"
-                                                    aria-controls="commentsDropdown{{ $review->id }}"></a>
-                                                {{ count($review->comments) }}
+                                                <span class="mr-3">
+                                                    <a class="far fa-comment" data-toggle="collapse"
+                                                        href="#commentsDropdown{{ $review->id }}" role="button"
+                                                        aria-expanded="false"
+                                                        aria-controls="commentsDropdown{{ $review->id }}"></a>
+                                                    {{ count($review->comments) }}
+                                                </span>
 
-            
 
 
                                                 {{-- Like button --}}
