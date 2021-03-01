@@ -6,6 +6,7 @@ use App\Models\Book;
 use App\Models\Review;
 use App\Models\User;
 use Illuminate\Database\Eloquent\Factories\Factory;
+use Illuminate\Support\Arr;
 
 class ReviewFactory extends Factory
 {
@@ -29,8 +30,9 @@ class ReviewFactory extends Factory
         return [
             'title' => $this->faker->catchPhrase,
             'body' => $this->faker->text(200),
-            'book_id' => $this->faker->numberBetween($min = 1, $max = count($books)),
+            'book_id' => $books->first()->id,
             'user_id' => $this->faker->numberBetween($min = 1, $max = count($users)),
+            'rating' => $this->faker->numberBetween($min = 1, $max = 5),
         ];
     }
 }

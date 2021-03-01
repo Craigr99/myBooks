@@ -151,8 +151,8 @@
                     @foreach ($book->reviews->sortByDesc('updated_at') as $review)
                         <div class="card rounded shadow-lg mt-4">
                             <div class="card-body">
-                                {{-- Card --}}
-                                <a href="{{ route('user.reviews.show', $review->id) }}" style="color: initial">
+                                {{-- REVIEW Card --}}
+                                <a href="{{ route('user.reviews.show', $review->id) }}">
                                     <div class="d-flex">
                                         {{-- Profile image --}}
                                         @if ($review->user->image !== 'default.png')
@@ -172,7 +172,10 @@
                                                 <small
                                                     class="caption text-gray-4">{{ $review->created_at->diffForHumans() }}</small>
                                             </div>
-                                            <h5 class="mt-4 mb-3">{{ $review->title }}</h5>
+                                            <a href="{{ route('user.reviews.show', $review->id) }}">
+
+                                                <h5 class="mt-4 mb-3">{{ $review->title }}</h5>
+                                            </a>
                                             <p>{{ $review->body }}</p>
                                             {{-- Icons --}}
                                             <div class="mt-auto pt-4 text-gray-3">

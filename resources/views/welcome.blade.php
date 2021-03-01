@@ -65,7 +65,5 @@
             </div>
         </div>
     </main>
-    <footer class="footer">
-        &copy; 2020 myBooks All rights reserved.
-    </footer>
+    @include('inc.footer')
 @endsection

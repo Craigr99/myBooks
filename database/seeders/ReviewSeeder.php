@@ -18,6 +18,7 @@ class ReviewSeeder extends Seeder
      */
     public function run()
     {
+        $books = Book::all();
         $book = Book::first();
         $users = User::all();
 
@@ -37,8 +38,17 @@ class ReviewSeeder extends Seeder
         $review->rating = 3;
         $review->save();
 
-        // for ($i = 1; $i <= count($books); $i++) {
+        $review = new Review();
+        $review->title = 'Good book ';
+        $review->body = 'I liked it';
+        $review->user_id = 5;
+        $review->book_id = $book->id;
+        $review->rating = 5;
+        $review->save();
+
+        // for ($i = 1; $i <= 10; $i++) {
         //     $review = Review::factory()->create();
+        //     $review->save();
         // }
 
     }
