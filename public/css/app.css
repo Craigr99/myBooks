@@ -12653,9 +12653,9 @@ a:hover .card {
   width: 50px;
   border: none;
   background: none;
-  color: #000000;
-  font-size: 30px;
-  margin: 0 10px;
+  /* color: #000000; */
+  /* font-size: 30px; */
+  /* margin: 0 10px; */
   pointer-events: none;
 
 }
@@ -12663,11 +12663,20 @@ a:hover .card {
 .voteButton{
   background: none;
   border: none;
-  font-size: 30px;
+  font-size: 16px;
   cursor: pointer;
+  color: #828282;
 }
 
 .voteButton:active{
   color: #004eff;
   transform: scale(1.2);
+}
+.fa-thumbs-up:hover{
+  color: #004eff;
+  transform: scale(1.2);
+}
 
+.fa-thumbs-down:hover {
+color: #f82f2f;
+}

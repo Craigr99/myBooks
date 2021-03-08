@@ -23,7 +23,7 @@
                                         <img src="{{ $book->image }}" class="mb-3 rounded" />
                                     </div>
                                     <div class="d-flex flex-column mt-3 ml-3">
-                                        <p class="text-gray-3 mb-2">4.5</p>
+                                        <p class="text-gray-3 mb-2"> {{ number_format($book->avgRating(), 1) }}/5</p>
                                         <h5 class="font-medium text-primary-500 mb-2"> {{ $book->title }}</h5>
                                         <p class="mt-3 mb-4">Author: {{ $book->authors[0]->name }} | Release
                                             Date: {{ date('d-m-Y', strtotime($book->publish_date)) }}

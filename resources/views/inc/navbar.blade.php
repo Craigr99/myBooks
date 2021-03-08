@@ -68,25 +68,29 @@
                             </a>
                         @endif
                         @if (Auth::user()->hasRole('user'))
-                            <a class="dropdown-item d-md-none" href="#">
-                                <span class="fas fa-pen-alt text-gray-3 mr-4"></span> Blogs
-                            </a>
-                            <a class="dropdown-item d-md-none" href="#">
+                            <a href="{{ route('user.profile.following.index', Auth::user()->id) }}"
+                                class="dropdown-item d-md-none"><span
+                                    class="fas fa-users text-gray-3 mr-4"></span>Following</a>
+                            <a class="dropdown-item d-md-none"
+                                href="{{ route('user.profile.index', Auth::user()->id) }}">
                                 <span class="fas fa-pen-alt text-gray-3 mr-4"></span> Reviews
                             </a>
-                            <a class="dropdown-item d-md-none" href="#">
+                            <a class="dropdown-item d-md-none" href="{{ route('user.blogs.index', Auth::user()->id) }}">
+                                <span class="fas fa-blog text-gray-3 mr-4"></span> Blogs
+                            </a>
+                            <a class="dropdown-item d-md-none" href="{{ route('user.books.shelf.index', 'reading') }}">
                                 <span class="fas fa-book-open text-gray-3 mr-4"></span> Reading
                             </a>
-                            <a class="dropdown-item d-md-none" href="#">
+                            <a class="dropdown-item d-md-none" href="{{ route('user.books.shelf.index', 'later') }}">
                                 <span class="fas fa-clipboard-list text-gray-3 mr-4"></span> Want to read
                             </a>
-                            <a class="dropdown-item d-md-none" href="#">
+                            <a class="dropdown-item d-md-none" href="{{ route('user.books.shelf.index', 'finished') }}">
                                 <span class="fas fa-check text-gray-3 mr-4"></span> Finished reading
                             </a>
                         @endif
                         <a class="dropdown-item bg-gray-7" href="{{ route('logout') }}"
                             onclick="event.preventDefault();
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                         document.getElementById('logout-form').submit();">
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                 document.getElementById('logout-form').submit();">
                             <span class="fas fa-sign-out-alt mr-4 text-gray-2"></span>
                             Logout
                         </a>

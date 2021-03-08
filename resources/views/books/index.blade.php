@@ -27,8 +27,11 @@
                                         @isset($item['volumeInfo']['categories'])
 
                                             @foreach ($item['volumeInfo']['categories'] as $category)
-                                                <span
-                                                    class="badge badge-pill badge-primary align-self-center">{{ $category }}</span>
+                                                <div class="text-center text-md-left w-100">
+                                                    <span
+                                                        class="badge badge-pill badge-primary align-self-center">{{ $category }}</span>
+
+                                                </div>
 
                                             @endforeach
                                         @endisset

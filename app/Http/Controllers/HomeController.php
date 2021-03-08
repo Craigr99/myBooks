@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Book;
 use App\Models\Category;
+use App\Models\Review;
 use Auth;
 use Illuminate\Http\Request;
 
@@ -41,11 +42,22 @@ class HomeController extends Controller
     public function homepage()
     {
         $books = Book::all();
+        $picksBooks = Book::all()->take(3);
+        $popularBooks = $books->filter(function ($book) {
+            return $book->reviews->avg('rating') >= 3.5;
+        })->take(3);
+
+        $reviews = Review::all();
+        $popularReviews = Review::has('likes', '>=', 2)->get()->take(3);
+
         $categories = Category::all();
 
         return view('home', [
             'books' => $books,
+            'popularBooks' => $popularBooks,
+            'picksBooks' => $picksBooks,
             'categories' => $categories,
+            'popularReviews' => $popularReviews,
         ]);
     }
 }

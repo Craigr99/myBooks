@@ -21,15 +21,15 @@
             </li>
             <li class="list-item my-2 {{ request()->is('user/following*') ? 'active' : '' }}">
                 <a href="{{ route('user.profile.following.index', Auth::user()->id) }}"
-                    class="btn my-btn btn-block"><span class="fas fa-user mr-4"></span>Following</a>
-            </li>
-            <li class="list-item my-2 {{ request()->is('user/*/blogs*') ? 'active' : '' }}">
-                <a href="{{ route('user.blogs.index', Auth::user()->id) }}" class="btn my-btn btn-block"><span
-                        class="fas fa-blog mr-4"></span>Blogs</a>
+                    class="btn my-btn btn-block"><span class="fas fa-users mr-4"></span>Following</a>
             </li>
             <li class="list-item my-2 {{ request()->is('user/*/reviews*') ? 'active' : '' }}">
                 <a href="{{ route('user.profile.index', Auth::user()->id) }}" class="btn my-btn btn-block"><span
                         class="fas fa-pen-alt mr-4"></span>Reviews</a>
+            </li>
+            <li class="list-item my-2 {{ request()->is('user/*/blogs*') ? 'active' : '' }}">
+                <a href="{{ route('user.blogs.index', Auth::user()->id) }}" class="btn my-btn btn-block"><span
+                        class="fas fa-blog mr-4"></span>Blogs</a>
             </li>
         </ul>
 
