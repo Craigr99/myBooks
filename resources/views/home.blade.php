@@ -11,7 +11,7 @@
         <div class="bg-gray-7 py-7">
             <div class="container text-center">
                 <h2>Welcome to myBooks</h2>
-                <h4 class="mt-3 text-primary-500">Start exploring books below</h4>
+                <h4 class="mt-3 text-primary-500">Start exploring books</h4>
             </div>
         </div>
     </header>
@@ -29,7 +29,7 @@
                             <div class="card shadow rounded mb-4 flex-1">
                                 <div class="card-body text-center text-lg-left">
                                     <div class="text-center">
-                                        <img src="{{ $book->image }}" class="mb-3 rounded img-fluid">
+                                        <img src="{{ $book->image }}" class="mb-3 rounded" height="280px">
                                     </div>
                                     <div class="d-flex align-items-center mb-2">
                                         <p class="text-gray-3 mr-3"> {{ number_format($book->avgRating(), 1) }}/5</p>
@@ -42,7 +42,7 @@
                                     <h5 class=" text-primary-500 mb-2"> {{ $book->title }}</h5>
                                     <h6 class="font-light mb-3"> {{ $book->authors[0]->name }}</h6>
                                 </div>
-                                <div class="bg-white mt-auto text-center text-lg-left pb-4 ml-lg-4">
+                                <div class="bg-white mt-auto text-center text-lg-left pb-4 ml-lg-4 rounded">
                                     <p class="text-gray-3"> {{ substr($book->publish_date, 0, 4) }}</p>
                                 </div>
                             </div>
@@ -64,7 +64,7 @@
                             <div class="card shadow rounded mb-4 flex-1">
                                 <div class="card-body text-center text-lg-left">
                                     <div class="text-center">
-                                        <img src="{{ $book->image }}" class="mb-3 rounded img-fluid">
+                                        <img src="{{ $book->image }}" class="mb-3 rounded" height="280px">
                                     </div>
                                     <div class="d-flex align-items-center mb-2">
                                         <p class="text-gray-3 mr-3"> {{ number_format($book->avgRating(), 1) }}/5</p>
@@ -77,7 +77,7 @@
                                     <h5 class=" text-primary-500 mb-2"> {{ $book->title }}</h5>
                                     <h6 class="font-light mb-3"> {{ $book->authors[0]->name }}</h6>
                                 </div>
-                                <div class="bg-white mt-auto text-center text-lg-left pb-4 ml-lg-4">
+                                <div class="bg-white mt-auto text-center text-lg-left pb-4 ml-lg-4 rounded">
                                     <p class="text-gray-3"> {{ substr($book->publish_date, 0, 4) }}</p>
                                 </div>
                             </div>

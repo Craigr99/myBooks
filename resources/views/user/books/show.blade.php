@@ -236,15 +236,18 @@
                                                                 <hr>
                                                                 <div class="comment d-flex align-items-center">
                                                                     {{-- Profile image --}}
-                                                                    @if ($comment->user->image !== 'default.png')
-                                                                        <img src="{{ asset('storage/images/' . $comment->user->image) }}"
-                                                                            class="rounded-circle image-fill" height="30px"
-                                                                            width="30px" />
-                                                                    @else
-                                                                        <img src="{{ asset('img/default.png') }}"
-                                                                            class="rounded-circle image-fill border"
-                                                                            height="30px" width="30px" />
-                                                                    @endif
+                                                                    <a
+                                                                        href="{{ route('user.profile.index', $comment->user->id) }}">
+                                                                        @if ($comment->user->image !== 'default.png')
+                                                                            <img src="{{ asset('storage/images/' . $comment->user->image) }}"
+                                                                                class="rounded-circle image-fill"
+                                                                                height="30px" width="30px" />
+                                                                        @else
+                                                                            <img src="{{ asset('img/default.png') }}"
+                                                                                class="rounded-circle image-fill border"
+                                                                                height="30px" width="30px" />
+                                                                        @endif
+                                                                    </a>
                                                                     <p class="text-black ml-3">{{ $comment->body }}</p>
                                                                     {{-- Right side of comment --}}
                                                                     <div class="ml-auto d-flex flex-column">

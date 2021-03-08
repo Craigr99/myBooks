@@ -17,7 +17,7 @@
 
                             <div class="mt-auto">
                                 <h4>Welcome back!</h4>
-                                <p>Login with your myBooks account to start exploring books</p>
+                                <p class="mt-3">Login with your myBooks account to start exploring books</p>
                             </div>
                         </div>
 

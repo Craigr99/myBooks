@@ -14,11 +14,12 @@
                                 <h4>Currently Reading</h4>
                                 <div class="row mt-5">
                                     @forelse(Auth::user()->reading as $book)
-                                        <div class="col-12 col-lg-6 col-xl-4">
+                                        <div class="col-12 col-lg-6 col-xl-4 d-flex">
                                             <a href="{{ route('books.search.show', $book->id) }}">
-                                                <div class="card shadow rounded mb-4">
+                                                <div class="card shadow rounded mb-4 w-100">
                                                     <div class="card-body text-center">
-                                                        <img src="{{ $book->image }}" class="mb-4 image-fill">
+                                                        <img src="{{ $book->image }}" class="mb-4 image-fill rounded"
+                                                            height="220px">
                                                         <h6 class="text-primary-700"> {{ $book->title }}</h6>
                                                         <h6 class="my-4 text-gray-1"> {{ $book->authors[0]->name }}</h6>
                                                         <hr class="w-75">

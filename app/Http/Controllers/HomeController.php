@@ -47,8 +47,7 @@ class HomeController extends Controller
             return $book->reviews->avg('rating') >= 3.5;
         })->take(3);
 
-        $reviews = Review::all();
-        $popularReviews = Review::has('likes', '>=', 2)->get()->take(3);
+        $popularReviews = Review::has('likes', '>=', 1)->get()->take(3);
 
         $categories = Category::all();
 
