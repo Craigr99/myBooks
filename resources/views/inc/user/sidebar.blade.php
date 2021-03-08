@@ -21,7 +21,7 @@
             </li>
             <li class="list-item my-2 {{ request()->is('user/following*') ? 'active' : '' }}">
                 <a href="{{ route('user.profile.following.index', Auth::user()->id) }}"
-                    class="btn my-btn btn-block"><span class="fas fa-user mr-4"></span>Following</a>
+                    class="btn my-btn btn-block"><span class="fas fa-users mr-4"></span>Following</a>
             </li>
             <li class="list-item my-2 {{ request()->is('user/*/reviews*') ? 'active' : '' }}">
                 <a href="{{ route('user.profile.index', Auth::user()->id) }}" class="btn my-btn btn-block"><span

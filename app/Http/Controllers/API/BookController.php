@@ -17,7 +17,7 @@ class BookController extends Controller
      */
     public function index()
     {
-        $books = Book::all()->load('publisher');
+        $books = Book::all()->load('publisher', 'reviews.user');
 
         // Return response with data as JSON, and 200 status code
         return response()->json([
