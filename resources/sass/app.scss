@@ -52,6 +52,11 @@ a:hover .card {
 .card {
     border: none !important;
     box-shadow: 0 0 0 1pt $gray-5 !important;
+
+    &:hover {
+        box-shadow: 0 25px 50px -12px $gray-3 !important;
+        transition: all 0.5s ease-out;
+    }
 }
 
 

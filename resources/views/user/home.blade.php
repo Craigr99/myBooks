@@ -19,14 +19,26 @@
                         </h5>
                         <div class="row">
                             @forelse(Auth::user()->reading()->latest()->paginate(3) as $book)
-                                <div class="col-12 col-md-6 col-lg-4 d-flex">
-                                    <a class="d-flex text-black w-100" href="{{ route('books.search.show', $book->id) }}">
-                                        <div class="card shadow rounded mb-4 flex-1">
-                                            <div class="card-body text-center">
-                                                <img src="{{ $book->image }}" class="mb-4 image-fill img-fluid rounded">
+                                <div class="col-12 col-lg-6 col-xl-4 d-flex">
+                                    <a href="{{ route('books.search.show', $book->id) }}">
+                                        <div class="card shadow rounded mb-4 w-100">
+                                            <div class="card-body py-4 text-center">
+                                                <img src="{{ $book->image }}" class="mb-4 image-fill rounded" height="220px">
                                                 <h6 class="text-primary-700"> {{ $book->title }}</h6>
                                                 <h6 class="my-4 text-gray-1"> {{ $book->authors[0]->name }}</h6>
-
+                                                <hr class="w-75">
+                                                <div class="d-flex flex-column px-5 mt-4">
+                                                    <form action="{{ route('user.books.store', $book->id) }}" method="POST">
+                                                        @csrf
+                                                        <button class="btn my-btn my-btn-danger w-100"><i
+                                                                class="fas fa-minus-circle"></i> <span class="mx-2">Remove
+                                                                book</span></button>
+                                                    </form>
+                                                    <a href="{{ route('user.reviews.create', [$book->id, $book->title]) }}"
+                                                        class="btn my-btn my-btn-secondary mt-3"><i class="fas fa-pen"></i>
+                                                        <span class="mx-2">Write a
+                                                            review</span></a>
+                                                </div>
                                             </div>
                                         </div>
                                     </a>
@@ -46,14 +58,26 @@
                         </h5>
                         <div class="row">
                             @forelse(Auth::user()->readLater()->latest()->paginate(3) as $book)
-                                <div class="col-12 col-md-6 col-lg-4 d-flex">
-                                    <a class="d-flex text-black w-100" href="{{ route('books.search.show', $book->id) }}">
-                                        <div class="card shadow rounded mb-4 flex-1">
-                                            <div class="card-body text-center">
-                                                <img src="{{ $book->image }}" class="mb-4 image-fill img-fluid rounded">
+                                <div class="col-12 col-lg-6 col-xl-4 d-flex">
+                                    <a href="{{ route('books.search.show', $book->id) }}">
+                                        <div class="card shadow rounded mb-4 w-100">
+                                            <div class="card-body py-4 text-center">
+                                                <img src="{{ $book->image }}" class="mb-4 image-fill rounded" height="220px">
                                                 <h6 class="text-primary-700"> {{ $book->title }}</h6>
                                                 <h6 class="my-4 text-gray-1"> {{ $book->authors[0]->name }}</h6>
-
+                                                <hr class="w-75">
+                                                <div class="d-flex flex-column px-5 mt-4">
+                                                    <form action="{{ route('user.books.store', $book->id) }}" method="POST">
+                                                        @csrf
+                                                        <button class="btn my-btn my-btn-danger w-100"><i
+                                                                class="fas fa-minus-circle"></i> <span class="mx-2">Remove
+                                                                book</span></button>
+                                                    </form>
+                                                    <a href="{{ route('user.reviews.create', [$book->id, $book->title]) }}"
+                                                        class="btn my-btn my-btn-secondary mt-3"><i class="fas fa-pen"></i>
+                                                        <span class="mx-2">Write a
+                                                            review</span></a>
+                                                </div>
                                             </div>
                                         </div>
                                     </a>
@@ -73,14 +97,26 @@
                         </h5>
                         <div class="row">
                             @forelse(Auth::user()->finishedReading()->latest()->paginate(3) as $book)
-                                <div class="col-12 col-md-6 col-lg-4 d-flex">
-                                    <a class="d-flex text-black w-100" href="{{ route('books.search.show', $book->id) }}">
-                                        <div class="card shadow rounded mb-4 flex-1">
-                                            <div class="card-body text-center">
-                                                <img src="{{ $book->image }}" class="mb-4 image-fill img-fluid rounded">
+                                <div class="col-12 col-lg-6 col-xl-4 d-flex">
+                                    <a href="{{ route('books.search.show', $book->id) }}">
+                                        <div class="card shadow rounded mb-4 w-100">
+                                            <div class="card-body py-4 text-center">
+                                                <img src="{{ $book->image }}" class="mb-4 image-fill rounded" height="220px">
                                                 <h6 class="text-primary-700"> {{ $book->title }}</h6>
                                                 <h6 class="my-4 text-gray-1"> {{ $book->authors[0]->name }}</h6>
-
+                                                <hr class="w-75">
+                                                <div class="d-flex flex-column px-5 mt-4">
+                                                    <form action="{{ route('user.books.store', $book->id) }}" method="POST">
+                                                        @csrf
+                                                        <button class="btn my-btn my-btn-danger w-100"><i
+                                                                class="fas fa-minus-circle"></i> <span class="mx-2">Remove
+                                                                book</span></button>
+                                                    </form>
+                                                    <a href="{{ route('user.reviews.create', [$book->id, $book->title]) }}"
+                                                        class="btn my-btn my-btn-secondary mt-3"><i class="fas fa-pen"></i>
+                                                        <span class="mx-2">Write a
+                                                            review</span></a>
+                                                </div>
                                             </div>
                                         </div>
                                     </a>
@@ -90,34 +126,6 @@
                             @endforelse
                         </div>
                     </section>
-
-                    {{-- Reviews --}}
-                    {{-- <section class="mt-6">
-                        <h4 class="text-gray-1">Your reviews</h4>
-
-                        <div class="row mt-4">
-                            @forelse(Auth::user()->reviews()->latest()->paginate(3) as $review)
-                                <div class="col-12 col-md-6 col-lg-6 col-xl-4 d-flex">
-                                    <a class="d-flex text-black w-100" href="{{ route('user.reviews.show', $review->id) }}">
-                                        <div class="card shadow rounded mb-4 flex-1">
-                                            <div class="card-body d-flex flex-md-column flex-lg-row">
-                                                <img src="{{ $review->book->image }}"
-                                                    class="mb-4 mb-md-0 image-fill img-fluid rounded border">
-                                                <div class="ml-3 ml-md-0 ml-lg-3 mt-3">
-                                                    <h5>3.6</h5>
-                                                    <h6 class="text-primary-700 mt-3 mb-4"> {{ $review->title }}</h6>
-                                                    <p class="text-gray-1">"{{ $review->body }}"</p>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </a>
-                                </div>
-                            @empty
-                                <p class="ml-3">No reviews found.</p>
-                            @endforelse
-
-                        </div>
-                    </section> --}}
                 </main>
             </div>
         </div>

@@ -12488,6 +12488,11 @@ a:hover .card {
   box-shadow: 0 0 0 1pt #E9ECEF !important;
 }
 
+.card:hover {
+  box-shadow: 0 25px 50px -12px #828282 !important;
+  transition: all 0.5s ease-out;
+}
+
 .dropdown-menu {
   border-radius: 10px !important;
   border: 1px solid #BDBDBD !important;
@@ -12640,43 +12645,3 @@ a:hover .card {
   background-color: #2F2E41;
 }
 
-.fade-in{
-  opacity: 0;
-  transition: opacity 250ms ease-in;
-}
-
-.fade-in.appear {
-  opacity: 1;
-}
-
-.voter{
-  width: 50px;
-  border: none;
-  background: none;
-  /* color: #000000; */
-  /* font-size: 30px; */
-  /* margin: 0 10px; */
-  pointer-events: none;
-
-}
-
-.voteButton{
-  background: none;
-  border: none;
-  font-size: 16px;
-  cursor: pointer;
-  color: #828282;
-}
-
-.voteButton:active{
-  color: #004eff;
-  transform: scale(1.2);
-}
-.fa-thumbs-up:hover{
-  color: #004eff;
-  transform: scale(1.2);
-}
-
-.fa-thumbs-down:hover {
-color: #f82f2f;
-}
