@@ -221,16 +221,47 @@ a:hover .card {
     }
 }
 
-// .profile-img {
-//     width: 200px;
-//     position: absolute;
-//     height: 200px;
-//     top: 170px;
-//     left: 5%;
-//     margin-right: 100px;
-// }
+.fade-in {
+    opacity: 0;
+    transition: opacity 250ms ease-in;
+}
 
+.fade-in.appear {
+    opacity: 1;
+}
 
+.voter {
+    width: 50px;
+    border: none;
+    background: none;
+    /* color: #000000; */
+    /* font-size: 30px; */
+    /* margin: 0 10px; */
+    pointer-events: none;
+
+}
+
+.voteButton {
+    background: none;
+    border: none;
+    font-size: 16px;
+    cursor: pointer;
+    color: #828282;
+}
+
+.voteButton:active {
+    color: #004eff;
+    transform: scale(1.2);
+}
+
+.fa-thumbs-up:hover {
+    color: #004eff;
+    transform: scale(1.2);
+}
+
+.fa-thumbs-down:hover {
+    color: #f82f2f;
+}
 
 .footer {
     padding: 20px;
