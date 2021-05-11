@@ -10,7 +10,7 @@
                     <main class="d-flex flex-column">
                         <div class="card rounded p-5">
                             {{-- Search bar --}}
-                            <form action="{{ route('admin.books.search.index') }}" method="POST"
+                            <form action="{{ route('books.search.index') }}" method="POST"
                                 class="form-inline my-2 my-lg-0 d-none d-sm-block">
                                 @csrf
                                 <input name="title" class="form-control" type="search" placeholder="Search books"

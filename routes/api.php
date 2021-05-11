@@ -22,6 +22,8 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 
 //Route group using api middleware
 Route::middleware('api')->group(function () {
+    Route::get('/books/search/{term}', [APIBookController::class, 'search']);
+
     //GET all books
     Route::get('/books', [APIBookController::class, 'index']);
     //GET book by id

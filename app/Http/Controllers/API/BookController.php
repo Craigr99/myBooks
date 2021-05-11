@@ -25,6 +25,21 @@ class BookController extends Controller
             'data' => $books,
         ], 200);
     }
+    public function search(Request $request, $term)
+    {
+        $books = Book::where('title', 'like', "%{$term}%")
+            ->orWhere('description', 'like', "%{$term}%")
+            ->orWhere('publish_date', 'like', "%{$term}%")
+            ->orWhere('isbn', 'like', "%{$term}%")
+            ->orWhere('page_count', 'like', "%{$term}%")
+            ->get();
+
+        // Return response with data as JSON, and 200 status code
+        return response()->json([
+            'status' => 'success',
+            'data' => $books,
+        ], 200);
+    }
 
     public function store(Request $request)
     {
