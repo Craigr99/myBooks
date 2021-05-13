@@ -7,7 +7,7 @@
     @include('inc.secondary-nav')
 
 
-    <header class="text-center bg-gray-7 py-7">
+    <header class="text-center bg-gray-7 py-5">
         <h3>{{ $cat->name }} Books</h3>
     </header>
 
@@ -15,8 +15,9 @@
         <div class="row">
             <div class="col-12">
                 @forelse ($books as $book)
-                    <a class="d-flex flex-column flex-md-row text-black" href="{{ route('books.search.show', $book->id) }}">
-                        <div class="card shadow rounded mb-5 flex-1">
+                    <a class="d-flex flex-column flex-md-row text-black"
+                        href="{{ route('books.search.show', $book->id) }}">
+                        <div class="card shadow rounded mb-5 flex-1 hover-shadow">
                             <div class="card-body text-center text-md-left">
                                 <div class="d-flex flex-column flex-md-row">
                                     <div class=" text-center text-md-left">

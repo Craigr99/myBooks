@@ -16,7 +16,7 @@
                                     @forelse(Auth::user()->readLater as $book)
                                         <div class="col-12 col-lg-6 col-xl-4 d-flex">
                                             <a href="{{ route('books.search.show', $book->id) }}">
-                                                <div class="card shadow rounded mb-4 w-100">
+                                                <div class="card shadow rounded mb-4 w-100 hover-shadow">
                                                     <div class="card-body py-4 text-center">
                                                         <img src="{{ $book->image }}" class="mb-4 image-fill rounded"
                                                             height="220px">

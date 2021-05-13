@@ -8,7 +8,7 @@
 
     {{-- Carousel --}}
     <header>
-        <div class="bg-gray-7 py-7">
+        <div class="bg-gray-7 py-5">
             <div class="container text-center">
                 <h2>Welcome to myBooks</h2>
                 <h4 class="mt-3 text-primary-500">Start exploring books</h4>
@@ -26,7 +26,7 @@
                 @foreach ($popularBooks as $book)
                     <div class="col-12 col-sm-6 col-md-4 d-flex">
                         <a class="d-flex text-black w-100" href="{{ route('books.search.show', $book->id) }}">
-                            <div class="card shadow rounded mb-4 flex-1">
+                            <div class="card shadow rounded mb-4 flex-1 hover-shadow">
                                 <div class="card-body text-center text-lg-left">
                                     <div class="text-center">
                                         <img src="{{ $book->image }}" class="mb-3 rounded" height="280px">
@@ -61,7 +61,7 @@
                 @foreach ($picksBooks as $book)
                     <div class="col-12 col-sm-6 col-md-4 d-flex">
                         <a class="d-flex text-black w-100" href="{{ route('books.search.show', $book->id) }}">
-                            <div class="card shadow rounded mb-4 flex-1">
+                            <div class="card shadow rounded mb-4 flex-1 hover-shadow">
                                 <div class="card-body text-center text-lg-left">
                                     <div class="text-center">
                                         <img src="{{ $book->image }}" class="mb-3 rounded" height="280px">
@@ -95,7 +95,7 @@
             <div class="row">
                 @foreach ($popularReviews as $review)
                     <div class="col-12 col-sm-6 col-md-4 d-flex">
-                        <div class="card rounded shadow-lg mt-4 w-100">
+                        <div class="card rounded shadow-lg mt-4 w-100 hover-shadow">
                             <div class="card-body">
                                 {{-- REVIEW Card --}}
                                 <a href="{{ route('user.reviews.show', $review->id) }}">

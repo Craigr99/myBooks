@@ -10,7 +10,7 @@
                     <div class="col-12 col-sm-6 col-md-4 d-flex">
                         <a class="d-flex text-black w-100"
                             href="{{ route('books.search.show', [$item['id'], $item['volumeInfo']['title']]) }}">
-                            <div class="card shadow rounded mb-4 flex-1">
+                            <div class="card shadow rounded mb-4 flex-1 hover-shadow">
                                 <div class="card-body text-center text-lg-left">
                                     @isset($item['volumeInfo']['imageLinks']['thumbnail'])
                                         <div class="text-center">
