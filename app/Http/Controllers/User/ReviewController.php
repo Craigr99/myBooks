@@ -140,6 +140,13 @@ class ReviewController extends Controller
      */
     public function store(Request $request, $id)
     {
+        $rules = [
+            'title' => 'required|string|min:5|max:255',
+            'body' => 'required|string|min:5|max:255',
+        ];
+
+        $request->validate($rules);
+
         $review = new Review();
         $review->title = $request->input('title');
         $review->body = $request->input('body');
@@ -149,7 +156,7 @@ class ReviewController extends Controller
         $review->save();
 
         $request->session()->flash('success', 'Review posted successfully!');
-        return redirect()->route('user.home');
+        return redirect()->route('books.search.show', ['id' => $id]);
     }
 
     /**
