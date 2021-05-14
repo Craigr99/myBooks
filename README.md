@@ -24,4 +24,5 @@
     DB_PASSWORD=
 8. run php artisan key:generate
 9. run php artisan migrate --seed
+10.run php artisan serve
 ```
